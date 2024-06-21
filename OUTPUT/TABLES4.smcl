@@ -1,0 +1,1167 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\HANDLS_PAPER64_HCYDEPANXIETY_LONG\OUTPUT\TABLES4.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}21 Jun 2024, 09:56:21
+{txt}
+{com}. 
+. use finaldata_imputed_FINAL,clear
+{txt}
+{com}. 
+. capture mi stset,clear
+{txt}
+{com}. 
+. capture drop failure
+{txt}
+{com}. gen failure=CESDcut16
+{txt}(30,492 missing values generated)
+
+{com}. 
+. save, replace
+{txt}{p 0 4 2}
+file {bf}
+finaldata_imputed_FINAL.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. 
+. mi stset timew1w3w4, failure(failure) id(HNDID)
+{res}
+{txt}Survival-time data settings
+
+{col 12}ID variable: {res}HNDID
+{col 10}{txt}Failure event: {res}failure!=0 & failure<.
+{col 1}{txt}Observed time interval: {res}(timew1w3w4[_n-1], timew1w3w4]
+{col 6}{txt}Exit on or before: {res}failure
+
+{txt}{hline 74}
+{res}     12,079{txt}  total observations
+{res}      3,720{txt}  event time missing (timew1w3w4>=.){col 61}PROBABLE ERROR
+{res}          6{txt}  multiple records at same instant {col 61}PROBABLE ERROR
+             (timew1w3w4[_n-1]==timew1w3w4)
+{res}      3,720{txt}  observations end on or before {bf:enter()}
+{res}      1,936{txt}  observations begin on or after (first) failure
+{hline 74}
+{res}      2,697{txt}  observations remaining, representing
+{res}      1,766{txt}  subjects
+{res}        594{txt}  failures in single-failure-per-subject data
+{res}   12,771.4{txt}  total analysis time at risk and under observation
+                                                At risk from t = {res}        0
+                                     {txt}Earliest observed entry t = {res}        0
+                                          {txt}Last observed exit t = {res}     12.5
+{txt}
+{com}. 
+. 
+. **Overall**
+. stcox c.Lnw1HCyscenter2p15 c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}Iteration 0:  Log likelihood = {res}-12677.516
+{txt}Iteration 1:  Log likelihood = {res}-12528.555
+{txt}Iteration 2:  Log likelihood = {res}-12519.505
+{txt}Iteration 3:  Log likelihood = {res}-12518.437
+{txt}Iteration 4:  Log likelihood = {res}-12518.381
+{txt}Iteration 5:  Log likelihood = {res}-12518.381
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-12518.381
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 11:931}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:8,807}
+{txt}No. of failures = {res}{ralign 11:1,562}
+{txt}Time at risk    = {res}{ralign 11:39,387.9999}
+{col 57}{txt}{lalign 13:LR chi2({res:11})} = {res}{ralign 6:318.27}
+{txt}Log likelihood = {res}-12518.381{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Lnw1HCyscenter2p15 {c |}{col 29}{res}{space 2} 1.058304{col 41}{space 2} .0936491{col 52}{space 1}    0.64{col 61}{space 3}0.522{col 69}{space 4} .8897905{col 82}{space 3} 1.258731
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2}  .989387{col 41}{space 2} .0029401{col 52}{space 1}   -3.59{col 61}{space 3}0.000{col 69}{space 4} .9836413{col 82}{space 3} .9951662
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .7340245{col 41}{space 2} .0410272{col 52}{space 1}   -5.53{col 61}{space 3}0.000{col 69}{space 4} .6578607{col 82}{space 3} .8190063
+{txt}{space 23}Race {c |}{col 29}{res}{space 2} .7288534{col 41}{space 2}  .037919{col 52}{space 1}   -6.08{col 61}{space 3}0.000{col 69}{space 4} .6581971{col 82}{space 3} .8070945
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.106007{col 41}{space 2} .0619529{col 52}{space 1}    1.80{col 61}{space 3}0.072{col 69}{space 4} .9910092{col 82}{space 3} 1.234348
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .8263036{col 41}{space 2} .0387423{col 52}{space 1}   -4.07{col 61}{space 3}0.000{col 69}{space 4} .7537546{col 82}{space 3} .9058355
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9934758{col 41}{space 2} .0019047{col 52}{space 1}   -3.41{col 61}{space 3}0.001{col 69}{space 4} .9897496{col 82}{space 3}  .997216
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2}  1.37802{col 41}{space 2} .0818846{col 52}{space 1}    5.40{col 61}{space 3}0.000{col 69}{space 4} 1.226522{col 82}{space 3}  1.54823
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.632248{col 41}{space 2} .1061316{col 52}{space 1}    7.54{col 61}{space 3}0.000{col 69}{space 4} 1.436943{col 82}{space 3} 1.854098
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2}  .988594{col 41}{space 2} .0024195{col 52}{space 1}   -4.69{col 61}{space 3}0.000{col 69}{space 4} .9838633{col 82}{space 3} .9933475
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.013228{col 41}{space 2} .0035991{col 52}{space 1}    3.70{col 61}{space 3}0.000{col 69}{space 4} 1.006198{col 82}{space 3} 1.020306
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. stcox zw1w3w4HCysTRAJ c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}Iteration 0:  Log likelihood = {res}-12673.686
+{txt}Iteration 1:  Log likelihood = {res}-12516.144
+{txt}Iteration 2:  Log likelihood = {res}-12507.515
+{txt}Iteration 3:  Log likelihood = {res}-12506.642
+{txt}Iteration 4:  Log likelihood = {res}-12506.602
+{txt}Iteration 5:  Log likelihood = {res}-12506.602
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-12506.602
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 11:929}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:8,796}
+{txt}No. of failures = {res}{ralign 11:1,562}
+{txt}Time at risk    = {res}{ralign 11:39,292.2999}
+{col 57}{txt}{lalign 13:LR chi2({res:11})} = {res}{ralign 6:334.17}
+{txt}Log likelihood = {res}-12506.602{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}zw1w3w4HCysTRAJ {c |}{col 29}{res}{space 2} 1.087348{col 41}{space 2} .0280504{col 52}{space 1}    3.25{col 61}{space 3}0.001{col 69}{space 4} 1.033737{col 82}{space 3}  1.14374
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9890892{col 41}{space 2} .0028737{col 52}{space 1}   -3.78{col 61}{space 3}0.000{col 69}{space 4} .9834728{col 82}{space 3} .9947376
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .7282971{col 41}{space 2} .0390539{col 52}{space 1}   -5.91{col 61}{space 3}0.000{col 69}{space 4} .6556381{col 82}{space 3} .8090084
+{txt}{space 23}Race {c |}{col 29}{res}{space 2}  .709945{col 41}{space 2}  .037121{col 52}{space 1}   -6.55{col 61}{space 3}0.000{col 69}{space 4} .6407932{col 82}{space 3} .7865595
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.124959{col 41}{space 2} .0629258{col 52}{space 1}    2.11{col 61}{space 3}0.035{col 69}{space 4} 1.008147{col 82}{space 3} 1.255306
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2}  .828973{col 41}{space 2}  .039039{col 52}{space 1}   -3.98{col 61}{space 3}0.000{col 69}{space 4}  .755883{col 82}{space 3} .9091305
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9935502{col 41}{space 2} .0019244{col 52}{space 1}   -3.34{col 61}{space 3}0.001{col 69}{space 4} .9897855{col 82}{space 3} .9973292
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.383155{col 41}{space 2} .0820241{col 52}{space 1}    5.47{col 61}{space 3}0.000{col 69}{space 4} 1.231382{col 82}{space 3} 1.553635
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.622475{col 41}{space 2} .1053901{col 52}{space 1}    7.45{col 61}{space 3}0.000{col 69}{space 4} 1.428522{col 82}{space 3}  1.84276
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9891805{col 41}{space 2} .0024171{col 52}{space 1}   -4.45{col 61}{space 3}0.000{col 69}{space 4} .9844544{col 82}{space 3} .9939293
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.012183{col 41}{space 2} .0035885{col 52}{space 1}    3.42{col 61}{space 3}0.001{col 69}{space 4} 1.005174{col 82}{space 3} 1.019241
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. **Women**
+. stcox c.Lnw1HCyscenter2p15 c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & Sex==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:Sex} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-6890.0824
+{txt}Iteration 1:  Log likelihood = {res}-6778.4991
+{txt}Iteration 2:  Log likelihood = {res}-6761.9969
+{txt}Iteration 3:  Log likelihood = {res}-6761.2099
+{txt}Iteration 4:  Log likelihood = {res} -6761.183
+{txt}Iteration 5:  Log likelihood = {res} -6761.183
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res} -6761.183
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 8:510}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:4,871}
+{txt}No. of failures = {res}{ralign 8:913}
+{txt}Time at risk    = {res}{ralign 8:21,428.3}
+{col 57}{txt}{lalign 13:LR chi2({res:10})} = {res}{ralign 6:257.80}
+{txt}Log likelihood = {res}-6761.183{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Lnw1HCyscenter2p15 {c |}{col 29}{res}{space 2} 1.119925{col 41}{space 2} .1238786{col 52}{space 1}    1.02{col 61}{space 3}0.306{col 69}{space 4} .9016433{col 82}{space 3} 1.391051
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9840176{col 41}{space 2} .0037324{col 52}{space 1}   -4.25{col 61}{space 3}0.000{col 69}{space 4} .9767294{col 82}{space 3} .9913601
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 23}Race {c |}{col 29}{res}{space 2} .6220264{col 41}{space 2} .0425582{col 52}{space 1}   -6.94{col 61}{space 3}0.000{col 69}{space 4} .5439647{col 82}{space 3} .7112903
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.139795{col 41}{space 2} .0835652{col 52}{space 1}    1.78{col 61}{space 3}0.074{col 69}{space 4} .9872343{col 82}{space 3} 1.315932
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .8537024{col 41}{space 2} .0521572{col 52}{space 1}   -2.59{col 61}{space 3}0.010{col 69}{space 4} .7573595{col 82}{space 3}  .962301
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9934275{col 41}{space 2} .0018495{col 52}{space 1}   -3.54{col 61}{space 3}0.000{col 69}{space 4} .9898091{col 82}{space 3} .9970592
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.319749{col 41}{space 2} .1029483{col 52}{space 1}    3.56{col 61}{space 3}0.000{col 69}{space 4} 1.132641{col 82}{space 3} 1.537765
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 2.037802{col 41}{space 2} .1836153{col 52}{space 1}    7.90{col 61}{space 3}0.000{col 69}{space 4}  1.70791{col 82}{space 3} 2.431415
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2}  .987294{col 41}{space 2} .0031477{col 52}{space 1}   -4.01{col 61}{space 3}0.000{col 69}{space 4} .9811438{col 82}{space 3} .9934827
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.009503{col 41}{space 2} .0044516{col 52}{space 1}    2.14{col 61}{space 3}0.032{col 69}{space 4} 1.000816{col 82}{space 3} 1.018266
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. stcox zw1w3w4HCysTRAJ c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & Sex==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:Sex} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-6888.0326
+{txt}Iteration 1:  Log likelihood = {res}-6771.1511
+{txt}Iteration 2:  Log likelihood = {res}-6752.7757
+{txt}Iteration 3:  Log likelihood = {res}-6752.2261
+{txt}Iteration 4:  Log likelihood = {res} -6752.215
+{txt}Iteration 5:  Log likelihood = {res} -6752.215
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res} -6752.215
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 8:509}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:4,866}
+{txt}No. of failures = {res}{ralign 8:913}
+{txt}Time at risk    = {res}{ralign 8:21,381.8}
+{col 57}{txt}{lalign 13:LR chi2({res:10})} = {res}{ralign 6:271.64}
+{txt}Log likelihood = {res}-6752.215{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}zw1w3w4HCysTRAJ {c |}{col 29}{res}{space 2} 1.137019{col 41}{space 2} .0406737{col 52}{space 1}    3.59{col 61}{space 3}0.000{col 69}{space 4}  1.06003{col 82}{space 3} 1.219599
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9846111{col 41}{space 2} .0036585{col 52}{space 1}   -4.17{col 61}{space 3}0.000{col 69}{space 4} .9774665{col 82}{space 3} .9918078
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 23}Race {c |}{col 29}{res}{space 2} .6206071{col 41}{space 2} .0423967{col 52}{space 1}   -6.98{col 61}{space 3}0.000{col 69}{space 4}  .542834{col 82}{space 3}  .709523
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.136742{col 41}{space 2}  .083859{col 52}{space 1}    1.74{col 61}{space 3}0.082{col 69}{space 4}  .983711{col 82}{space 3} 1.313579
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .8544562{col 41}{space 2}  .052653{col 52}{space 1}   -2.55{col 61}{space 3}0.011{col 69}{space 4} .7572467{col 82}{space 3} .9641447
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9934436{col 41}{space 2}  .001882{col 52}{space 1}   -3.47{col 61}{space 3}0.001{col 69}{space 4} .9897617{col 82}{space 3} .9971392
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2}  1.31875{col 41}{space 2} .1027659{col 52}{space 1}    3.55{col 61}{space 3}0.000{col 69}{space 4} 1.131961{col 82}{space 3} 1.536363
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.964998{col 41}{space 2} .1786202{col 52}{space 1}    7.43{col 61}{space 3}0.000{col 69}{space 4} 1.644323{col 82}{space 3} 2.348211
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9872693{col 41}{space 2}  .003129{col 52}{space 1}   -4.04{col 61}{space 3}0.000{col 69}{space 4} .9811555{col 82}{space 3} .9934211
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.007201{col 41}{space 2} .0044866{col 52}{space 1}    1.61{col 61}{space 3}0.107{col 69}{space 4} .9984458{col 82}{space 3} 1.016033
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. **Men**
+. stcox c.Lnw1HCyscenter2p15 c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & Sex==2
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:Sex} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-4724.9216
+{txt}Iteration 1:  Log likelihood = {res}-4679.2907
+{txt}Iteration 2:  Log likelihood = {res}-4679.0866
+{txt}Iteration 3:  Log likelihood = {res}-4679.0866
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-4679.0866
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 8:421}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:3,936}
+{txt}No. of failures = {res}{ralign 8:649}
+{txt}Time at risk    = {res}{ralign 8:17,959.7}
+{col 57}{txt}{lalign 13:LR chi2({res:10})} = {res}{ralign 6:91.67}
+{txt}Log likelihood = {res}-4679.0866{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Lnw1HCyscenter2p15 {c |}{col 29}{res}{space 2} .8671769{col 41}{space 2} .1317286{col 52}{space 1}   -0.94{col 61}{space 3}0.348{col 69}{space 4} .6438813{col 82}{space 3} 1.167911
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9998736{col 41}{space 2} .0047987{col 52}{space 1}   -0.03{col 61}{space 3}0.979{col 69}{space 4} .9905125{col 82}{space 3} 1.009323
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 23}Race {c |}{col 29}{res}{space 2} .9341736{col 41}{space 2} .0773688{col 52}{space 1}   -0.82{col 61}{space 3}0.411{col 69}{space 4} .7942013{col 82}{space 3} 1.098815
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.113929{col 41}{space 2} .0988088{col 52}{space 1}    1.22{col 61}{space 3}0.224{col 69}{space 4} .9361667{col 82}{space 3} 1.325444
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2}  .751329{col 41}{space 2} .0558687{col 52}{space 1}   -3.84{col 61}{space 3}0.000{col 69}{space 4} .6494339{col 82}{space 3} .8692114
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} 1.021284{col 41}{space 2} .0167478{col 52}{space 1}    1.28{col 61}{space 3}0.199{col 69}{space 4}  .988981{col 82}{space 3} 1.054642
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.380993{col 41}{space 2} .1300667{col 52}{space 1}    3.43{col 61}{space 3}0.001{col 69}{space 4} 1.148213{col 82}{space 3} 1.660965
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.304526{col 41}{space 2} .1206305{col 52}{space 1}    2.87{col 61}{space 3}0.004{col 69}{space 4} 1.088282{col 82}{space 3} 1.563738
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9915753{col 41}{space 2} .0038461{col 52}{space 1}   -2.18{col 61}{space 3}0.029{col 69}{space 4} .9840656{col 82}{space 3} .9991423
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.021222{col 41}{space 2} .0062935{col 52}{space 1}    3.41{col 61}{space 3}0.001{col 69}{space 4} 1.008962{col 82}{space 3} 1.033632
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. stcox zw1w3w4HCysTRAJ c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & Sex==2
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:Sex} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-4723.2433
+{txt}Iteration 1:  Log likelihood = {res}-4677.5043
+{txt}Iteration 2:  Log likelihood = {res}-4677.2811
+{txt}Iteration 3:  Log likelihood = {res}-4677.2811
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-4677.2811
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 8:420}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:3,930}
+{txt}No. of failures = {res}{ralign 8:649}
+{txt}Time at risk    = {res}{ralign 8:17,910.5}
+{col 57}{txt}{lalign 13:LR chi2({res:10})} = {res}{ralign 6:91.92}
+{txt}Log likelihood = {res}-4677.2811{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}zw1w3w4HCysTRAJ {c |}{col 29}{res}{space 2} 1.013456{col 41}{space 2} .0389228{col 52}{space 1}    0.35{col 61}{space 3}0.728{col 69}{space 4} .9399689{col 82}{space 3} 1.092688
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9981638{col 41}{space 2} .0047008{col 52}{space 1}   -0.39{col 61}{space 3}0.696{col 69}{space 4} .9889928{col 82}{space 3}  1.00742
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 23}Race {c |}{col 29}{res}{space 2} .9092637{col 41}{space 2} .0764476{col 52}{space 1}   -1.13{col 61}{space 3}0.258{col 69}{space 4} .7711235{col 82}{space 3} 1.072151
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.136014{col 41}{space 2} .1004374{col 52}{space 1}    1.44{col 61}{space 3}0.149{col 69}{space 4} .9552719{col 82}{space 3} 1.350953
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .7549404{col 41}{space 2} .0562241{col 52}{space 1}   -3.77{col 61}{space 3}0.000{col 69}{space 4} .6524083{col 82}{space 3} .8735864
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2}  1.01961{col 41}{space 2} .0171258{col 52}{space 1}    1.16{col 61}{space 3}0.248{col 69}{space 4} .9865905{col 82}{space 3} 1.053734
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.392747{col 41}{space 2} .1311154{col 52}{space 1}    3.52{col 61}{space 3}0.000{col 69}{space 4}  1.15808{col 82}{space 3} 1.674964
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.311762{col 41}{space 2} .1212723{col 52}{space 1}    2.94{col 61}{space 3}0.003{col 69}{space 4} 1.094363{col 82}{space 3} 1.572347
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2}  .992328{col 41}{space 2} .0038529{col 52}{space 1}   -1.98{col 61}{space 3}0.047{col 69}{space 4}  .984805{col 82}{space 3} .9999084
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.020486{col 41}{space 2} .0062598{col 52}{space 1}    3.31{col 61}{space 3}0.001{col 69}{space 4} 1.008291{col 82}{space 3} 1.032829
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. **White**
+. stcox c.Lnw1HCyscenter2p15 c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & Race==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:Race} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-5128.5281
+{txt}Iteration 1:  Log likelihood = {res}-5113.2233
+{txt}Iteration 2:  Log likelihood = {res}-5051.8615
+{txt}Iteration 3:  Log likelihood = {res}-5040.4841
+{txt}Iteration 4:  Log likelihood = {res}-5038.4478
+{txt}Iteration 5:  Log likelihood = {res}-5038.2939
+{txt}Iteration 6:  Log likelihood = {res}-5038.2924
+{txt}Iteration 7:  Log likelihood = {res}-5038.2924
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-5038.2924
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 8:392}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:3,636}
+{txt}No. of failures = {res}{ralign 8:702}
+{txt}Time at risk    = {res}{ralign 8:15,716.9}
+{col 57}{txt}{lalign 13:LR chi2({res:10})} = {res}{ralign 6:180.47}
+{txt}Log likelihood = {res}-5038.2924{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Lnw1HCyscenter2p15 {c |}{col 29}{res}{space 2} .5013428{col 41}{space 2} .0744575{col 52}{space 1}   -4.65{col 61}{space 3}0.000{col 69}{space 4} .3747293{col 82}{space 3} .6707365
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9921146{col 41}{space 2} .0044206{col 52}{space 1}   -1.78{col 61}{space 3}0.076{col 69}{space 4} .9834882{col 82}{space 3} 1.000817
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .6902015{col 41}{space 2} .0578097{col 52}{space 1}   -4.43{col 61}{space 3}0.000{col 69}{space 4} .5857081{col 82}{space 3}  .813337
+{txt}{space 23}Race {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 20}PovStat {c |}{col 29}{res}{space 2} 1.346182{col 41}{space 2} .1202437{col 52}{space 1}    3.33{col 61}{space 3}0.001{col 69}{space 4} 1.129986{col 82}{space 3} 1.603744
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .7203771{col 41}{space 2} .0488303{col 52}{space 1}   -4.84{col 61}{space 3}0.000{col 69}{space 4} .6307566{col 82}{space 3} .8227313
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9933027{col 41}{space 2} .0017652{col 52}{space 1}   -3.78{col 61}{space 3}0.000{col 69}{space 4}  .989849{col 82}{space 3} .9967685
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.146247{col 41}{space 2} .1097383{col 52}{space 1}    1.43{col 61}{space 3}0.154{col 69}{space 4} .9501382{col 82}{space 3} 1.382833
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2}  1.53858{col 41}{space 2} .1670805{col 52}{space 1}    3.97{col 61}{space 3}0.000{col 69}{space 4} 1.243612{col 82}{space 3} 1.903512
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9950129{col 41}{space 2} .0033822{col 52}{space 1}   -1.47{col 61}{space 3}0.141{col 69}{space 4}  .988406{col 82}{space 3} 1.001664
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.011792{col 41}{space 2} .0057548{col 52}{space 1}    2.06{col 61}{space 3}0.039{col 69}{space 4} 1.000575{col 82}{space 3} 1.023134
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. stcox zw1w3w4HCysTRAJ c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & Race==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:Race} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-5123.9166
+{txt}Iteration 1:  Log likelihood = {res}-5108.5163
+{txt}Iteration 2:  Log likelihood = {res}-5053.8093
+{txt}Iteration 3:  Log likelihood = {res} -5043.348
+{txt}Iteration 4:  Log likelihood = {res}-5041.5105
+{txt}Iteration 5:  Log likelihood = {res}-5041.3807
+{txt}Iteration 6:  Log likelihood = {res}-5041.3796
+{txt}Iteration 7:  Log likelihood = {res}-5041.3796
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-5041.3796
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 8:390}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:3,625}
+{txt}No. of failures = {res}{ralign 8:702}
+{txt}Time at risk    = {res}{ralign 8:15,621.2}
+{col 57}{txt}{lalign 13:LR chi2({res:10})} = {res}{ralign 6:165.07}
+{txt}Log likelihood = {res}-5041.3796{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}zw1w3w4HCysTRAJ {c |}{col 29}{res}{space 2} 1.025694{col 41}{space 2} .0506369{col 52}{space 1}    0.51{col 61}{space 3}0.607{col 69}{space 4} .9310976{col 82}{space 3}   1.1299
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9873789{col 41}{space 2} .0043415{col 52}{space 1}   -2.89{col 61}{space 3}0.004{col 69}{space 4} .9789062{col 82}{space 3} .9959248
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .6225719{col 41}{space 2} .0497541{col 52}{space 1}   -5.93{col 61}{space 3}0.000{col 69}{space 4} .5323094{col 82}{space 3} .7281402
+{txt}{space 23}Race {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 20}PovStat {c |}{col 29}{res}{space 2}  1.39637{col 41}{space 2} .1240894{col 52}{space 1}    3.76{col 61}{space 3}0.000{col 69}{space 4} 1.173162{col 82}{space 3} 1.662047
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .7297261{col 41}{space 2} .0491071{col 52}{space 1}   -4.68{col 61}{space 3}0.000{col 69}{space 4} .6395553{col 82}{space 3} .8326101
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9938842{col 41}{space 2} .0017736{col 52}{space 1}   -3.44{col 61}{space 3}0.001{col 69}{space 4} .9904141{col 82}{space 3} .9973664
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.189726{col 41}{space 2} .1120712{col 52}{space 1}    1.84{col 61}{space 3}0.065{col 69}{space 4} .9891552{col 82}{space 3} 1.430966
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.512876{col 41}{space 2} .1641731{col 52}{space 1}    3.82{col 61}{space 3}0.000{col 69}{space 4} 1.223019{col 82}{space 3} 1.871429
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9968219{col 41}{space 2} .0033987{col 52}{space 1}   -0.93{col 61}{space 3}0.351{col 69}{space 4} .9901829{col 82}{space 3} 1.003506
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.006145{col 41}{space 2} .0057074{col 52}{space 1}    1.08{col 61}{space 3}0.280{col 69}{space 4} .9950209{col 82}{space 3} 1.017394
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. **AA**
+. stcox c.Lnw1HCyscenter2p15 c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & Race==2
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:Race} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-6473.6603
+{txt}Iteration 1:  Log likelihood = {res}-6384.2712
+{txt}Iteration 2:  Log likelihood = {res}-6381.8917
+{txt}Iteration 3:  Log likelihood = {res}-6381.8906
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-6381.8906
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 11:539}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:5,171}
+{txt}No. of failures = {res}{ralign 11:860}
+{txt}Time at risk    = {res}{ralign 11:23,671.0999}
+{col 57}{txt}{lalign 13:LR chi2({res:10})} = {res}{ralign 6:183.54}
+{txt}Log likelihood = {res}-6381.8906{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Lnw1HCyscenter2p15 {c |}{col 29}{res}{space 2} 1.493995{col 41}{space 2} .1443931{col 52}{space 1}    4.15{col 61}{space 3}0.000{col 69}{space 4} 1.236179{col 82}{space 3} 1.805581
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9864788{col 41}{space 2} .0040187{col 52}{space 1}   -3.34{col 61}{space 3}0.001{col 69}{space 4} .9786336{col 82}{space 3} .9943869
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .7549102{col 41}{space 2} .0570126{col 52}{space 1}   -3.72{col 61}{space 3}0.000{col 69}{space 4} .6510443{col 82}{space 3} .8753465
+{txt}{space 23}Race {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 20}PovStat {c |}{col 29}{res}{space 2} 1.003205{col 41}{space 2} .0737178{col 52}{space 1}    0.04{col 61}{space 3}0.965{col 69}{space 4} .8686432{col 82}{space 3} 1.158612
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .9769229{col 41}{space 2} .0646138{col 52}{space 1}   -0.35{col 61}{space 3}0.724{col 69}{space 4} .8581471{col 82}{space 3} 1.112138
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2}  1.00946{col 41}{space 2} .0076615{col 52}{space 1}    1.24{col 61}{space 3}0.215{col 69}{space 4}  .994555{col 82}{space 3} 1.024588
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.438871{col 41}{space 2} .1113537{col 52}{space 1}    4.70{col 61}{space 3}0.000{col 69}{space 4} 1.236367{col 82}{space 3} 1.674542
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.722828{col 41}{space 2}  .142107{col 52}{space 1}    6.59{col 61}{space 3}0.000{col 69}{space 4} 1.465652{col 82}{space 3} 2.025131
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2}  .981187{col 41}{space 2} .0035132{col 52}{space 1}   -5.30{col 61}{space 3}0.000{col 69}{space 4} .9743255{col 82}{space 3} .9880969
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.013922{col 41}{space 2} .0047031{col 52}{space 1}    2.98{col 61}{space 3}0.003{col 69}{space 4} 1.004745{col 82}{space 3} 1.023182
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. stcox zw1w3w4HCysTRAJ c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & Race==2
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:Race} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-6473.6603
+{txt}Iteration 1:  Log likelihood = {res}-6387.8502
+{txt}Iteration 2:  Log likelihood = {res}-6385.5051
+{txt}Iteration 3:  Log likelihood = {res}-6385.5038
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-6385.5038
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 11:539}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:5,171}
+{txt}No. of failures = {res}{ralign 11:860}
+{txt}Time at risk    = {res}{ralign 11:23,671.0999}
+{col 57}{txt}{lalign 13:LR chi2({res:10})} = {res}{ralign 6:176.31}
+{txt}Log likelihood = {res}-6385.5038{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}zw1w3w4HCysTRAJ {c |}{col 29}{res}{space 2} 1.095636{col 41}{space 2}  .034184{col 52}{space 1}    2.93{col 61}{space 3}0.003{col 69}{space 4} 1.030644{col 82}{space 3} 1.164726
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9896422{col 41}{space 2} .0039314{col 52}{space 1}   -2.62{col 61}{space 3}0.009{col 69}{space 4} .9819667{col 82}{space 3} .9973777
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2}  .792449{col 41}{space 2} .0588229{col 52}{space 1}   -3.13{col 61}{space 3}0.002{col 69}{space 4} .6851526{col 82}{space 3} .9165483
+{txt}{space 23}Race {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 20}PovStat {c |}{col 29}{res}{space 2}  1.00562{col 41}{space 2} .0740525{col 52}{space 1}    0.08{col 61}{space 3}0.939{col 69}{space 4}  .870468{col 82}{space 3} 1.161757
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .9726839{col 41}{space 2}  .064486{col 52}{space 1}   -0.42{col 61}{space 3}0.676{col 69}{space 4} .8541608{col 82}{space 3} 1.107653
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} 1.010478{col 41}{space 2}  .007708{col 52}{space 1}    1.37{col 61}{space 3}0.172{col 69}{space 4} .9954828{col 82}{space 3} 1.025699
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.446252{col 41}{space 2} .1118919{col 52}{space 1}    4.77{col 61}{space 3}0.000{col 69}{space 4} 1.242765{col 82}{space 3} 1.683056
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.711085{col 41}{space 2} .1414618{col 52}{space 1}    6.50{col 61}{space 3}0.000{col 69}{space 4} 1.455123{col 82}{space 3} 2.012072
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9812661{col 41}{space 2} .0034954{col 52}{space 1}   -5.31{col 61}{space 3}0.000{col 69}{space 4} .9744391{col 82}{space 3} .9881409
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.013936{col 41}{space 2} .0047192{col 52}{space 1}    2.97{col 61}{space 3}0.003{col 69}{space 4} 1.004728{col 82}{space 3} 1.023227
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. **Above Poverty**
+. stcox c.Lnw1HCyscenter2p15 c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & PovStat==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:PovStat} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-7368.8194
+{txt}Iteration 1:  Log likelihood = {res}-7254.9382
+{txt}Iteration 2:  Log likelihood = {res}-7251.4086
+{txt}Iteration 3:  Log likelihood = {res}-7251.4005
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-7251.4005
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 8:641}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:6,149}
+{txt}No. of failures = {res}{ralign 8:949}
+{txt}Time at risk    = {res}{ralign 8:26,839.2}
+{col 57}{txt}{lalign 13:LR chi2({res:10})} = {res}{ralign 6:234.84}
+{txt}Log likelihood = {res}-7251.4005{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Lnw1HCyscenter2p15 {c |}{col 29}{res}{space 2} .7462954{col 41}{space 2} .0926211{col 52}{space 1}   -2.36{col 61}{space 3}0.018{col 69}{space 4} .5851538{col 82}{space 3} .9518127
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9846834{col 41}{space 2} .0037018{col 52}{space 1}   -4.11{col 61}{space 3}0.000{col 69}{space 4} .9774547{col 82}{space 3} .9919656
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .7946566{col 41}{space 2} .0578003{col 52}{space 1}   -3.16{col 61}{space 3}0.002{col 69}{space 4} .6890747{col 82}{space 3} .9164161
+{txt}{space 23}Race {c |}{col 29}{res}{space 2} .7900857{col 41}{space 2} .0526033{col 52}{space 1}   -3.54{col 61}{space 3}0.000{col 69}{space 4} .6934289{col 82}{space 3} .9002156
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 20}w1edubr {c |}{col 29}{res}{space 2} .7946791{col 41}{space 2} .0484974{col 52}{space 1}   -3.77{col 61}{space 3}0.000{col 69}{space 4} .7050906{col 82}{space 3} .8956508
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} 1.006932{col 41}{space 2} .0076663{col 52}{space 1}    0.91{col 61}{space 3}0.364{col 69}{space 4} .9920178{col 82}{space 3}  1.02207
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.477061{col 41}{space 2} .1086847{col 52}{space 1}    5.30{col 61}{space 3}0.000{col 69}{space 4} 1.278691{col 82}{space 3} 1.706206
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.806366{col 41}{space 2} .1549161{col 52}{space 1}    6.89{col 61}{space 3}0.000{col 69}{space 4} 1.526883{col 82}{space 3} 2.137007
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9874025{col 41}{space 2} .0029929{col 52}{space 1}   -4.18{col 61}{space 3}0.000{col 69}{space 4} .9815539{col 82}{space 3}  .993286
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.025256{col 41}{space 2} .0047127{col 52}{space 1}    5.43{col 61}{space 3}0.000{col 69}{space 4} 1.016061{col 82}{space 3} 1.034534
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. stcox zw1w3w4HCysTRAJ c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & PovStat==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:PovStat} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-7368.8194
+{txt}Iteration 1:  Log likelihood = {res}-7257.6788
+{txt}Iteration 2:  Log likelihood = {res}-7254.1302
+{txt}Iteration 3:  Log likelihood = {res}-7254.1223
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-7254.1223
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 8:641}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:6,149}
+{txt}No. of failures = {res}{ralign 8:949}
+{txt}Time at risk    = {res}{ralign 8:26,839.2}
+{col 57}{txt}{lalign 13:LR chi2({res:10})} = {res}{ralign 6:229.39}
+{txt}Log likelihood = {res}-7254.1223{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}zw1w3w4HCysTRAJ {c |}{col 29}{res}{space 2} 1.019938{col 41}{space 2} .0364692{col 52}{space 1}    0.55{col 61}{space 3}0.581{col 69}{space 4} .9509065{col 82}{space 3}  1.09398
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9822455{col 41}{space 2} .0035798{col 52}{space 1}   -4.92{col 61}{space 3}0.000{col 69}{space 4} .9752543{col 82}{space 3} .9892869
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .7445073{col 41}{space 2} .0511843{col 52}{space 1}   -4.29{col 61}{space 3}0.000{col 69}{space 4} .6506531{col 82}{space 3} .8518995
+{txt}{space 23}Race {c |}{col 29}{res}{space 2} .7819123{col 41}{space 2} .0525235{col 52}{space 1}   -3.66{col 61}{space 3}0.000{col 69}{space 4} .6854569{col 82}{space 3} .8919406
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 20}w1edubr {c |}{col 29}{res}{space 2} .8051337{col 41}{space 2} .0490041{col 52}{space 1}   -3.56{col 61}{space 3}0.000{col 69}{space 4} .7145951{col 82}{space 3} .9071435
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} 1.007504{col 41}{space 2} .0078077{col 52}{space 1}    0.96{col 61}{space 3}0.335{col 69}{space 4} .9923169{col 82}{space 3} 1.022924
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.481426{col 41}{space 2} .1090532{col 52}{space 1}    5.34{col 61}{space 3}0.000{col 69}{space 4} 1.282389{col 82}{space 3} 1.711355
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.771917{col 41}{space 2}  .152017{col 52}{space 1}    6.67{col 61}{space 3}0.000{col 69}{space 4} 1.497672{col 82}{space 3}  2.09638
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9882805{col 41}{space 2} .0029975{col 52}{space 1}   -3.89{col 61}{space 3}0.000{col 69}{space 4}  .982423{col 82}{space 3} .9941729
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.024789{col 41}{space 2} .0046741{col 52}{space 1}    5.37{col 61}{space 3}0.000{col 69}{space 4} 1.015669{col 82}{space 3} 1.033991
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. **Below Poverty**
+. stcox c.Lnw1HCyscenter2p15 c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & PovStat==2
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:PovStat} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-4250.9672
+{txt}Iteration 1:  Log likelihood = {res}-4206.2509
+{txt}Iteration 2:  Log likelihood = {res}-4190.3319
+{txt}Iteration 3:  Log likelihood = {res}-4189.9994
+{txt}Iteration 4:  Log likelihood = {res} -4189.994
+{txt}Iteration 5:  Log likelihood = {res} -4189.994
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res} -4189.994
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 8:290}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:2,658}
+{txt}No. of failures = {res}{ralign 8:613}
+{txt}Time at risk    = {res}{ralign 8:12,548.8}
+{col 57}{txt}{lalign 13:LR chi2({res:10})} = {res}{ralign 6:121.95}
+{txt}Log likelihood = {res}-4189.994{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Lnw1HCyscenter2p15 {c |}{col 29}{res}{space 2} 1.595719{col 41}{space 2} .1971992{col 52}{space 1}    3.78{col 61}{space 3}0.000{col 69}{space 4} 1.252463{col 82}{space 3}  2.03305
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2}  .997753{col 41}{space 2} .0049777{col 52}{space 1}   -0.45{col 61}{space 3}0.652{col 69}{space 4} .9880444{col 82}{space 3} 1.007557
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .6909353{col 41}{space 2} .0613804{col 52}{space 1}   -4.16{col 61}{space 3}0.000{col 69}{space 4}  .580523{col 82}{space 3} .8223475
+{txt}{space 23}Race {c |}{col 29}{res}{space 2} .5568878{col 41}{space 2} .0487212{col 52}{space 1}   -6.69{col 61}{space 3}0.000{col 69}{space 4} .4691346{col 82}{space 3} .6610555
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 20}w1edubr {c |}{col 29}{res}{space 2} .8353832{col 41}{space 2} .0604658{col 52}{space 1}   -2.48{col 61}{space 3}0.013{col 69}{space 4} .7248948{col 82}{space 3} .9627123
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9930499{col 41}{space 2} .0018273{col 52}{space 1}   -3.79{col 61}{space 3}0.000{col 69}{space 4} .9894749{col 82}{space 3} .9966379
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.113015{col 41}{space 2} .1100497{col 52}{space 1}    1.08{col 61}{space 3}0.279{col 69}{space 4}  .916934{col 82}{space 3} 1.351026
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.532134{col 41}{space 2} .1548689{col 52}{space 1}    4.22{col 61}{space 3}0.000{col 69}{space 4} 1.256773{col 82}{space 3} 1.867827
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9937148{col 41}{space 2} .0041775{col 52}{space 1}   -1.50{col 61}{space 3}0.134{col 69}{space 4} .9855607{col 82}{space 3} 1.001936
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} .9920346{col 41}{space 2} .0056829{col 52}{space 1}   -1.40{col 61}{space 3}0.163{col 69}{space 4} .9809587{col 82}{space 3} 1.003236
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. stcox zw1w3w4HCysTRAJ c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & PovStat==2
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:PovStat} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-4246.3196
+{txt}Iteration 1:  Log likelihood = {res}-4194.0144
+{txt}Iteration 2:  Log likelihood = {res}-4177.8636
+{txt}Iteration 3:  Log likelihood = {res}-4177.5684
+{txt}Iteration 4:  Log likelihood = {res}-4177.5647
+{txt}Iteration 5:  Log likelihood = {res}-4177.5647
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-4177.5647
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 8:288}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:2,647}
+{txt}No. of failures = {res}{ralign 8:613}
+{txt}Time at risk    = {res}{ralign 8:12,453.1}
+{col 57}{txt}{lalign 13:LR chi2({res:10})} = {res}{ralign 6:137.51}
+{txt}Log likelihood = {res}-4177.5647{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}zw1w3w4HCysTRAJ {c |}{col 29}{res}{space 2} 1.216863{col 41}{space 2} .0481893{col 52}{space 1}    4.96{col 61}{space 3}0.000{col 69}{space 4} 1.125986{col 82}{space 3} 1.315075
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9990196{col 41}{space 2}  .004854{col 52}{space 1}   -0.20{col 61}{space 3}0.840{col 69}{space 4} .9895511{col 82}{space 3} 1.008579
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .7156763{col 41}{space 2} .0621599{col 52}{space 1}   -3.85{col 61}{space 3}0.000{col 69}{space 4} .6036506{col 82}{space 3} .8484917
+{txt}{space 23}Race {c |}{col 29}{res}{space 2} .5227309{col 41}{space 2} .0462382{col 52}{space 1}   -7.33{col 61}{space 3}0.000{col 69}{space 4} .4395265{col 82}{space 3} .6216863
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 20}w1edubr {c |}{col 29}{res}{space 2} .8552293{col 41}{space 2} .0625406{col 52}{space 1}   -2.14{col 61}{space 3}0.032{col 69}{space 4} .7410313{col 82}{space 3}  .987026
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9927396{col 41}{space 2} .0018445{col 52}{space 1}   -3.92{col 61}{space 3}0.000{col 69}{space 4}  .989131{col 82}{space 3} .9963613
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.148229{col 41}{space 2} .1138076{col 52}{space 1}    1.39{col 61}{space 3}0.163{col 69}{space 4} .9454987{col 82}{space 3} 1.394428
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.490764{col 41}{space 2} .1505749{col 52}{space 1}    3.95{col 61}{space 3}0.000{col 69}{space 4} 1.223019{col 82}{space 3} 1.817124
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9941851{col 41}{space 2} .0041704{col 52}{space 1}   -1.39{col 61}{space 3}0.164{col 69}{space 4} .9860447{col 82}{space 3} 1.002393
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} .9876869{col 41}{space 2} .0057903{col 52}{space 1}   -2.11{col 61}{space 3}0.035{col 69}{space 4} .9764031{col 82}{space 3}  .999101
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. **Below Median Anxiety score**
+. stcox c.Lnw1HCyscenter2p15 c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & w1ANXIETYbr==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}Iteration 0:  Log likelihood = {res} -5618.421
+{txt}Iteration 1:  Log likelihood = {res}-5578.4342
+{txt}Iteration 2:  Log likelihood = {res}-5578.1714
+{txt}Iteration 3:  Log likelihood = {res}-5578.1713
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-5578.1713
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 8:535}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:5,201}
+{txt}No. of failures = {res}{ralign 8:736}
+{txt}Time at risk    = {res}{ralign 8:23,631.7}
+{col 57}{txt}{lalign 13:LR chi2({res:11})} = {res}{ralign 6:80.50}
+{txt}Log likelihood = {res}-5578.1713{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Lnw1HCyscenter2p15 {c |}{col 29}{res}{space 2} 1.621813{col 41}{space 2} .1774963{col 52}{space 1}    4.42{col 61}{space 3}0.000{col 69}{space 4} 1.308708{col 82}{space 3} 2.009828
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9938877{col 41}{space 2} .0044207{col 52}{space 1}   -1.38{col 61}{space 3}0.168{col 69}{space 4} .9852609{col 82}{space 3}  1.00259
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .7859937{col 41}{space 2} .0645428{col 52}{space 1}   -2.93{col 61}{space 3}0.003{col 69}{space 4} .6691471{col 82}{space 3} .9232441
+{txt}{space 23}Race {c |}{col 29}{res}{space 2} .8774167{col 41}{space 2} .0687035{col 52}{space 1}   -1.67{col 61}{space 3}0.095{col 69}{space 4} .7525841{col 82}{space 3} 1.022956
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.003386{col 41}{space 2} .0840511{col 52}{space 1}    0.04{col 61}{space 3}0.968{col 69}{space 4} .8514616{col 82}{space 3} 1.182418
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2}  .767592{col 41}{space 2} .0536948{col 52}{space 1}   -3.78{col 61}{space 3}0.000{col 69}{space 4} .6692478{col 82}{space 3} .8803877
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} 1.011513{col 41}{space 2} .0093393{col 52}{space 1}    1.24{col 61}{space 3}0.215{col 69}{space 4} .9933731{col 82}{space 3} 1.029984
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.299405{col 41}{space 2} .1097359{col 52}{space 1}    3.10{col 61}{space 3}0.002{col 69}{space 4} 1.101184{col 82}{space 3} 1.533307
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.227489{col 41}{space 2}  .124732{col 52}{space 1}    2.02{col 61}{space 3}0.044{col 69}{space 4} 1.005825{col 82}{space 3} 1.498004
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9944456{col 41}{space 2} .0035154{col 52}{space 1}   -1.58{col 61}{space 3}0.115{col 69}{space 4} .9875794{col 82}{space 3}  1.00136
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2}  1.01215{col 41}{space 2} .0054487{col 52}{space 1}    2.24{col 61}{space 3}0.025{col 69}{space 4} 1.001527{col 82}{space 3} 1.022886
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. stcox zw1w3w4HCysTRAJ c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & w1ANXIETYbr==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}Iteration 0:  Log likelihood = {res}-5615.3762
+{txt}Iteration 1:  Log likelihood = {res} -5580.245
+{txt}Iteration 2:  Log likelihood = {res}-5580.1068
+{txt}Iteration 3:  Log likelihood = {res}-5580.1068
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-5580.1068
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 6:533}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:5,190}
+{txt}No. of failures = {res}{ralign 6:736}
+{txt}Time at risk    = {res}{ralign 6:23,536}
+{col 57}{txt}{lalign 13:LR chi2({res:11})} = {res}{ralign 6:70.54}
+{txt}Log likelihood = {res}-5580.1068{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}zw1w3w4HCysTRAJ {c |}{col 29}{res}{space 2}   1.0963{col 41}{space 2}  .039202{col 52}{space 1}    2.57{col 61}{space 3}0.010{col 69}{space 4} 1.022096{col 82}{space 3} 1.175891
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9979933{col 41}{space 2} .0042428{col 52}{space 1}   -0.47{col 61}{space 3}0.637{col 69}{space 4} .9897121{col 82}{space 3} 1.006344
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .8384555{col 41}{space 2} .0671498{col 52}{space 1}   -2.20{col 61}{space 3}0.028{col 69}{space 4} .7166538{col 82}{space 3} .9809585
+{txt}{space 23}Race {c |}{col 29}{res}{space 2}  .850623{col 41}{space 2} .0673484{col 52}{space 1}   -2.04{col 61}{space 3}0.041{col 69}{space 4} .7283548{col 82}{space 3} .9934163
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.027535{col 41}{space 2} .0861714{col 52}{space 1}    0.32{col 61}{space 3}0.746{col 69}{space 4} .8717919{col 82}{space 3} 1.211101
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .7763155{col 41}{space 2} .0546093{col 52}{space 1}   -3.60{col 61}{space 3}0.000{col 69}{space 4} .6763339{col 82}{space 3} .8910774
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} 1.010691{col 41}{space 2} .0096022{col 52}{space 1}    1.12{col 61}{space 3}0.263{col 69}{space 4} .9920453{col 82}{space 3} 1.029687
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.304301{col 41}{space 2} .1100999{col 52}{space 1}    3.15{col 61}{space 3}0.002{col 69}{space 4} 1.105415{col 82}{space 3}  1.53897
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.254056{col 41}{space 2} .1272927{col 52}{space 1}    2.23{col 61}{space 3}0.026{col 69}{space 4} 1.027817{col 82}{space 3} 1.530093
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9936823{col 41}{space 2} .0034755{col 52}{space 1}   -1.81{col 61}{space 3}0.070{col 69}{space 4} .9868937{col 82}{space 3} 1.000518
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.011444{col 41}{space 2} .0054928{col 52}{space 1}    2.10{col 61}{space 3}0.036{col 69}{space 4} 1.000735{col 82}{space 3} 1.022267
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. **Above Median Anxiety score**
+. stcox c.Lnw1HCyscenter2p15 c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & w1ANXIETYbr==2
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}Iteration 0:  Log likelihood = {res}-3474.9075
+{txt}Iteration 1:  Log likelihood = {res}-3407.2325
+{txt}Iteration 2:  Log likelihood = {res}-3382.7146
+{txt}Iteration 3:  Log likelihood = {res}-3382.0281
+{txt}Iteration 4:  Log likelihood = {res}-3382.0134
+{txt}Iteration 5:  Log likelihood = {res}-3382.0134
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-3382.0134
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 7:233}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:2,126}
+{txt}No. of failures = {res}{ralign 7:525}
+{txt}Time at risk    = {res}{ralign 7:9,539.8}
+{col 57}{txt}{lalign 13:LR chi2({res:11})} = {res}{ralign 6:185.79}
+{txt}Log likelihood = {res}-3382.0134{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Lnw1HCyscenter2p15 {c |}{col 29}{res}{space 2} 1.215412{col 41}{space 2} .1715811{col 52}{space 1}    1.38{col 61}{space 3}0.167{col 69}{space 4} .9216335{col 82}{space 3} 1.602834
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9856477{col 41}{space 2} .0053739{col 52}{space 1}   -2.65{col 61}{space 3}0.008{col 69}{space 4} .9751711{col 82}{space 3} .9962368
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .7390504{col 41}{space 2} .0723592{col 52}{space 1}   -3.09{col 61}{space 3}0.002{col 69}{space 4} .6100063{col 82}{space 3} .8953932
+{txt}{space 23}Race {c |}{col 29}{res}{space 2} .6564466{col 41}{space 2} .0594746{col 52}{space 1}   -4.65{col 61}{space 3}0.000{col 69}{space 4}  .549642{col 82}{space 3} .7840052
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.182163{col 41}{space 2} .1221951{col 52}{space 1}    1.62{col 61}{space 3}0.105{col 69}{space 4} .9653666{col 82}{space 3} 1.447646
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .8009562{col 41}{space 2} .0682504{col 52}{space 1}   -2.60{col 61}{space 3}0.009{col 69}{space 4} .6777615{col 82}{space 3} .9465437
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9917061{col 41}{space 2}  .001715{col 52}{space 1}   -4.82{col 61}{space 3}0.000{col 69}{space 4} .9883505{col 82}{space 3} .9950732
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.354763{col 41}{space 2} .1442622{col 52}{space 1}    2.85{col 61}{space 3}0.004{col 69}{space 4}  1.09957{col 82}{space 3} 1.669182
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.829867{col 41}{space 2} .2050581{col 52}{space 1}    5.39{col 61}{space 3}0.000{col 69}{space 4} 1.469035{col 82}{space 3} 2.279327
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9823832{col 41}{space 2} .0043267{col 52}{space 1}   -4.04{col 61}{space 3}0.000{col 69}{space 4} .9739395{col 82}{space 3} .9909001
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.017126{col 41}{space 2} .0063255{col 52}{space 1}    2.73{col 61}{space 3}0.006{col 69}{space 4} 1.004804{col 82}{space 3}   1.0296
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. stcox zw1w3w4HCysTRAJ c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1 & w1ANXIETYbr==2
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}Iteration 0:  Log likelihood = {res}-3474.9075
+{txt}Iteration 1:  Log likelihood = {res}-3407.0863
+{txt}Iteration 2:  Log likelihood = {res}-3383.1417
+{txt}Iteration 3:  Log likelihood = {res}-3382.4754
+{txt}Iteration 4:  Log likelihood = {res} -3382.462
+{txt}Iteration 5:  Log likelihood = {res} -3382.462
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res} -3382.462
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 7:233}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:2,126}
+{txt}No. of failures = {res}{ralign 7:525}
+{txt}Time at risk    = {res}{ralign 7:9,539.8}
+{col 57}{txt}{lalign 13:LR chi2({res:11})} = {res}{ralign 6:184.89}
+{txt}Log likelihood = {res}-3382.462{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}zw1w3w4HCysTRAJ {c |}{col 29}{res}{space 2}  1.04634{col 41}{space 2} .0481601{col 52}{space 1}    0.98{col 61}{space 3}0.325{col 69}{space 4} .9560803{col 82}{space 3}  1.14512
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9860646{col 41}{space 2} .0053736{col 52}{space 1}   -2.58{col 61}{space 3}0.010{col 69}{space 4} .9755886{col 82}{space 3}  .996653
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .7640022{col 41}{space 2} .0721552{col 52}{space 1}   -2.85{col 61}{space 3}0.004{col 69}{space 4}  .634898{col 82}{space 3} .9193592
+{txt}{space 23}Race {c |}{col 29}{res}{space 2} .6583623{col 41}{space 2} .0596614{col 52}{space 1}   -4.61{col 61}{space 3}0.000{col 69}{space 4} .5512242{col 82}{space 3} .7863241
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.158285{col 41}{space 2} .1200065{col 52}{space 1}    1.42{col 61}{space 3}0.156{col 69}{space 4} .9454209{col 82}{space 3} 1.419077
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .7889461{col 41}{space 2} .0672214{col 52}{space 1}   -2.78{col 61}{space 3}0.005{col 69}{space 4}  .667608{col 82}{space 3} .9323375
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9914784{col 41}{space 2} .0017182{col 52}{space 1}   -4.94{col 61}{space 3}0.000{col 69}{space 4} .9881166{col 82}{space 3} .9948517
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.356421{col 41}{space 2} .1449663{col 52}{space 1}    2.85{col 61}{space 3}0.004{col 69}{space 4} 1.100077{col 82}{space 3} 1.672499
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.828568{col 41}{space 2} .2057733{col 52}{space 1}    5.36{col 61}{space 3}0.000{col 69}{space 4} 1.466639{col 82}{space 3} 2.279812
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9826381{col 41}{space 2} .0043525{col 52}{space 1}   -3.95{col 61}{space 3}0.000{col 69}{space 4} .9741444{col 82}{space 3} .9912059
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.017317{col 41}{space 2} .0063474{col 52}{space 1}    2.75{col 61}{space 3}0.006{col 69}{space 4} 1.004952{col 82}{space 3} 1.029834
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. **Interaction by sex**
+. stcox c.Lnw1HCyscenter2p15##Sex c.w1Agecent48  Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}Iteration 0:  Log likelihood = {res}-12677.516
+{txt}Iteration 1:  Log likelihood = {res}-12528.556
+{txt}Iteration 2:  Log likelihood = {res}-12519.252
+{txt}Iteration 3:  Log likelihood = {res}-12518.135
+{txt}Iteration 4:  Log likelihood = {res}-12518.074
+{txt}Iteration 5:  Log likelihood = {res}-12518.074
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-12518.074
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 11:931}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:8,807}
+{txt}No. of failures = {res}{ralign 11:1,562}
+{txt}Time at risk    = {res}{ralign 11:39,387.9999}
+{col 57}{txt}{lalign 13:LR chi2({res:12})} = {res}{ralign 6:318.88}
+{txt}Log likelihood = {res}-12518.074{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Lnw1HCyscenter2p15 {c |}{col 29}{res}{space 2} 1.112325{col 41}{space 2} .1201231{col 52}{space 1}    0.99{col 61}{space 3}0.324{col 69}{space 4} .9001361{col 82}{space 3} 1.374534
+{txt}{space 27} {c |}
+{space 24}Sex {c |}
+{space 23}Men  {c |}{col 29}{res}{space 2} .7367546{col 41}{space 2} .0411155{col 52}{space 1}   -5.47{col 61}{space 3}0.000{col 69}{space 4} .6604204{col 82}{space 3} .8219118
+{txt}{space 27} {c |}
+{space 3}Sex#c.Lnw1HCyscenter2p15 {c |}
+{space 23}Men  {c |}{col 29}{res}{space 2} .8681842{col 41}{space 2} .1569328{col 52}{space 1}   -0.78{col 61}{space 3}0.434{col 69}{space 4} .6091846{col 82}{space 3}   1.2373
+{txt}{space 27} {c |}
+{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9894383{col 41}{space 2} .0029382{col 52}{space 1}   -3.58{col 61}{space 3}0.000{col 69}{space 4} .9836962{col 82}{space 3} .9952139
+{txt}{space 23}Race {c |}{col 29}{res}{space 2} .7314986{col 41}{space 2}    .0382{col 52}{space 1}   -5.99{col 61}{space 3}0.000{col 69}{space 4} .6603322{col 82}{space 3} .8103349
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.102444{col 41}{space 2} .0619031{col 52}{space 1}    1.74{col 61}{space 3}0.082{col 69}{space 4} .9875541{col 82}{space 3}   1.2307
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .8258616{col 41}{space 2} .0387033{col 52}{space 1}   -4.08{col 61}{space 3}0.000{col 69}{space 4}  .753384{col 82}{space 3} .9053117
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9934951{col 41}{space 2} .0019038{col 52}{space 1}   -3.41{col 61}{space 3}0.001{col 69}{space 4} .9897707{col 82}{space 3} .9972335
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.376271{col 41}{space 2} .0818193{col 52}{space 1}    5.37{col 61}{space 3}0.000{col 69}{space 4} 1.224898{col 82}{space 3}  1.54635
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.631585{col 41}{space 2} .1060952{col 52}{space 1}    7.53{col 61}{space 3}0.000{col 69}{space 4} 1.436348{col 82}{space 3}  1.85336
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9885768{col 41}{space 2} .0024196{col 52}{space 1}   -4.69{col 61}{space 3}0.000{col 69}{space 4} .9838458{col 82}{space 3} .9933305
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.013152{col 41}{space 2} .0036005{col 52}{space 1}    3.68{col 61}{space 3}0.000{col 69}{space 4} 1.006119{col 82}{space 3} 1.020233
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. stcox c.zw1w3w4HCysTRAJ##Sex c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:Sex} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-12673.686
+{txt}Iteration 1:  Log likelihood = {res}-12516.197
+{txt}Iteration 2:  Log likelihood = {res}-12504.733
+{txt}Iteration 3:  Log likelihood = {res}-12503.921
+{txt}Iteration 4:  Log likelihood = {res}-12503.889
+{txt}Iteration 5:  Log likelihood = {res}-12503.889
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-12503.889
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 11:929}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:8,796}
+{txt}No. of failures = {res}{ralign 11:1,562}
+{txt}Time at risk    = {res}{ralign 11:39,292.2999}
+{col 57}{txt}{lalign 13:LR chi2({res:12})} = {res}{ralign 6:339.60}
+{txt}Log likelihood = {res}-12503.889{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}zw1w3w4HCysTRAJ {c |}{col 29}{res}{space 2} 1.153852{col 41}{space 2} .0403745{col 52}{space 1}    4.09{col 61}{space 3}0.000{col 69}{space 4} 1.077372{col 82}{space 3} 1.235761
+{txt}{space 27} {c |}
+{space 24}Sex {c |}
+{space 23}Men  {c |}{col 29}{res}{space 2} .7301737{col 41}{space 2} .0389331{col 52}{space 1}   -5.90{col 61}{space 3}0.000{col 69}{space 4} .6577182{col 82}{space 3} .8106109
+{txt}{space 27} {c |}
+{space 6}Sex#c.zw1w3w4HCysTRAJ {c |}
+{space 23}Men  {c |}{col 29}{res}{space 2} .8865402{col 41}{space 2}  .045837{col 52}{space 1}   -2.33{col 61}{space 3}0.020{col 69}{space 4} .8011034{col 82}{space 3} .9810888
+{txt}{space 27} {c |}
+{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9891272{col 41}{space 2} .0028729{col 52}{space 1}   -3.76{col 61}{space 3}0.000{col 69}{space 4} .9835124{col 82}{space 3}  .994774
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 23}Race {c |}{col 29}{res}{space 2} .7212663{col 41}{space 2}  .037945{col 52}{space 1}   -6.21{col 61}{space 3}0.000{col 69}{space 4} .6506013{col 82}{space 3} .7996066
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.110517{col 41}{space 2}  .062487{col 52}{space 1}    1.86{col 61}{space 3}0.062{col 69}{space 4} .9945568{col 82}{space 3} 1.239998
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .8226043{col 41}{space 2} .0387824{col 52}{space 1}   -4.14{col 61}{space 3}0.000{col 69}{space 4} .7499984{col 82}{space 3} .9022389
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9934893{col 41}{space 2} .0019305{col 52}{space 1}   -3.36{col 61}{space 3}0.001{col 69}{space 4} .9897127{col 82}{space 3} .9972803
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.374803{col 41}{space 2} .0817139{col 52}{space 1}    5.36{col 61}{space 3}0.000{col 69}{space 4} 1.223623{col 82}{space 3} 1.544661
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.614129{col 41}{space 2} .1050014{col 52}{space 1}    7.36{col 61}{space 3}0.000{col 69}{space 4}  1.42091{col 82}{space 3} 1.833624
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9891152{col 41}{space 2} .0024174{col 52}{space 1}   -4.48{col 61}{space 3}0.000{col 69}{space 4} .9843886{col 82}{space 3} .9938645
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.011409{col 41}{space 2} .0036134{col 52}{space 1}    3.18{col 61}{space 3}0.001{col 69}{space 4} 1.004352{col 82}{space 3} 1.018516
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. **Interaction by Race**
+. stcox c.Lnw1HCyscenter2p15##Race Sex c.w1Agecent48    PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}Iteration 0:  Log likelihood = {res}-12677.516
+{txt}Iteration 1:  Log likelihood = {res} -12506.72
+{txt}Iteration 2:  Log likelihood = {res}-12498.139
+{txt}Iteration 3:  Log likelihood = {res}-12497.187
+{txt}Iteration 4:  Log likelihood = {res}-12497.141
+{txt}Iteration 5:  Log likelihood = {res}-12497.141
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-12497.141
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 11:931}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:8,807}
+{txt}No. of failures = {res}{ralign 11:1,562}
+{txt}Time at risk    = {res}{ralign 11:39,387.9999}
+{col 57}{txt}{lalign 13:LR chi2({res:12})} = {res}{ralign 6:360.75}
+{txt}Log likelihood = {res}-12497.141{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Lnw1HCyscenter2p15 {c |}{col 29}{res}{space 2} .5029862{col 41}{space 2}  .072663{col 52}{space 1}   -4.76{col 61}{space 3}0.000{col 69}{space 4} .3789559{col 82}{space 3} .6676109
+{txt}{space 27} {c |}
+{space 23}Race {c |}
+{space 21}AfrAm  {c |}{col 29}{res}{space 2} .7498842{col 41}{space 2} .0398047{col 52}{space 1}   -5.42{col 61}{space 3}0.000{col 69}{space 4} .6757894{col 82}{space 3} .8321028
+{txt}{space 27} {c |}
+{space 2}Race#c.Lnw1HCyscenter2p15 {c |}
+{space 21}AfrAm  {c |}{col 29}{res}{space 2}  2.99867{col 41}{space 2} .5017163{col 52}{space 1}    6.56{col 61}{space 3}0.000{col 69}{space 4} 2.160288{col 82}{space 3} 4.162418
+{txt}{space 27} {c |}
+{space 24}Sex {c |}{col 29}{res}{space 2} .7410761{col 41}{space 2} .0412655{col 52}{space 1}   -5.38{col 61}{space 3}0.000{col 69}{space 4} .6644544{col 82}{space 3} .8265336
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9893998{col 41}{space 2}  .002934{col 52}{space 1}   -3.59{col 61}{space 3}0.000{col 69}{space 4} .9836659{col 82}{space 3} .9951671
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.121598{col 41}{space 2} .0629749{col 52}{space 1}    2.04{col 61}{space 3}0.041{col 69}{space 4} 1.004718{col 82}{space 3} 1.252074
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .8219596{col 41}{space 2} .0387564{col 52}{space 1}   -4.16{col 61}{space 3}0.000{col 69}{space 4} .7494028{col 82}{space 3} .9015414
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9930469{col 41}{space 2} .0018969{col 52}{space 1}   -3.65{col 61}{space 3}0.000{col 69}{space 4}  .989336{col 82}{space 3} .9967718
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.353887{col 41}{space 2} .0805918{col 52}{space 1}    5.09{col 61}{space 3}0.000{col 69}{space 4} 1.204796{col 82}{space 3} 1.521428
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.639392{col 41}{space 2} .1064519{col 52}{space 1}    7.61{col 61}{space 3}0.000{col 69}{space 4} 1.443481{col 82}{space 3} 1.861892
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9881584{col 41}{space 2} .0024168{col 52}{space 1}   -4.87{col 61}{space 3}0.000{col 69}{space 4} .9834329{col 82}{space 3} .9929067
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.014982{col 41}{space 2} .0036057{col 52}{space 1}    4.19{col 61}{space 3}0.000{col 69}{space 4} 1.007939{col 82}{space 3} 1.022074
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. stcox c.zw1w3w4HCysTRAJ##Race Sex c.w1Agecent48 Sex   PovStat  w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:Sex} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-12673.686
+{txt}Iteration 1:  Log likelihood = {res}-12515.433
+{txt}Iteration 2:  Log likelihood = {res}-12506.645
+{txt}Iteration 3:  Log likelihood = {res}-12505.763
+{txt}Iteration 4:  Log likelihood = {res}-12505.724
+{txt}Iteration 5:  Log likelihood = {res}-12505.723
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-12505.723
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 11:929}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:8,796}
+{txt}No. of failures = {res}{ralign 11:1,562}
+{txt}Time at risk    = {res}{ralign 11:39,292.2999}
+{col 57}{txt}{lalign 13:LR chi2({res:12})} = {res}{ralign 6:335.93}
+{txt}Log likelihood = {res}-12505.723{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}zw1w3w4HCysTRAJ {c |}{col 29}{res}{space 2} 1.032093{col 41}{space 2} .0498747{col 52}{space 1}    0.65{col 61}{space 3}0.513{col 69}{space 4} .9388268{col 82}{space 3} 1.134624
+{txt}{space 27} {c |}
+{space 23}Race {c |}
+{space 21}AfrAm  {c |}{col 29}{res}{space 2} .7113861{col 41}{space 2} .0373619{col 52}{space 1}   -6.48{col 61}{space 3}0.000{col 69}{space 4}  .641801{col 82}{space 3} .7885156
+{txt}{space 27} {c |}
+{space 5}Race#c.zw1w3w4HCysTRAJ {c |}
+{space 21}AfrAm  {c |}{col 29}{res}{space 2}  1.07764{col 41}{space 2} .0615276{col 52}{space 1}    1.31{col 61}{space 3}0.190{col 69}{space 4} .9635507{col 82}{space 3} 1.205238
+{txt}{space 27} {c |}
+{space 24}Sex {c |}{col 29}{res}{space 2} .7237597{col 41}{space 2} .0389703{col 52}{space 1}   -6.00{col 61}{space 3}0.000{col 69}{space 4} .6512716{col 82}{space 3} .8043159
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9890439{col 41}{space 2}  .002876{col 52}{space 1}   -3.79{col 61}{space 3}0.000{col 69}{space 4} .9834231{col 82}{space 3} .9946968
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 20}PovStat {c |}{col 29}{res}{space 2} 1.131113{col 41}{space 2}  .063402{col 52}{space 1}    2.20{col 61}{space 3}0.028{col 69}{space 4}  1.01343{col 82}{space 3} 1.262462
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2} .8302939{col 41}{space 2} .0390982{col 52}{space 1}   -3.95{col 61}{space 3}0.000{col 69}{space 4} .7570929{col 82}{space 3} .9105726
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9935469{col 41}{space 2} .0019136{col 52}{space 1}   -3.36{col 61}{space 3}0.001{col 69}{space 4} .9898033{col 82}{space 3} .9973046
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.383876{col 41}{space 2} .0820012{col 52}{space 1}    5.48{col 61}{space 3}0.000{col 69}{space 4} 1.232138{col 82}{space 3}   1.5543
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.627162{col 41}{space 2} .1057389{col 52}{space 1}    7.49{col 61}{space 3}0.000{col 69}{space 4} 1.432573{col 82}{space 3} 1.848183
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9892456{col 41}{space 2} .0024159{col 52}{space 1}   -4.43{col 61}{space 3}0.000{col 69}{space 4} .9845219{col 82}{space 3}  .993992
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.012597{col 41}{space 2} .0036021{col 52}{space 1}    3.52{col 61}{space 3}0.000{col 69}{space 4} 1.005561{col 82}{space 3} 1.019681
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. **Interaction by Poverty Status**
+. stcox c.Lnw1HCyscenter2p15##PovStat Race Sex c.w1Agecent48      w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}Iteration 0:  Log likelihood = {res}-12677.516
+{txt}Iteration 1:  Log likelihood = {res}-12519.322
+{txt}Iteration 2:  Log likelihood = {res}-12509.802
+{txt}Iteration 3:  Log likelihood = {res}-12508.762
+{txt}Iteration 4:  Log likelihood = {res}-12508.709
+{txt}Iteration 5:  Log likelihood = {res}-12508.709
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-12508.709
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 11:931}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:8,807}
+{txt}No. of failures = {res}{ralign 11:1,562}
+{txt}Time at risk    = {res}{ralign 11:39,387.9999}
+{col 57}{txt}{lalign 13:LR chi2({res:12})} = {res}{ralign 6:337.62}
+{txt}Log likelihood = {res}-12508.709{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 29}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                          _t{col 30}{c |} Haz. ratio{col 42}   Std. err.{col 54}      z{col 62}   P>|z|{col 70}     [95% con{col 83}f. interval]
+{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}Lnw1HCyscenter2p15 {c |}{col 30}{res}{space 2} .7660349{col 42}{space 2} .0904589{col 53}{space 1}   -2.26{col 62}{space 3}0.024{col 70}{space 4} .6077607{col 83}{space 3} .9655272
+{txt}{space 28} {c |}
+{space 21}PovStat {c |}
+{space 22}Below  {c |}{col 30}{res}{space 2} 1.108514{col 42}{space 2} .0621028{col 53}{space 1}    1.84{col 62}{space 3}0.066{col 70}{space 4} .9932397{col 83}{space 3} 1.237168
+{txt}{space 28} {c |}
+PovStat#c.Lnw1HCyscenter2p15 {c |}
+{space 22}Below  {c |}{col 30}{res}{space 2} 2.082257{col 42}{space 2} .3431549{col 53}{space 1}    4.45{col 62}{space 3}0.000{col 70}{space 4} 1.507498{col 83}{space 3} 2.876152
+{txt}{space 28} {c |}
+{space 24}Race {c |}{col 30}{res}{space 2} .7355109{col 42}{space 2} .0382788{col 53}{space 1}   -5.90{col 62}{space 3}0.000{col 70}{space 4} .6641855{col 83}{space 3} .8144958
+{txt}{space 25}Sex {c |}{col 30}{res}{space 2} .7486856{col 42}{space 2} .0419037{col 53}{space 1}   -5.17{col 62}{space 3}0.000{col 70}{space 4} .6709003{col 83}{space 3} .8354895
+{txt}{space 17}w1Agecent48 {c |}{col 30}{res}{space 2} .9900246{col 42}{space 2} .0029452{col 53}{space 1}   -3.37{col 62}{space 3}0.001{col 70}{space 4} .9842688{col 83}{space 3}  .995814
+{txt}{space 21}w1edubr {c |}{col 30}{res}{space 2} .8100801{col 42}{space 2} .0381177{col 53}{space 1}   -4.48{col 62}{space 3}0.000{col 70}{space 4} .7387123{col 83}{space 3} .8883429
+{txt}{space 17}invmillsCES {c |}{col 30}{res}{space 2} .9937133{col 42}{space 2} .0019197{col 53}{space 1}   -3.26{col 62}{space 3}0.001{col 70}{space 4} .9899578{col 83}{space 3}  .997483
+{txt}{space 21}w1smoke {c |}{col 30}{res}{space 2} 1.370394{col 42}{space 2} .0814255{col 53}{space 1}    5.30{col 62}{space 3}0.000{col 70}{space 4} 1.219745{col 83}{space 3} 1.539649
+{txt}{space 17}w1currdrugs {c |}{col 30}{res}{space 2} 1.643589{col 42}{space 2} .1069652{col 53}{space 1}    7.63{col 62}{space 3}0.000{col 70}{space 4} 1.446761{col 83}{space 3} 1.867195
+{txt}{space 1}w1hei2010_total_scorecent43 {c |}{col 30}{res}{space 2}  .988135{col 42}{space 2} .0024186{col 53}{space 1}   -4.88{col 62}{space 3}0.000{col 70}{space 4} .9834061{col 83}{space 3} .9928867
+{txt}{space 17}w1BMIcent30 {c |}{col 30}{res}{space 2} 1.013012{col 42}{space 2} .0035964{col 53}{space 1}    3.64{col 62}{space 3}0.000{col 70}{space 4} 1.005987{col 83}{space 3} 1.020085
+{txt}{hline 29}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. stcox c.zw1w3w4HCysTRAJ##PovStat Race Sex c.w1Agecent48 Sex     w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:Sex} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-12673.686
+{txt}Iteration 1:  Log likelihood = {res}-12515.836
+{txt}Iteration 2:  Log likelihood = {res}-12504.383
+{txt}Iteration 3:  Log likelihood = {res}-12503.595
+{txt}Iteration 4:  Log likelihood = {res}-12503.565
+{txt}Iteration 5:  Log likelihood = {res}-12503.565
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-12503.565
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 11:929}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:8,796}
+{txt}No. of failures = {res}{ralign 11:1,562}
+{txt}Time at risk    = {res}{ralign 11:39,292.2999}
+{col 57}{txt}{lalign 13:LR chi2({res:12})} = {res}{ralign 6:340.24}
+{txt}Log likelihood = {res}-12503.565{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                         _t{col 29}{c |} Haz. ratio{col 41}   Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}zw1w3w4HCysTRAJ {c |}{col 29}{res}{space 2} 1.030247{col 41}{space 2} .0359673{col 52}{space 1}    0.85{col 61}{space 3}0.393{col 69}{space 4} .9621102{col 82}{space 3} 1.103209
+{txt}{space 27} {c |}
+{space 20}PovStat {c |}
+{space 21}Below  {c |}{col 29}{res}{space 2}  1.11526{col 41}{space 2} .0626011{col 52}{space 1}    1.94{col 61}{space 3}0.052{col 69}{space 4} .9990727{col 82}{space 3}  1.24496
+{txt}{space 27} {c |}
+{space 2}PovStat#c.zw1w3w4HCysTRAJ {c |}
+{space 21}Below  {c |}{col 29}{res}{space 2} 1.137088{col 41}{space 2} .0589504{col 52}{space 1}    2.48{col 61}{space 3}0.013{col 69}{space 4} 1.027224{col 82}{space 3} 1.258703
+{txt}{space 27} {c |}
+{space 23}Race {c |}{col 29}{res}{space 2} .7171975{col 41}{space 2} .0375813{col 52}{space 1}   -6.34{col 61}{space 3}0.000{col 69}{space 4} .6471957{col 82}{space 3} .7947707
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2} .7333244{col 41}{space 2} .0392989{col 52}{space 1}   -5.79{col 61}{space 3}0.000{col 69}{space 4} .6602071{col 82}{space 3} .8145393
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} .9893117{col 41}{space 2} .0028683{col 52}{space 1}   -3.71{col 61}{space 3}0.000{col 69}{space 4} .9837059{col 82}{space 3} .9949494
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2}        1{col 41}{txt}  (omitted)
+{space 20}w1edubr {c |}{col 29}{res}{space 2} .8249898{col 41}{space 2} .0388942{col 52}{space 1}   -4.08{col 61}{space 3}0.000{col 69}{space 4} .7521745{col 82}{space 3} .9048541
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2} .9934822{col 41}{space 2} .0019378{col 52}{space 1}   -3.35{col 61}{space 3}0.001{col 69}{space 4} .9896913{col 82}{space 3} .9972875
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} 1.394613{col 41}{space 2} .0827806{col 52}{space 1}    5.60{col 61}{space 3}0.000{col 69}{space 4} 1.241449{col 82}{space 3} 1.566675
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} 1.614075{col 41}{space 2} .1049228{col 52}{space 1}    7.37{col 61}{space 3}0.000{col 69}{space 4} 1.420991{col 82}{space 3} 1.833395
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2} .9888817{col 41}{space 2} .0024211{col 52}{space 1}   -4.57{col 61}{space 3}0.000{col 69}{space 4} .9841478{col 82}{space 3} .9936384
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2} 1.011433{col 41}{space 2} .0036075{col 52}{space 1}    3.19{col 61}{space 3}0.001{col 69}{space 4} 1.004387{col 82}{space 3} 1.018528
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. 
+. **Interaction by Anxiety score status**
+. stcox c.Lnw1HCyscenter2p15##w1ANXIETYbr PovStat Race Sex c.w1Agecent48      w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}Iteration 0:  Log likelihood = {res}-10006.624
+{txt}Iteration 1:  Log likelihood = {res}-9874.4033
+{txt}Iteration 2:  Log likelihood = {res}-9835.9059
+{txt}Iteration 3:  Log likelihood = {res}-9835.6054
+{txt}Iteration 4:  Log likelihood = {res}-9835.6022
+{txt}Iteration 5:  Log likelihood = {res}-9835.6022
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-9835.6022
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 11:768}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:7,327}
+{txt}No. of failures = {res}{ralign 11:1,261}
+{txt}Time at risk    = {res}{ralign 11:33,171.4999}
+{col 57}{txt}{lalign 13:LR chi2({res:13})} = {res}{ralign 6:342.04}
+{txt}Log likelihood = {res}-9835.6022{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 33}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                              _t{col 34}{c |} Haz. ratio{col 46}   Std. err.{col 58}      z{col 66}   P>|z|{col 74}     [95% con{col 87}f. interval]
+{hline 33}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 14}Lnw1HCyscenter2p15 {c |}{col 34}{res}{space 2} 1.630072{col 46}{space 2} .1743639{col 57}{space 1}    4.57{col 66}{space 3}0.000{col 74}{space 4} 1.321771{col 87}{space 3} 2.010283
+{txt}{space 19}2.w1ANXIETYbr {c |}{col 34}{res}{space 2} 1.605829{col 46}{space 2}  .096152{col 57}{space 1}    7.91{col 66}{space 3}0.000{col 74}{space 4} 1.428012{col 87}{space 3} 1.805787
+{txt}{space 32} {c |}
+w1ANXIETYbr#c.Lnw1HCyscenter2p15 {c |}
+{space 30}2  {c |}{col 34}{res}{space 2} .7150982{col 46}{space 2} .1189314{col 57}{space 1}   -2.02{col 66}{space 3}0.044{col 74}{space 4} .5161765{col 87}{space 3} .9906793
+{txt}{space 32} {c |}
+{space 25}PovStat {c |}{col 34}{res}{space 2} 1.104296{col 46}{space 2} .0694358{col 57}{space 1}    1.58{col 66}{space 3}0.115{col 74}{space 4} .9762563{col 87}{space 3} 1.249129
+{txt}{space 28}Race {c |}{col 34}{res}{space 2} .7776932{col 46}{space 2} .0456078{col 57}{space 1}   -4.29{col 66}{space 3}0.000{col 74}{space 4} .6932496{col 87}{space 3} .8724227
+{txt}{space 29}Sex {c |}{col 34}{res}{space 2} .7454688{col 46}{space 2} .0461062{col 57}{space 1}   -4.75{col 66}{space 3}0.000{col 74}{space 4} .6603647{col 87}{space 3} .8415407
+{txt}{space 21}w1Agecent48 {c |}{col 34}{res}{space 2} .9908572{col 46}{space 2} .0033563{col 57}{space 1}   -2.71{col 66}{space 3}0.007{col 74}{space 4} .9843008{col 87}{space 3} .9974573
+{txt}{space 25}w1edubr {c |}{col 34}{res}{space 2} .7716371{col 46}{space 2} .0411199{col 57}{space 1}   -4.86{col 66}{space 3}0.000{col 74}{space 4} .6951095{col 87}{space 3} .8565898
+{txt}{space 21}invmillsCES {c |}{col 34}{res}{space 2} .9929487{col 46}{space 2} .0017566{col 57}{space 1}   -4.00{col 66}{space 3}0.000{col 74}{space 4} .9895118{col 87}{space 3} .9963976
+{txt}{space 25}w1smoke {c |}{col 34}{res}{space 2} 1.323035{col 46}{space 2} .0871206{col 57}{space 1}    4.25{col 66}{space 3}0.000{col 74}{space 4} 1.162842{col 87}{space 3} 1.505297
+{txt}{space 21}w1currdrugs {c |}{col 34}{res}{space 2} 1.496644{col 46}{space 2} .1090264{col 57}{space 1}    5.54{col 66}{space 3}0.000{col 74}{space 4} 1.297511{col 87}{space 3}  1.72634
+{txt}{space 5}w1hei2010_total_scorecent43 {c |}{col 34}{res}{space 2} .9898747{col 46}{space 2} .0027007{col 57}{space 1}   -3.73{col 66}{space 3}0.000{col 74}{space 4} .9845955{col 87}{space 3} .9951823
+{txt}{space 21}w1BMIcent30 {c |}{col 34}{res}{space 2} 1.013087{col 46}{space 2} .0040009{col 57}{space 1}    3.29{col 66}{space 3}0.001{col 74}{space 4} 1.005276{col 87}{space 3} 1.020959
+{txt}{hline 33}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. stcox c.zw1w3w4HCysTRAJ##w1ANXIETYbr PovStat Race Sex c.w1Agecent48 Sex     w1edubr c.invmillsCES w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 c.w1BMIcent30 if sample4obs==1
+
+{col 9}{txt}Failure {bf:_d}: {res}failure
+{col 3}{txt}Analysis time {bf:_t}: {res}timew1w3w4
+{col 8}{txt}ID variable: {res}HNDID
+
+{txt}note: {bf:Sex} omitted because of collinearity.
+Iteration 0:  Log likelihood = {res}-10002.981
+{txt}Iteration 1:  Log likelihood = {res}-9873.0217
+{txt}Iteration 2:  Log likelihood = {res}-9836.9925
+{txt}Iteration 3:  Log likelihood = {res}-9836.6623
+{txt}Iteration 4:  Log likelihood = {res}-9836.6588
+{txt}Iteration 5:  Log likelihood = {res}-9836.6588
+{txt}Refining estimates:
+Iteration 0:  Log likelihood = {res}-9836.6588
+
+{txt}Cox regression with Breslow method for ties
+
+No. of subjects = {res}{ralign 11:766}{col 57}{txt}{lalign 13:Number of obs} = {res}{ralign 6:7,316}
+{txt}No. of failures = {res}{ralign 11:1,261}
+{txt}Time at risk    = {res}{ralign 11:33,075.7999}
+{col 57}{txt}{lalign 13:LR chi2({res:13})} = {res}{ralign 6:332.65}
+{txt}Log likelihood = {res}-9836.6588{col 57}{txt}{lalign 13:Prob > chi2} = {res}{ralign 6:0.0000}
+
+{txt}{hline 30}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                           _t{col 31}{c |} Haz. ratio{col 43}   Std. err.{col 55}      z{col 63}   P>|z|{col 71}     [95% con{col 84}f. interval]
+{hline 30}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 14}zw1w3w4HCysTRAJ {c |}{col 31}{res}{space 2} 1.091336{col 43}{space 2} .0387904{col 54}{space 1}    2.46{col 63}{space 3}0.014{col 71}{space 4} 1.017896{col 84}{space 3} 1.170074
+{txt}{space 16}2.w1ANXIETYbr {c |}{col 31}{res}{space 2} 1.582383{col 43}{space 2} .0942942{col 54}{space 1}    7.70{col 63}{space 3}0.000{col 71}{space 4} 1.407954{col 84}{space 3} 1.778421
+{txt}{space 29} {c |}
+w1ANXIETYbr#c.zw1w3w4HCysTRAJ {c |}
+{space 27}2  {c |}{col 31}{res}{space 2} .9754033{col 43}{space 2} .0551448{col 54}{space 1}   -0.44{col 63}{space 3}0.660{col 71}{space 4} .8730944{col 84}{space 3} 1.089701
+{txt}{space 29} {c |}
+{space 22}PovStat {c |}{col 31}{res}{space 2}  1.11033{col 43}{space 2} .0700051{col 54}{space 1}    1.66{col 63}{space 3}0.097{col 71}{space 4} .9812616{col 84}{space 3} 1.256376
+{txt}{space 25}Race {c |}{col 31}{res}{space 2} .7640503{col 43}{space 2} .0450938{col 54}{space 1}   -4.56{col 63}{space 3}0.000{col 71}{space 4} .6805884{col 84}{space 3} .8577475
+{txt}{space 26}Sex {c |}{col 31}{res}{space 2} .7838003{col 43}{space 2} .0470273{col 54}{space 1}   -4.06{col 63}{space 3}0.000{col 71}{space 4} .6968416{col 84}{space 3} .8816106
+{txt}{space 18}w1Agecent48 {c |}{col 31}{res}{space 2} .9934014{col 43}{space 2} .0032826{col 54}{space 1}   -2.00{col 63}{space 3}0.045{col 71}{space 4} .9869884{col 84}{space 3} .9998561
+{txt}{space 26}Sex {c |}{col 31}{res}{space 2}        1{col 43}{txt}  (omitted)
+{space 22}w1edubr {c |}{col 31}{res}{space 2} .7771392{col 43}{space 2} .0415171{col 54}{space 1}   -4.72{col 63}{space 3}0.000{col 71}{space 4} .6998824{col 84}{space 3} .8629241
+{txt}{space 18}invmillsCES {c |}{col 31}{res}{space 2} .9927035{col 43}{space 2} .0017454{col 54}{space 1}   -4.17{col 63}{space 3}0.000{col 71}{space 4} .9892885{col 84}{space 3} .9961303
+{txt}{space 22}w1smoke {c |}{col 31}{res}{space 2} 1.329798{col 43}{space 2} .0875331{col 54}{space 1}    4.33{col 63}{space 3}0.000{col 71}{space 4} 1.168842{col 84}{space 3} 1.512918
+{txt}{space 18}w1currdrugs {c |}{col 31}{res}{space 2} 1.513759{col 43}{space 2} .1102755{col 54}{space 1}    5.69{col 63}{space 3}0.000{col 71}{space 4} 1.312345{col 84}{space 3} 1.746087
+{txt}{space 2}w1hei2010_total_scorecent43 {c |}{col 31}{res}{space 2} .9896848{col 43}{space 2} .0026872{col 54}{space 1}   -3.82{col 63}{space 3}0.000{col 71}{space 4}  .984432{col 84}{space 3} .9949657
+{txt}{space 18}w1BMIcent30 {c |}{col 31}{res}{space 2} 1.012534{col 43}{space 2} .0040352{col 54}{space 1}    3.13{col 63}{space 3}0.002{col 71}{space 4} 1.004656{col 84}{space 3} 1.020474
+{txt}{hline 30}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. 
+. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}

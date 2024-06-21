@@ -1,0 +1,410 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\HANDLS_PAPER64_HCYDEPANXIETY_LONG\OUTPUT\DATA_MANAGEMENT2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}21 Jun 2024, 09:15:16
+{txt}
+{com}. 
+. 
+. //STEP 20: CENTER CONTINUOUS VARIABLES AND LOG TRANSFORM TRAILS//
+. 
+. use finaldata_imputed_FINAL,clear
+{txt}
+{com}. 
+. 
+. **Continuous exposures and covariates**
+. 
+. capture drop Lnw1HCys Lnw3HCys  Lnw4HCys
+{txt}
+{com}. foreach x of varlist w1HCys w3HCys  w4HCys {c -(}
+{txt}  2{com}. gen Ln`x'=ln(`x')       
+{txt}  3{com}. {c )-}
+{txt}(38,970 missing values generated)
+(38,202 missing values generated)
+(41,940 missing values generated)
+
+{com}. 
+. su Lnw1HCys if HNDwave==1 & _mi_m==0
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}Lnw1HCys {c |}{res}      1,460    2.149369    .3278358    1.05779   4.723753
+{txt}
+{com}. su w1hei2010_total_score if HNDwave==1 & _mi_m==0
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+w1hei2010_~e {c |}{res}      2,177    42.59318    11.48268   12.62117   89.42492
+{txt}
+{com}. su w1BMI if HNDwave==1 & _mi_m==0
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 7}w1BMI {c |}{res}      2,853     30.0263    7.921048   14.35524     70.069
+{txt}
+{com}. su invmills* if HNDwave==1 & _mi_m==0
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 1}invmillsCES {c |}{res}      3,720    1.136338    57.66664  -256.8285     3476.2
+{txt}
+{com}. su w1Age if HNDwave==1 & _mi_m==0
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 7}w1Age {c |}{res}      3,720    48.26927    9.357168       29.8       66.2
+{txt}
+{com}. 
+. ******HCys******
+. 
+. capture drop Lnw1HCyscenter2p15
+{txt}
+{com}. mi passive: gen Lnw1HCyscenter2p15=Lnw1HCys-2.15
+{res}{txt}{it:m}=0:
+(6,495 missing values generated)
+{it:m}=1:
+(6,495 missing values generated)
+{it:m}=2:
+(6,495 missing values generated)
+{it:m}=3:
+(6,495 missing values generated)
+{it:m}=4:
+(6,495 missing values generated)
+{it:m}=5:
+(6,495 missing values generated)
+
+{com}. 
+. capture drop zw1w3w4HCysTRAJ
+{txt}
+{com}. egen zw1w3w4HCysTRAJ=std(w1w3w4HCysTRAJ)  
+{txt}(36,330 missing values generated)
+
+{com}. 
+. 
+. ******Dietary exposures and covariates******
+. 
+. capture drop w1hei2010_total_scorecent43
+{txt}
+{com}. gen w1hei2010_total_scorecent43=w1hei2010_total_score-43
+{txt}(4,504 missing values generated)
+
+{com}. 
+. 
+. ******Other covariates*******
+. 
+. capture drop w1BMIcent30
+{txt}
+{com}. gen w1BMIcent30=w1BMI-30
+{txt}(2,176 missing values generated)
+
+{com}. 
+. su w1BMIcent30 if HNDwave==1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 1}w1BMIcent30 {c |}{res}     21,453   -.0035694    7.898146  -27.27024     40.069
+{txt}
+{com}. 
+. capture drop w1Agecent48
+{txt}
+{com}. gen w1Agecent48=w1Age-48
+{txt}
+{com}. 
+. su w1Agecent48 if HNDwave==1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 1}w1Agecent48 {c |}{res}     22,320    .2692742     9.35612      -18.2       18.2
+{txt}
+{com}. 
+. 
+. **Categorical covariates:
+. tab1 w1edubr  w1currdrugs w1smoke  w1SRH w1dxHTN w1dxDiabetes w1CVhighChol w1cvdbr 
+
+{res}-> tabulation of w1edubr  
+
+    {txt}w1edubr {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}      5,011        6.93        6.93
+{txt}          2 {c |}{res}     44,046       60.96       67.89
+{txt}          3 {c |}{res}     23,202       32.11      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     72,259      100.00
+
+-> tabulation of w1currdrugs  
+
+{txt}w1currdrugs {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}     56,269       81.47       81.47
+{txt}          1 {c |}{res}     12,799       18.53      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     69,068      100.00
+
+-> tabulation of w1smoke  
+
+    {txt}w1smoke {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}     35,555       51.25       51.25
+{txt}          1 {c |}{res}     33,815       48.75      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     69,370      100.00
+
+-> tabulation of w1SRH  
+
+      {txt}w1SRH {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}     19,095       26.35       26.35
+{txt}          2 {c |}{res}     29,446       40.63       66.98
+{txt}          3 {c |}{res}     23,925       33.02      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     72,466      100.00
+
+-> tabulation of w1dxHTN  
+
+    {txt}w1dxHTN {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+         No {c |}{res}     38,297       54.74       54.74
+{txt}        Yes {c |}{res}     31,660       45.26      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     69,957      100.00
+
+-> tabulation of w1dxDiabetes  
+
+{txt}w1dxDiabete {c |}
+          s {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+       NoDx {c |}{res}     45,956       65.69       65.69
+{txt}preDiabetes {c |}{res}     12,423       17.76       83.44
+{txt}   Diabetes {c |}{res}     11,585       16.56      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     69,964      100.00
+
+-> tabulation of w1CVhighChol  
+
+{txt}w1CVhighCho {c |}
+          l {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+         No {c |}{res}     51,239       74.18       74.18
+{txt}        Yes {c |}{res}     17,831       25.82      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     69,070      100.00
+
+-> tabulation of w1cvdbr  
+
+    {txt}w1cvdbr {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}     57,094       82.63       82.63
+{txt}          1 {c |}{res}     11,998       17.37      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     69,092      100.00
+{txt}
+{com}. 
+. 
+. **Time varialbes: timew1w3w4
+. 
+. **Outcome variables**
+. su CES*
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 9}CES {c |}{res}     41,982    14.98056    11.38019          0         59
+{txt}{space 6}CES_DA {c |}{res}     42,594     4.50331    4.922254          0         21
+{txt}{space 6}CES_IP {c |}{res}     42,594     .987463    1.377592          0          6
+{txt}{space 6}CES_SC {c |}{res}     42,594    6.647133    4.453962          0         21
+{txt}{space 6}CES_WB {c |}{res}     42,594    9.188618    2.986327          0         12
+{txt}
+{com}. 
+. save finaldata_imputed_FINAL, replace
+{txt}{p 0 4 2}
+file {bf}
+finaldata_imputed_FINAL.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. 
+. 
+. 
+. **Final sample selectivity**
+. capture drop sample_final_part
+{txt}
+{com}. gen sample_final_part=sample4part
+{txt}
+{com}. 
+. 
+. mi estimate: logistic sample_final_part w1Age Sex PovStat Race if HNDwave==1 
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     3,720
+{txt}{col 49}Average RVI{col 67}= {res}    0.0000
+{txt}{col 49}Largest FMI{col 67}= {res}    0.0000
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}{help mi_missingdf##|_new:DF}:     min{col 67}= {res}         .
+{txt}{col 49}        avg{col 67}= {res}         .
+{txt}{col 49}        max{col 67}= {res}         .
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}{help mi_missingdf##|_new:F(   4,      .)}{col 67}= {res}      8.61
+{txt}Within VCE type: {ralign 12:{res:OIM}}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}sample_final_part{col 19}{c |} Coefficient{col 31}  Std. err.{col 43}      t{col 51}   P>|t|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}w1Age {c |}{col 19}{res}{space 2}-.0073826{col 31}{space 2} .0036058{col 42}{space 1}   -2.05{col 51}{space 3}0.041{col 59}{space 4}  -.01445{col 72}{space 3}-.0003153
+{txt}{space 14}Sex {c |}{col 19}{res}{space 2}-.2093635{col 31}{space 2} .0680241{col 42}{space 1}   -3.08{col 51}{space 3}0.002{col 59}{space 4}-.3426883{col 72}{space 3}-.0760386
+{txt}{space 10}PovStat {c |}{col 19}{res}{space 2}-.2978166{col 31}{space 2} .0698817{col 42}{space 1}   -4.26{col 51}{space 3}0.000{col 59}{space 4}-.4347823{col 72}{space 3}-.1608509
+{txt}{space 13}Race {c |}{col 19}{res}{space 2}-.1090911{col 31}{space 2} .0691598{col 42}{space 1}   -1.58{col 51}{space 3}0.115{col 59}{space 4}-.2446419{col 72}{space 3} .0264596
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2} .8135303{col 31}{space 2} .2497609{col 42}{space 1}    3.26{col 51}{space 3}0.001{col 59}{space 4} .3240078{col 72}{space 3} 1.303053
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. mi estimate: logistic sample_final_part w1Age  if HNDwave==1
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     3,720
+{txt}{col 49}Average RVI{col 67}= {res}    0.0000
+{txt}{col 49}Largest FMI{col 67}= {res}    0.0000
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}{help mi_missingdf##|_new:DF}:     min{col 67}= {res}         .
+{txt}{col 49}        avg{col 67}= {res}         .
+{txt}{col 49}        max{col 67}= {res}         .
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}{help mi_missingdf##|_new:F(   1,      .)}{col 67}= {res}      3.30
+{txt}Within VCE type: {ralign 12:{res:OIM}}{col 49}Prob > F{col 67}= {res}    0.0693
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}sample_final_part{col 19}{c |} Coefficient{col 31}  Std. err.{col 43}      t{col 51}   P>|t|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}w1Age {c |}{col 19}{res}{space 2}-.0065195{col 31}{space 2} .0035896{col 42}{space 1}   -1.82{col 51}{space 3}0.069{col 59}{space 4}-.0135549{col 72}{space 3} .0005159
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2}-.1226329{col 31}{space 2} .1760623{col 42}{space 1}   -0.70{col 51}{space 3}0.486{col 59}{space 4}-.4677086{col 72}{space 3} .2224427
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. mi estimate: logistic sample_final_part Sex  if HNDwave==1
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     3,720
+{txt}{col 49}Average RVI{col 67}= {res}    0.0000
+{txt}{col 49}Largest FMI{col 67}= {res}    0.0000
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}{help mi_missingdf##|_new:DF}:     min{col 67}= {res}         .
+{txt}{col 49}        avg{col 67}= {res}         .
+{txt}{col 49}        max{col 67}= {res}         .
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}{help mi_missingdf##|_new:F(   1,      .)}{col 67}= {res}      8.14
+{txt}Within VCE type: {ralign 12:{res:OIM}}{col 49}Prob > F{col 67}= {res}    0.0043
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}sample_final_part{col 19}{c |} Coefficient{col 31}  Std. err.{col 43}      t{col 51}   P>|t|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 14}Sex {c |}{col 19}{res}{space 2}-.1930907{col 31}{space 2}  .067677{col 42}{space 1}   -2.85{col 51}{space 3}0.004{col 59}{space 4}-.3257352{col 72}{space 3}-.0604462
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2}-.1573819{col 31}{space 2} .1032469{col 42}{space 1}   -1.52{col 51}{space 3}0.127{col 59}{space 4}-.3597421{col 72}{space 3} .0449783
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. mi estimate: logistic sample_final_part PovStat  if HNDwave==1
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     3,720
+{txt}{col 49}Average RVI{col 67}= {res}    0.0000
+{txt}{col 49}Largest FMI{col 67}= {res}    0.0000
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}{help mi_missingdf##|_new:DF}:     min{col 67}= {res}         .
+{txt}{col 49}        avg{col 67}= {res}         .
+{txt}{col 49}        max{col 67}= {res}         .
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}{help mi_missingdf##|_new:F(   1,      .)}{col 67}= {res}     18.68
+{txt}Within VCE type: {ralign 12:{res:OIM}}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}sample_final_part{col 19}{c |} Coefficient{col 31}  Std. err.{col 43}      t{col 51}   P>|t|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}PovStat {c |}{col 19}{res}{space 2}-.2974551{col 31}{space 2} .0688202{col 42}{space 1}   -4.32{col 51}{space 3}0.000{col 59}{space 4}-.4323403{col 72}{space 3}  -.16257
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2}-.0191214{col 31}{space 2} .1018183{col 42}{space 1}   -0.19{col 51}{space 3}0.851{col 59}{space 4}-.2186816{col 72}{space 3} .1804388
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. mi estimate: logistic sample_final_part Race  if HNDwave==1
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}     3,720
+{txt}{col 49}Average RVI{col 67}= {res}    0.0000
+{txt}{col 49}Largest FMI{col 67}= {res}    0.0000
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}{help mi_missingdf##|_new:DF}:     min{col 67}= {res}         .
+{txt}{col 49}        avg{col 67}= {res}         .
+{txt}{col 49}        max{col 67}= {res}         .
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}{help mi_missingdf##|_new:F(   1,      .)}{col 67}= {res}      4.97
+{txt}Within VCE type: {ralign 12:{res:OIM}}{col 49}Prob > F{col 67}= {res}    0.0258
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}sample_final_part{col 19}{c |} Coefficient{col 31}  Std. err.{col 43}      t{col 51}   P>|t|{col 59}     [95% con{col 72}f. interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 13}Race {c |}{col 19}{res}{space 2}-.1519331{col 31}{space 2} .0681483{col 42}{space 1}   -2.23{col 51}{space 3}0.026{col 59}{space 4}-.2855013{col 72}{space 3}-.0183649
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2}-.1958131{col 31}{space 2} .1130014{col 42}{space 1}   -1.73{col 51}{space 3}0.083{col 59}{space 4}-.4172919{col 72}{space 3} .0256656
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. save finaldata_imputed_FINAL, replace
+{txt}{p 0 4 2}
+file {bf}
+finaldata_imputed_FINAL.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. //STEP 21: CREATE HCys LOAD TERTILE//
+. 
+. use finaldata_imputed_FINAL,clear
+{txt}
+{com}. 
+. capture drop w1HCystert
+{txt}
+{com}. xtile w1HCystert=w1HCys if HNDwave==1 | HNDwave==3,nq(3)
+{txt}
+{com}. 
+. 
+. tab w1HCystert
+
+{txt}3 quantiles {c |}
+ of w1HCys  {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}      5,778       33.34       33.34
+{txt}          2 {c |}{res}      5,796       33.45       66.79
+{txt}          3 {c |}{res}      5,754       33.21      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     17,328      100.00
+{txt}
+{com}. 
+. bysort w1HCystert: su  w1HCys if HNDwave==1
+
+{txt}{hline}
+-> w1HCystert = 1
+
+    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 6}w1HCys {c |}{res}      2,910    6.287897    .7979928       2.88       7.37
+
+{txt}{hline}
+-> w1HCystert = 2
+
+    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 6}w1HCys {c |}{res}      2,934    8.423252    .6121844       7.38       9.52
+
+{txt}{hline}
+-> w1HCystert = 3
+
+    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 6}w1HCys {c |}{res}      2,916    12.81728     7.65813       9.53     112.59
+
+{txt}{hline}
+-> w1HCystert = .
+
+    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 6}w1HCys {c |}{res}          0
+
+{txt}
+{com}. 
+. save finaldata_imputed_FINAL, replace
+{txt}{p 0 4 2}
+file {bf}
+finaldata_imputed_FINAL.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}

@@ -1,0 +1,110 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\HANDLS_PAPER64_HCYDEPANXIETY_LONG\OUTPUT\TABLES2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}21 Jun 2024, 09:54:18
+{txt}
+{com}. 
+. 
+. capture drop Lnodds_highANXIETY
+{txt}
+{com}. gen Lnodds_highANXIETY=ln(R_traj_ProbG2ANXIETY/(1-R_traj_ProbG2ANXIETY))
+{txt}(20,280 missing values generated)
+
+{com}. 
+. save, replace
+{txt}{p 0 4 2}
+file {bf}
+finaldata_imputed_FINAL.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. //MODEL 1: INCLUDE ONLY AGE, SEX, RACE AND POVERTY STATUS///
+. 
+. mi estimate: reg Lnodds_highANXIETY LnHCys  c.w1Agecent48 Sex Race  PovStat  c.invmillsCES ///
+> if sample4obs==1 & HNDwave==1
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Linear regression{col 49}Number of obs{col 67}= {res}     1,224
+{txt}{col 49}Average RVI{col 67}= {res}    0.0000
+{txt}{col 49}Largest FMI{col 67}= {res}    0.0000
+{txt}{col 49}Complete DF{col 67}= {res}      1217
+{txt}DF adjustment:{ralign 15: {res:Small sample}}{col 49}DF:     min{col 67}= {res}  1,215.00
+{txt}{col 49}        avg{col 67}= {res}  1,215.00
+{txt}{col 49}        max{col 67}= {res}  1,215.00
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}F({res}   6{txt},{res} 1215.0{txt}){col 67}= {res}     10.19
+{txt}Within VCE type: {ralign 12:{res:OLS}}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}Lnodds_hig~Y{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}LnHCys {c |}{col 14}{res}{space 2}-.1797409{col 26}{space 2} .6818989{col 37}{space 1}   -0.26{col 46}{space 3}0.792{col 54}{space 4}-1.517571{col 67}{space 3} 1.158089
+{txt}{space 1}w1Agecent48 {c |}{col 14}{res}{space 2}-.0673113{col 26}{space 2} .0236521{col 37}{space 1}   -2.85{col 46}{space 3}0.005{col 54}{space 4}-.1137147{col 67}{space 3}-.0209079
+{txt}{space 9}Sex {c |}{col 14}{res}{space 2} -1.71381{col 26}{space 2} .4458298{col 37}{space 1}   -3.84{col 46}{space 3}0.000{col 54}{space 4}-2.588492{col 67}{space 3}-.8391288
+{txt}{space 8}Race {c |}{col 14}{res}{space 2}-1.910993{col 26}{space 2} .4305928{col 37}{space 1}   -4.44{col 46}{space 3}0.000{col 54}{space 4}-2.755781{col 67}{space 3}-1.066205
+{txt}{space 5}PovStat {c |}{col 14}{res}{space 2} 1.887381{col 26}{space 2} .4487718{col 37}{space 1}    4.21{col 46}{space 3}0.000{col 54}{space 4} 1.006928{col 67}{space 3} 2.767835
+{txt}{space 1}invmillsCES {c |}{col 14}{res}{space 2}-.0092681{col 26}{space 2} .0180158{col 37}{space 1}   -0.51{col 46}{space 3}0.607{col 54}{space 4}-.0446137{col 67}{space 3} .0260774
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 2.217232{col 26}{space 2} 1.639823{col 37}{space 1}    1.35{col 46}{space 3}0.177{col 54}{space 4}-.9999667{col 67}{space 3} 5.434431
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. 
+. save, replace
+{txt}{p 0 4 2}
+file {bf}
+finaldata_imputed_FINAL.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. 
+. 
+. //MODEL 2: FULL MODEL///
+. 
+. mi estimate: reg Lnodds_highANXIETY LnHCys c.w1Agecent48 Sex Race  PovStat  w1edubr c.invmillsCES ///
+> w1smoke  w1currdrugs c.w1hei2010_total_scorecent43 ///
+> c.w1BMIcent30 ///
+> if sample4obs==1 & HNDwave==1
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Linear regression{col 49}Number of obs{col 67}= {res}     1,224
+{txt}{col 49}Average RVI{col 67}= {res}    0.0286
+{txt}{col 49}Largest FMI{col 67}= {res}    0.1876
+{txt}{col 49}Complete DF{col 67}= {res}      1212
+{txt}DF adjustment:{ralign 15: {res:Small sample}}{col 49}DF:     min{col 67}= {res}    115.51
+{txt}{col 49}        avg{col 67}= {res}  1,010.89
+{txt}{col 49}        max{col 67}= {res}  1,209.80
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}F({res}  11{txt},{res} 1174.4{txt}){col 67}= {res}      9.07
+{txt}Within VCE type: {ralign 12:{res:OLS}}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         Lnodds_highANXIETY{col 29}{c |} Coefficient{col 41}  Std. err.{col 53}      t{col 61}   P>|t|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 21}LnHCys {c |}{col 29}{res}{space 2}-.3694103{col 41}{space 2} .6753993{col 52}{space 1}   -0.55{col 61}{space 3}0.585{col 69}{space 4}-1.694498{col 82}{space 3} .9556775
+{txt}{space 16}w1Agecent48 {c |}{col 29}{res}{space 2} -.055916{col 41}{space 2} .0237038{col 52}{space 1}   -2.36{col 61}{space 3}0.018{col 69}{space 4}-.1024211{col 82}{space 3}-.0094109
+{txt}{space 24}Sex {c |}{col 29}{res}{space 2}-2.061515{col 41}{space 2} .4521226{col 52}{space 1}   -4.56{col 61}{space 3}0.000{col 69}{space 4} -2.94855{col 82}{space 3}-1.174479
+{txt}{space 23}Race {c |}{col 29}{res}{space 2}-1.966937{col 41}{space 2} .4277769{col 52}{space 1}   -4.60{col 61}{space 3}0.000{col 69}{space 4}-2.806212{col 82}{space 3}-1.127663
+{txt}{space 20}PovStat {c |}{col 29}{res}{space 2} 1.083955{col 41}{space 2} .4629791{col 52}{space 1}    2.34{col 61}{space 3}0.019{col 69}{space 4} .1755953{col 82}{space 3} 1.992315
+{txt}{space 20}w1edubr {c |}{col 29}{res}{space 2}-1.465046{col 41}{space 2}  .399913{col 52}{space 1}   -3.66{col 61}{space 3}0.000{col 69}{space 4}-2.250093{col 82}{space 3} -.679998
+{txt}{space 16}invmillsCES {c |}{col 29}{res}{space 2}-.0085853{col 41}{space 2} .0178007{col 52}{space 1}   -0.48{col 61}{space 3}0.630{col 69}{space 4} -.043509{col 82}{space 3} .0263384
+{txt}{space 20}w1smoke {c |}{col 29}{res}{space 2} .8969627{col 41}{space 2} .4909377{col 52}{space 1}    1.83{col 61}{space 3}0.068{col 69}{space 4}-.0666135{col 82}{space 3} 1.860539
+{txt}{space 16}w1currdrugs {c |}{col 29}{res}{space 2} .7085163{col 41}{space 2} .5899464{col 52}{space 1}    1.20{col 61}{space 3}0.230{col 69}{space 4}-.4495432{col 82}{space 3} 1.866576
+{txt}w1hei2010_total_scorecent43 {c |}{col 29}{res}{space 2}-.0390941{col 41}{space 2} .0212558{col 52}{space 1}   -1.84{col 61}{space 3}0.068{col 69}{space 4}-.0811959{col 82}{space 3} .0030076
+{txt}{space 16}w1BMIcent30 {c |}{col 29}{res}{space 2}-.0194825{col 41}{space 2} .0296768{col 52}{space 1}   -0.66{col 61}{space 3}0.512{col 69}{space 4}-.0777068{col 82}{space 3} .0387418
+{txt}{space 22}_cons {c |}{col 29}{res}{space 2} 7.241071{col 41}{space 2} 1.939771{col 52}{space 1}    3.73{col 61}{space 3}0.000{col 69}{space 4} 3.435353{col 82}{space 3} 11.04679
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. save, replace
+{txt}{p 0 4 2}
+file {bf}
+finaldata_imputed_FINAL.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}

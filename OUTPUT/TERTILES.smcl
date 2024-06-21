@@ -1,0 +1,518 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\HANDLS_PAPER64_HCYDEPANXIETY_LONG\OUTPUT\TERTILES.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}21 Jun 2024, 09:56:25
+{txt}
+{com}. 
+. 
+. *****************DISTRIBUTIONS OF KEY RE-CODED VARIABLES**************************
+. 
+. use finaldata_imputed_FINAL,clear
+{txt}
+{com}. 
+. su w1w3HCys_change if sample4obs==1 & HNDwave==1 & _mi_m==0, det
+
+                       {txt}w1w3HCys_change
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}-1.745455      -16.27805
+{txt} 5%    {res}-.6255814      -8.709524
+{txt}10%    {res}      -.4      -6.953571       {txt}Obs         {res}      1,382
+{txt}25%    {res}-.1105263      -4.931707       {txt}Sum of wgt. {res}      1,382
+
+{txt}50%    {res}     .156                      {txt}Mean          {res} .2514102
+                        {txt}Largest       Std. dev.     {res} 1.664265
+{txt}75%    {res} .4653061       10.33654
+{txt}90%    {res}    .7875       13.15636       {txt}Variance      {res} 2.769777
+{txt}95%    {res} 1.077586       31.99811       {txt}Skewness      {res} 12.62292
+{txt}99%    {res}     3.23       36.79615       {txt}Kurtosis      {res}   277.66
+{txt}
+{com}. su w1w3w4HCysTRAJ if sample4obs==1 & HNDwave==1 & _mi_m==0, det
+
+                       {txt}w1w3w4HCysTRAJ
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} .0000168       7.15e-06
+{txt} 5%    {res} .0000676       7.80e-06
+{txt}10%    {res} .0002518       8.32e-06       {txt}Obs         {res}      1,457
+{txt}25%    {res} .0016011       9.84e-06       {txt}Sum of wgt. {res}      1,457
+
+{txt}50%    {res} .0073214                      {txt}Mean          {res} .1190203
+                        {txt}Largest       Std. dev.     {res} .2789834
+{txt}75%    {res} .0317507              1
+{txt}90%    {res} .5914975              1       {txt}Variance      {res} .0778317
+{txt}95%    {res}  .993731              1       {txt}Skewness      {res} 2.500619
+{txt}99%    {res}        1              1       {txt}Kurtosis      {res} 7.667722
+{txt}
+{com}. bysort w1HCystert: su w1HCys if sample4obs==1 & HNDwave==1 & _mi_m==0, det
+
+{txt}{hline}
+-> w1HCystert = 1
+
+                           w1HCys
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}     3.68           2.88
+{txt} 5%    {res}     4.73           3.61
+{txt}10%    {res}     5.18           3.63       {txt}Obs         {res}        485
+{txt}25%    {res}     5.83           3.68       {txt}Sum of wgt. {res}        485
+
+{txt}50%    {res}     6.43                      {txt}Mean          {res} 6.287897
+                        {txt}Largest       Std. dev.     {res} .7986795
+{txt}75%    {res}     6.92           7.35
+{txt}90%    {res}     7.19           7.36       {txt}Variance      {res}  .637889
+{txt}95%    {res}     7.26           7.37       {txt}Skewness      {res} -.955659
+{txt}99%    {res}     7.35           7.37       {txt}Kurtosis      {res} 3.839676
+
+{txt}{hline}
+-> w1HCystert = 2
+
+                           w1HCys
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}     7.39           7.38
+{txt} 5%    {res}     7.48           7.38
+{txt}10%    {res}     7.59           7.38       {txt}Obs         {res}        489
+{txt}25%    {res}      7.9           7.39       {txt}Sum of wgt. {res}        489
+
+{txt}50%    {res}     8.39                      {txt}Mean          {res} 8.423252
+                        {txt}Largest       Std. dev.     {res} .6127069
+{txt}75%    {res}     8.95           9.52
+{txt}90%    {res}     9.31           9.52       {txt}Variance      {res} .3754097
+{txt}95%    {res}     9.42           9.52       {txt}Skewness      {res} .0939394
+{txt}99%    {res}     9.51           9.52       {txt}Kurtosis      {res} 1.841086
+
+{txt}{hline}
+-> w1HCystert = 3
+
+                           w1HCys
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}     9.57           9.53
+{txt} 5%    {res}     9.67           9.54
+{txt}10%    {res}     9.77           9.54       {txt}Obs         {res}        486
+{txt}25%    {res}    10.25           9.56       {txt}Sum of wgt. {res}        486
+
+{txt}50%    {res}    11.23                      {txt}Mean          {res} 12.81728
+                        {txt}Largest       Std. dev.     {res} 7.664707
+{txt}75%    {res}    12.72           56.7
+{txt}90%    {res}    15.82          65.19       {txt}Variance      {res} 58.74773
+{txt}95%    {res}    19.79           90.8       {txt}Skewness      {res} 8.400445
+{txt}99%    {res}    49.13         112.59       {txt}Kurtosis      {res} 90.69033
+
+{txt}{hline}
+-> w1HCystert = .
+
+                           w1HCys
+{hline 61}
+no observations
+
+
+{com}. bysort w1HCystert: su Lnw1HCys if sample4obs==1 & HNDwave==1 & _mi_m==0, det
+
+{txt}{hline}
+-> w1HCystert = 1
+
+                          Lnw1HCys
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} 1.302913        1.05779
+{txt} 5%    {res} 1.553925       1.283708
+{txt}10%    {res} 1.644805       1.289233       {txt}Obs         {res}        485
+{txt}25%    {res} 1.763017       1.302913       {txt}Sum of wgt. {res}        485
+
+{txt}50%    {res} 1.860975                      {txt}Mean          {res} 1.829577
+                        {txt}Largest       Std. dev.     {res} .1391454
+{txt}75%    {res} 1.934416         1.9947
+{txt}90%    {res} 1.972691        1.99606       {txt}Variance      {res} .0193615
+{txt}95%    {res}  1.98238       1.997418       {txt}Skewness      {res}-1.466951
+{txt}99%    {res}   1.9947       1.997418       {txt}Kurtosis      {res}  6.13651
+
+{txt}{hline}
+-> w1HCystert = 2
+
+                          Lnw1HCys
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} 2.000128       1.998774
+{txt} 5%    {res} 2.012233       1.998774
+{txt}10%    {res} 2.026832       1.998774       {txt}Obs         {res}        489
+{txt}25%    {res} 2.066863       2.000128       {txt}Sum of wgt. {res}        489
+
+{txt}50%    {res} 2.127041                      {txt}Mean          {res} 2.128355
+                        {txt}Largest       Std. dev.     {res} .0727667
+{txt}75%    {res} 2.191653       2.253395
+{txt}90%    {res} 2.231089       2.253395       {txt}Variance      {res}  .005295
+{txt}95%    {res} 2.242835       2.253395       {txt}Skewness      {res}  .002812
+{txt}99%    {res} 2.252344       2.253395       {txt}Kurtosis      {res} 1.839519
+
+{txt}{hline}
+-> w1HCystert = 3
+
+                          Lnw1HCys
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} 2.258633       2.254445
+{txt} 5%    {res} 2.269028       2.255493
+{txt}10%    {res} 2.279316       2.255493       {txt}Obs         {res}        486
+{txt}25%    {res} 2.327278       2.257588       {txt}Sum of wgt. {res}        486
+
+{txt}50%    {res} 2.418589                      {txt}Mean          {res} 2.489648
+                        {txt}Largest       Std. dev.     {res} .2827109
+{txt}75%    {res} 2.543175       4.037774
+{txt}90%    {res} 2.761275       4.177306       {txt}Variance      {res} .0799255
+{txt}95%    {res} 2.985177       4.508659       {txt}Skewness      {res} 3.728283
+{txt}99%    {res}  3.89447       4.723753       {txt}Kurtosis      {res} 22.61876
+
+{txt}{hline}
+-> w1HCystert = .
+
+                          Lnw1HCys
+{hline 61}
+no observations
+
+
+{com}. bysort w1ANXIETYbr: su w1ANXIETY_ORD if sample4obs==1 & HNDwave==1 & _mi_m==0, det
+
+{txt}{hline}
+-> w1ANXIETYbr = 1
+
+                        w1ANXIETY_ORD
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}        0              0
+{txt} 5%    {res}        0              0
+{txt}10%    {res}        0              0       {txt}Obs         {res}        610
+{txt}25%    {res}        0              0       {txt}Sum of wgt. {res}        610
+
+{txt}50%    {res}        0                      {txt}Mean          {res} .2508197
+                        {txt}Largest       Std. dev.     {res} .4338407
+{txt}75%    {res}        1              1
+{txt}90%    {res}        1              1       {txt}Variance      {res} .1882177
+{txt}95%    {res}        1              1       {txt}Skewness      {res} 1.149661
+{txt}99%    {res}        1              1       {txt}Kurtosis      {res}  2.32172
+
+{txt}{hline}
+-> w1ANXIETYbr = 2
+
+                        w1ANXIETY_ORD
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}        2              2
+{txt} 5%    {res}        2              2
+{txt}10%    {res}        2              2       {txt}Obs         {res}        571
+{txt}25%    {res}        3              2       {txt}Sum of wgt. {res}        571
+
+{txt}50%    {res}        5                      {txt}Mean          {res} 5.476357
+                        {txt}Largest       Std. dev.     {res} 2.588921
+{txt}75%    {res}        8             10
+{txt}90%    {res}        9             10       {txt}Variance      {res}  6.70251
+{txt}95%    {res}       10             10       {txt}Skewness      {res} .2447458
+{txt}99%    {res}       10             10       {txt}Kurtosis      {res} 1.809846
+
+{txt}{hline}
+-> w1ANXIETYbr = .
+
+                        w1ANXIETY_ORD
+{hline 61}
+no observations
+
+
+{com}. bysort w1ANXIETYbr: su w1w4ANXIETYTRAJ if sample4obs==1 & HNDwave==1 & _mi_m==0, det
+
+{txt}{hline}
+-> w1ANXIETYbr = 1
+
+                       w1w4ANXIETYTRAJ
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} .0000358        .000033
+{txt} 5%    {res} .0000431       .0000333
+{txt}10%    {res} .0000521        .000034       {txt}Obs         {res}        610
+{txt}25%    {res} .0000926        .000034       {txt}Sum of wgt. {res}        610
+
+{txt}50%    {res} .0008526                      {txt}Mean          {res} .1064699
+                        {txt}Largest       Std. dev.     {res} .2774526
+{txt}75%    {res} .0102245       .9999998
+{txt}90%    {res} .5476592       .9999999       {txt}Variance      {res} .0769799
+{txt}95%    {res} .9899545              1       {txt}Skewness      {res} 2.625772
+{txt}99%    {res}  .999998              1       {txt}Kurtosis      {res} 8.210591
+
+{txt}{hline}
+-> w1ANXIETYbr = 2
+
+                       w1w4ANXIETYTRAJ
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} .0025802       .0014823
+{txt} 5%    {res} .0164517       .0016023
+{txt}10%    {res} .1248035       .0016771       {txt}Obs         {res}        571
+{txt}25%    {res} .8713382       .0018231       {txt}Sum of wgt. {res}        571
+
+{txt}50%    {res}  .999774                      {txt}Mean          {res}  .816692
+                        {txt}Largest       Std. dev.     {res} .3373462
+{txt}75%    {res}        1              1
+{txt}90%    {res}        1              1       {txt}Variance      {res} .1138025
+{txt}95%    {res}        1              1       {txt}Skewness      {res}-1.604597
+{txt}99%    {res}        1              1       {txt}Kurtosis      {res} 3.840119
+
+{txt}{hline}
+-> w1ANXIETYbr = .
+
+                       w1w4ANXIETYTRAJ
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} .0058442       .0055233
+{txt} 5%    {res} .0063654       .0055329
+{txt}10%    {res} .0069909       .0058442       {txt}Obs         {res}        202
+{txt}25%    {res} .0087164       .0059591       {txt}Sum of wgt. {res}        202
+
+{txt}50%    {res} .0681027                      {txt}Mean          {res} .3790371
+                        {txt}Largest       Std. dev.     {res} .4481791
+{txt}75%    {res} .9931216              1
+{txt}90%    {res} .9999996              1       {txt}Variance      {res} .2008645
+{txt}95%    {res} .9999999              1       {txt}Skewness      {res} .5521184
+{txt}99%    {res}        1              1       {txt}Kurtosis      {res} 1.393617
+
+{txt}
+{com}. bysort w1AnxietyDisorder: su w1ANXIETY_ORD if sample4obs==1 & HNDwave==1 & _mi_m==0, det
+
+{txt}{hline}
+-> w1AnxietyDisorder = No
+
+                        w1ANXIETY_ORD
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}        0              0
+{txt} 5%    {res}        0              0
+{txt}10%    {res}        0              0       {txt}Obs         {res}        963
+{txt}25%    {res}        0              0       {txt}Sum of wgt. {res}        963
+
+{txt}50%    {res}        1                      {txt}Mean          {res} 2.433022
+                        {txt}Largest       Std. dev.     {res} 2.987227
+{txt}75%    {res}        4             10
+{txt}90%    {res}        8             10       {txt}Variance      {res} 8.923524
+{txt}95%    {res}        9             10       {txt}Skewness      {res} 1.086411
+{txt}99%    {res}       10             10       {txt}Kurtosis      {res} 2.972972
+
+{txt}{hline}
+-> w1AnxietyDisorder = Yes
+
+                        w1ANXIETY_ORD
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}        0              0
+{txt} 5%    {res}        0              0
+{txt}10%    {res}        0              0       {txt}Obs         {res}        116
+{txt}25%    {res}        3              0       {txt}Sum of wgt. {res}        116
+
+{txt}50%    {res}        6                      {txt}Mean          {res} 5.715517
+                        {txt}Largest       Std. dev.     {res} 3.340935
+{txt}75%    {res}        9             10
+{txt}90%    {res}       10             10       {txt}Variance      {res} 11.16184
+{txt}95%    {res}       10             10       {txt}Skewness      {res}-.4264306
+{txt}99%    {res}       10             10       {txt}Kurtosis      {res} 1.862083
+
+{txt}{hline}
+-> w1AnxietyDisorder = .
+
+                        w1ANXIETY_ORD
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}        0              0
+{txt} 5%    {res}        0              0
+{txt}10%    {res}        0              0       {txt}Obs         {res}        102
+{txt}25%    {res}        0              0       {txt}Sum of wgt. {res}        102
+
+{txt}50%    {res}        1                      {txt}Mean          {res} 2.686275
+                        {txt}Largest       Std. dev.     {res} 3.152809
+{txt}75%    {res}        5              9
+{txt}90%    {res}        8             10       {txt}Variance      {res} 9.940206
+{txt}95%    {res}        9             10       {txt}Skewness      {res} .8985033
+{txt}99%    {res}       10             10       {txt}Kurtosis      {res} 2.418964
+
+{txt}
+{com}. bysort w1AnxietyDisorder: su w1w4ANXIETYTRAJ if sample4obs==1 & HNDwave==1 & _mi_m==0, det
+
+{txt}{hline}
+-> w1AnxietyDisorder = No
+
+                       w1w4ANXIETYTRAJ
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} .0000389        .000033
+{txt} 5%    {res} .0000524       .0000333
+{txt}10%    {res} .0000771        .000034       {txt}Obs         {res}      1,136
+{txt}25%    {res} .0010895        .000034       {txt}Sum of wgt. {res}      1,136
+
+{txt}50%    {res} .0571559                      {txt}Mean          {res} .4050921
+                        {txt}Largest       Std. dev.     {res} .4612891
+{txt}75%    {res} .9983136              1
+{txt}90%    {res} .9999999              1       {txt}Variance      {res} .2127876
+{txt}95%    {res}        1              1       {txt}Skewness      {res} .4013223
+{txt}99%    {res}        1              1       {txt}Kurtosis      {res} 1.236431
+
+{txt}{hline}
+-> w1AnxietyDisorder = Yes
+
+                       w1w4ANXIETYTRAJ
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} .0001135       .0000737
+{txt} 5%    {res}  .000322       .0001135
+{txt}10%    {res} .0092976       .0001141       {txt}Obs         {res}        136
+{txt}25%    {res} .4175791       .0001396       {txt}Sum of wgt. {res}        136
+
+{txt}50%    {res} .9999957                      {txt}Mean          {res} .7467107
+                        {txt}Largest       Std. dev.     {res} .4047026
+{txt}75%    {res}        1              1
+{txt}90%    {res}        1              1       {txt}Variance      {res} .1637842
+{txt}95%    {res}        1              1       {txt}Skewness      {res} -1.09131
+{txt}99%    {res}        1              1       {txt}Kurtosis      {res}  2.29343
+
+{txt}{hline}
+-> w1AnxietyDisorder = .
+
+                       w1w4ANXIETYTRAJ
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} .0000393       .0000365
+{txt} 5%    {res} .0000553       .0000393
+{txt}10%    {res} .0001243       .0000423       {txt}Obs         {res}        111
+{txt}25%    {res} .0058442       .0000484       {txt}Sum of wgt. {res}        111
+
+{txt}50%    {res} .0529824                      {txt}Mean          {res}  .415369
+                        {txt}Largest       Std. dev.     {res} .4659635
+{txt}75%    {res} .9984336              1
+{txt}90%    {res} .9999999              1       {txt}Variance      {res}  .217122
+{txt}95%    {res}        1              1       {txt}Skewness      {res} .3376981
+{txt}99%    {res}        1              1       {txt}Kurtosis      {res} 1.177508
+
+{txt}
+{com}. bysort w1AnxietyDisorder: su Lnodds_highANXIETY if sample4obs==1 & HNDwave==1 & _mi_m==0, det
+
+{txt}{hline}
+-> w1AnxietyDisorder = No
+
+                     Lnodds_highANXIETY
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}-10.18262      -10.32014
+{txt} 5%    {res}-9.891422      -10.31066
+{txt}10%    {res} -9.53848      -10.29044       {txt}Obs         {res}      1,034
+{txt}25%    {res}-7.502555      -10.28898       {txt}Sum of wgt. {res}      1,034
+
+{txt}50%    {res}-4.400213                      {txt}Mean          {res}-1.543503
+                        {txt}Largest       Std. dev.     {res} 7.323061
+{txt}75%    {res} 3.132231       16.63553
+{txt}90%    {res} 10.27247       16.63553       {txt}Variance      {res} 53.62722
+{txt}95%    {res} 13.10917       16.63553       {txt}Skewness      {res} .8126672
+{txt}99%    {res} 16.63553       16.63553       {txt}Kurtosis      {res} 2.645099
+
+{txt}{hline}
+-> w1AnxietyDisorder = Yes
+
+                     Lnodds_highANXIETY
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}-9.515824      -9.515824
+{txt} 5%    {res}-8.876248      -9.083841
+{txt}10%    {res}-5.028718      -9.078617       {txt}Obs         {res}         88
+{txt}25%    {res}-2.457667      -8.876341       {txt}Sum of wgt. {res}         88
+
+{txt}50%    {res} 2.698743                      {txt}Mean          {res} 4.090484
+                        {txt}Largest       Std. dev.     {res}  8.09192
+{txt}75%    {res} 12.07118       16.63553
+{txt}90%    {res} 15.53692       16.63553       {txt}Variance      {res} 65.47916
+{txt}95%    {res} 16.63553       16.63553       {txt}Skewness      {res} .1018841
+{txt}99%    {res} 16.63553       16.63553       {txt}Kurtosis      {res}  1.68797
+
+{txt}{hline}
+-> w1AnxietyDisorder = .
+
+                     Lnodds_highANXIETY
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}-10.14317      -10.21768
+{txt} 5%    {res}-9.801928      -10.14317
+{txt}10%    {res} -9.14812      -10.07006       {txt}Obs         {res}        102
+{txt}25%    {res} -5.24768      -9.936862       {txt}Sum of wgt. {res}        102
+
+{txt}50%    {res}-3.333839                      {txt}Mean          {res}-1.122589
+                        {txt}Largest       Std. dev.     {res} 7.189252
+{txt}75%    {res}  3.07915       15.94238
+{txt}90%    {res} 10.23027       15.94238       {txt}Variance      {res} 51.68534
+{txt}95%    {res}  12.7037       16.63553       {txt}Skewness      {res} .8130536
+{txt}99%    {res} 16.63553       16.63553       {txt}Kurtosis      {res} 2.695621
+
+{txt}
+{com}. 
+. su w1ANXIETY_ORD if sample4obs==1 & HNDwave==1 & _mi_m==0, det
+
+                        {txt}w1ANXIETY_ORD
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}        0              0
+{txt} 5%    {res}        0              0
+{txt}10%    {res}        0              0       {txt}Obs         {res}      1,181
+{txt}25%    {res}        0              0       {txt}Sum of wgt. {res}      1,181
+
+{txt}50%    {res}        1                      {txt}Mean          {res} 2.777307
+                        {txt}Largest       Std. dev.     {res} 3.187427
+{txt}75%    {res}        5             10
+{txt}90%    {res}        8             10       {txt}Variance      {res} 10.15969
+{txt}95%    {res}        9             10       {txt}Skewness      {res} .8883441
+{txt}99%    {res}       10             10       {txt}Kurtosis      {res} 2.451871
+{txt}
+{com}. su w1w4ANXIETYTRAJ if sample4obs==1 & HNDwave==1 & _mi_m==0, det
+
+                       {txt}w1w4ANXIETYTRAJ
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} .0000393        .000033
+{txt} 5%    {res} .0000564       .0000333
+{txt}10%    {res} .0000873        .000034       {txt}Obs         {res}      1,383
+{txt}25%    {res} .0021244        .000034       {txt}Sum of wgt. {res}      1,383
+
+{txt}50%    {res} .1097111                      {txt}Mean          {res} .4395107
+                        {txt}Largest       Std. dev.     {res} .4672744
+{txt}75%    {res} .9997519              1
+{txt}90%    {res}        1              1       {txt}Variance      {res} .2183453
+{txt}95%    {res}        1              1       {txt}Skewness      {res} .2575893
+{txt}99%    {res}        1              1       {txt}Kurtosis      {res} 1.136785
+{txt}
+{com}. tab w1AnxietyDisorder if sample4obs==1 & HNDwave==1 & _mi_m==0
+
+{txt}w1AnxietyDi {c |}
+     sorder {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+         No {c |}{res}      1,201       89.23       89.23
+{txt}        Yes {c |}{res}        145       10.77      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      1,346      100.00
+{txt}
+{com}. tab w1ANXIETYbr if sample4obs==1 & HNDwave==1 & _mi_m==0
+
+{txt}2 quantiles {c |}
+         of {c |}
+w1ANXIETY_O {c |}
+        RD  {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}        610       51.65       51.65
+{txt}          2 {c |}{res}        571       48.35      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      1,181      100.00
+{txt}
+{com}. su Lnodds_highANXIETY if sample4obs==1 & HNDwave==1 & _mi_m==0
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+Lnodds_hig~Y {c |}{res}      1,224   -1.103369    7.505139  -10.32014   16.63553
+{txt}
+{com}. 
+. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}

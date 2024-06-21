@@ -1,0 +1,994 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\HANDLS_PAPER64_HCYDEPANXIETY_LONG\OUTPUT\TABLE2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}21 Jun 2024, 09:21:50
+{txt}
+{com}. 
+. 
+. capture drop timew1w4
+{txt}
+{com}. gen timew1w4=0 if HNDwave==1
+{txt}(50,154 missing values generated)
+
+{com}. replace timew1w4=w4Age-w1Age if HNDwave==4
+{txt}(13,026 real changes made)
+
+{com}. 
+. *******************************TABLE 2: HCys LOAD AT WAVE 1 VS. DEPRESSIVE SYMPTOMS CHANGE OVER TIME: OVERALL**************************************
+. 
+. //MODEL 1: INCLUDE ONLY AGE, SEX, RACE AND POVERTY STATUS///
+. mi estimate: mixed CES  c.timew1w3w4##c.w1Agecent48 c.timew1w3w4##Sex c.timew1w3w4##Race  c.timew1w3w4##PovStat  c.timew1w3w4##c.invmillsCES ///
+> c.timew1w3w4##c.Lnw1HCyscenter2p15   ///
+> if sample4obs==1 || HNDID: timew1w3w4, cov(un)
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}= {res}     4,015
+
+{txt}Group variable: {res:HNDID}{col 49}Number of groups{col 67}= {res}     1,460
+{txt}{col 49}Obs per group:
+{col 49}              min{col 67}= {res}         1
+{txt}{col 49}              avg{col 67}= {res}       2.8
+{txt}{col 49}              max{col 67}= {res}         3
+{txt}{col 49}Average RVI{col 67}= {res}    0.0000
+{txt}{col 49}Largest FMI{col 67}= {res}    0.0000
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}{help mi_missingdf##|_new:DF}:     min{col 67}= {res}  1.33e+58
+{txt}{col 49}        avg{col 67}= {res}  5.04e+64
+{txt}{col 49}        max{col 67}= {res}         .
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}F({res}  13{txt},{res} 6.1e+63{txt}){col 67}= {res}     10.22
+{txt}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                              CES{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}-.2047729{col 47}{space 2} .0636709{col 58}{space 1}   -3.22{col 67}{space 3}0.001{col 75}{space 4}-.3295656{col 88}{space 3}-.0799803
+{txt}{space 22}w1Agecent48 {c |}{col 35}{res}{space 2}-.1151419{col 47}{space 2} .0311402{col 58}{space 1}   -3.70{col 67}{space 3}0.000{col 75}{space 4}-.1761756{col 88}{space 3}-.0541082
+{txt}{space 33} {c |}
+{space 7}c.timew1w3w4#c.w1Agecent48 {c |}{col 35}{res}{space 2} .0016888{col 47}{space 2} .0037025{col 58}{space 1}    0.46{col 67}{space 3}0.648{col 75}{space 4} -.005568{col 88}{space 3} .0089457
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 30}Sex {c |}
+{space 29}Men  {c |}{col 35}{res}{space 2}-2.689832{col 47}{space 2} .5868451{col 58}{space 1}   -4.58{col 67}{space 3}0.000{col 75}{space 4}-3.840027{col 88}{space 3}-1.539637
+{txt}{space 33} {c |}
+{space 17}Sex#c.timew1w3w4 {c |}
+{space 29}Men  {c |}{col 35}{res}{space 2}  .076229{col 47}{space 2} .0690236{col 58}{space 1}    1.10{col 67}{space 3}0.269{col 75}{space 4}-.0590548{col 88}{space 3} .2115129
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 29}Race {c |}
+{space 27}AfrAm  {c |}{col 35}{res}{space 2}-1.536724{col 47}{space 2} .5642869{col 58}{space 1}   -2.72{col 67}{space 3}0.006{col 75}{space 4}-2.642706{col 88}{space 3}-.4307419
+{txt}{space 33} {c |}
+{space 16}Race#c.timew1w3w4 {c |}
+{space 27}AfrAm  {c |}{col 35}{res}{space 2} .0923091{col 47}{space 2}  .067164{col 58}{space 1}    1.37{col 67}{space 3}0.169{col 75}{space 4}-.0393299{col 88}{space 3}  .223948
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 26}PovStat {c |}
+{space 27}Below  {c |}{col 35}{res}{space 2}  4.21449{col 47}{space 2} .5830406{col 58}{space 1}    7.23{col 67}{space 3}0.000{col 75}{space 4} 3.071751{col 88}{space 3} 5.357228
+{txt}{space 33} {c |}
+{space 13}PovStat#c.timew1w3w4 {c |}
+{space 27}Below  {c |}{col 35}{res}{space 2}-.0062584{col 47}{space 2} .0677059{col 58}{space 1}   -0.09{col 67}{space 3}0.926{col 75}{space 4}-.1389595{col 88}{space 3} .1264427
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 22}invmillsCES {c |}{col 35}{res}{space 2}-.0064565{col 47}{space 2} .0251931{col 58}{space 1}   -0.26{col 67}{space 3}0.798{col 75}{space 4} -.055834{col 88}{space 3}  .042921
+{txt}{space 33} {c |}
+{space 7}c.timew1w3w4#c.invmillsCES {c |}{col 35}{res}{space 2}-.0019818{col 47}{space 2}  .002776{col 58}{space 1}   -0.71{col 67}{space 3}0.475{col 75}{space 4}-.0074227{col 88}{space 3} .0034591
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 15}Lnw1HCyscenter2p15 {c |}{col 35}{res}{space 2} 2.337214{col 47}{space 2} .9024688{col 58}{space 1}    2.59{col 67}{space 3}0.010{col 75}{space 4} .5684075{col 88}{space 3}  4.10602
+{txt}{space 33} {c |}
+c.timew1w3w4#c.Lnw1HCyscenter2p15 {c |}{col 35}{res}{space 2}-.1150114{col 47}{space 2} .1078054{col 58}{space 1}   -1.07{col 67}{space 3}0.286{col 75}{space 4}-.3263061{col 88}{space 3} .0962833
+{txt}{space 33} {c |}
+{space 28}_cons {c |}{col 35}{res}{space 2} 14.87527{col 47}{space 2} .5222086{col 58}{space 1}   28.49{col 67}{space 3}0.000{col 75}{space 4} 13.85176{col 88}{space 3} 15.89878
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}HNDID{txt}: Unstructured{col 30}{c |}
+{space 14}sd(timew1w3w4) {c |}{res}{col 33} .1959494{col 44} .1829025{col 58} .0314498{col 70} 1.220871
+{txt}{space 19}sd(_cons) {c |}{res}{col 33} 8.296455{col 44} .2674724{col 58} 7.788438{col 70} 8.837608
+{txt}{space 6}corr(timew1w3w4,_cons) {c |}{res}{col 33}-.3152491{col 44} .2013361{col 58}-.6437313{col 70} .1113298
+{txt}{hline 29}{c +}{hline 48}
+{col 17}sd(Residual){col 30}{c |}{res}{col 33} 7.108706{col 44} .1361877{col 58} 6.846732{col 70} 7.380703
+{txt}{hline 29}{c BT}{hline 48}
+{res}{txt}
+{com}. 
+. 
+. mi estimate: mixed CES_DA c.timew1w3w4##c.w1Agecent48 c.timew1w3w4##Sex c.timew1w3w4##Race  c.timew1w3w4##PovStat  c.timew1w3w4##c.invmillsCES ///
+> c.timew1w3w4##c.Lnw1HCyscenter2p15   ///
+> if sample4obs==1 || HNDID: timew1w3w4, cov(un)
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}= {res}     4,032
+
+{txt}Group variable: {res:HNDID}{col 49}Number of groups{col 67}= {res}     1,460
+{txt}{col 49}Obs per group:
+{col 49}              min{col 67}= {res}         1
+{txt}{col 49}              avg{col 67}= {res}       2.8
+{txt}{col 49}              max{col 67}= {res}         3
+{txt}{col 49}Average RVI{col 67}= {res}         .
+{txt}{col 49}Largest FMI{col 67}= {res}         .
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}{help mi_missingdf##|_new:DF}:     min{col 67}= {res}      0.00
+{txt}{col 49}        avg{col 67}= {res}         .
+{txt}{col 49}        max{col 67}= {res}         .
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}F({res}  13{txt},{res} 4.4e+62{txt}){col 67}= {res}     11.39
+{txt}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                           CES_DA{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}-.1032965{col 47}{space 2} .0278102{col 58}{space 1}   -3.71{col 67}{space 3}0.000{col 75}{space 4}-.1578036{col 88}{space 3}-.0487895
+{txt}{space 22}w1Agecent48 {c |}{col 35}{res}{space 2}-.0355349{col 47}{space 2}  .013604{col 58}{space 1}   -2.61{col 67}{space 3}0.009{col 75}{space 4}-.0621982{col 88}{space 3}-.0088716
+{txt}{space 33} {c |}
+{space 7}c.timew1w3w4#c.w1Agecent48 {c |}{col 35}{res}{space 2}-.0014223{col 47}{space 2} .0016173{col 58}{space 1}   -0.88{col 67}{space 3}0.379{col 75}{space 4}-.0045921{col 88}{space 3} .0017475
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 30}Sex {c |}
+{space 29}Men  {c |}{col 35}{res}{space 2}-1.472309{col 47}{space 2} .2562688{col 58}{space 1}   -5.75{col 67}{space 3}0.000{col 75}{space 4}-1.974586{col 88}{space 3}-.9700312
+{txt}{space 33} {c |}
+{space 17}Sex#c.timew1w3w4 {c |}
+{space 29}Men  {c |}{col 35}{res}{space 2} .0613047{col 47}{space 2} .0301654{col 58}{space 1}    2.03{col 67}{space 3}0.042{col 75}{space 4} .0021816{col 88}{space 3} .1204278
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 29}Race {c |}
+{space 27}AfrAm  {c |}{col 35}{res}{space 2}-.5583488{col 47}{space 2} .2464649{col 58}{space 1}   -2.27{col 67}{space 3}0.023{col 75}{space 4}-1.041411{col 88}{space 3}-.0752865
+{txt}{space 33} {c |}
+{space 16}Race#c.timew1w3w4 {c |}
+{space 27}AfrAm  {c |}{col 35}{res}{space 2} .0056739{col 47}{space 2} .0293667{col 58}{space 1}    0.19{col 67}{space 3}0.847{col 75}{space 4}-.0518839{col 88}{space 3} .0632317
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 26}PovStat {c |}
+{space 27}Below  {c |}{col 35}{res}{space 2} 1.676692{col 47}{space 2}  .254739{col 58}{space 1}    6.58{col 67}{space 3}0.000{col 75}{space 4} 1.177413{col 88}{space 3} 2.175972
+{txt}{space 33} {c |}
+{space 13}PovStat#c.timew1w3w4 {c |}
+{space 27}Below  {c |}{col 35}{res}{space 2}-.0186406{col 47}{space 2} .0296297{col 58}{space 1}   -0.63{col 67}{space 3}0.529{col 75}{space 4}-.0767138{col 88}{space 3} .0394326
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 22}invmillsCES {c |}{col 35}{res}{space 2}-.0096927{col 47}{space 2} .0110209{col 58}{space 1}   -0.88{col 67}{space 3}0.379{col 75}{space 4}-.0312933{col 88}{space 3}  .011908
+{txt}{space 33} {c |}
+{space 7}c.timew1w3w4#c.invmillsCES {c |}{col 35}{res}{space 2} .0006654{col 47}{space 2} .0012204{col 58}{space 1}    0.55{col 67}{space 3}0.586{col 75}{space 4}-.0017264{col 88}{space 3} .0030573
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 15}Lnw1HCyscenter2p15 {c |}{col 35}{res}{space 2} .9510725{col 47}{space 2} .3942718{col 58}{space 1}    2.41{col 67}{space 3}0.016{col 75}{space 4} .1783139{col 88}{space 3} 1.723831
+{txt}{space 33} {c |}
+c.timew1w3w4#c.Lnw1HCyscenter2p15 {c |}{col 35}{res}{space 2}-.0668709{col 47}{space 2} .0471596{col 58}{space 1}   -1.42{col 67}{space 3}0.156{col 75}{space 4} -.159302{col 88}{space 3} .0255602
+{txt}{space 33} {c |}
+{space 28}_cons {c |}{col 35}{res}{space 2} 4.815665{col 47}{space 2} .2281181{col 58}{space 1}   21.11{col 67}{space 3}0.000{col 75}{space 4} 4.368562{col 88}{space 3} 5.262768
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}HNDID{txt}: Unstructured{col 30}{c |}
+{space 14}sd(timew1w3w4) {c |}{res}{col 33} .0582121{col 44}        .{col 58}        .{col 70}        .
+{txt}{space 19}sd(_cons) {c |}{res}{col 33} 3.591845{col 44}        .{col 58}        .{col 70}        .
+{txt}{space 6}corr(timew1w3w4,_cons) {c |}{res}{col 33}       -1{col 44}        .{col 58}        .{col 70}        .
+{txt}{hline 29}{c +}{hline 48}
+{col 17}sd(Residual){col 30}{c |}{res}{col 33} 3.161866{col 44}        .{col 58}        .{col 70}        .
+{txt}{hline 29}{c BT}{hline 48}
+{res}{txt}
+{com}. 
+. 
+. 
+. mi estimate: mixed CES_IP c.timew1w3w4##c.w1Agecent48 c.timew1w3w4##Sex c.timew1w3w4##Race  c.timew1w3w4##PovStat  c.timew1w3w4##c.invmillsCES ///
+> c.timew1w3w4##c.Lnw1HCyscenter2p15   ///
+> if sample4obs==1 || HNDID: timew1w3w4, cov(un)
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}= {res}     4,032
+
+{txt}Group variable: {res:HNDID}{col 49}Number of groups{col 67}= {res}     1,460
+{txt}{col 49}Obs per group:
+{col 49}              min{col 67}= {res}         1
+{txt}{col 49}              avg{col 67}= {res}       2.8
+{txt}{col 49}              max{col 67}= {res}         3
+{txt}{col 49}Average RVI{col 67}= {res}         .
+{txt}{col 49}Largest FMI{col 67}= {res}         .
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}{help mi_missingdf##|_new:DF}:     min{col 67}= {res}      0.00
+{txt}{col 49}        avg{col 67}= {res}         .
+{txt}{col 49}        max{col 67}= {res}         .
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}F({res}  13{txt},{res} 5.4e+65{txt}){col 67}= {res}      5.09
+{txt}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                           CES_IP{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2} -.006947{col 47}{space 2} .0087529{col 58}{space 1}   -0.79{col 67}{space 3}0.427{col 75}{space 4}-.0241025{col 88}{space 3} .0102084
+{txt}{space 22}w1Agecent48 {c |}{col 35}{res}{space 2}-.0115783{col 47}{space 2} .0036486{col 58}{space 1}   -3.17{col 67}{space 3}0.002{col 75}{space 4}-.0187293{col 88}{space 3}-.0044272
+{txt}{space 33} {c |}
+{space 7}c.timew1w3w4#c.w1Agecent48 {c |}{col 35}{res}{space 2}-.0000663{col 47}{space 2}  .000509{col 58}{space 1}   -0.13{col 67}{space 3}0.896{col 75}{space 4} -.001064{col 88}{space 3} .0009314
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 30}Sex {c |}
+{space 29}Men  {c |}{col 35}{res}{space 2} .0883943{col 47}{space 2} .0687268{col 58}{space 1}    1.29{col 67}{space 3}0.198{col 75}{space 4}-.0463077{col 88}{space 3} .2230963
+{txt}{space 33} {c |}
+{space 17}Sex#c.timew1w3w4 {c |}
+{space 29}Men  {c |}{col 35}{res}{space 2}-.0131466{col 47}{space 2} .0094959{col 58}{space 1}   -1.38{col 67}{space 3}0.166{col 75}{space 4}-.0317582{col 88}{space 3} .0054651
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 29}Race {c |}
+{space 27}AfrAm  {c |}{col 35}{res}{space 2} .0194419{col 47}{space 2} .0661121{col 58}{space 1}    0.29{col 67}{space 3}0.769{col 75}{space 4}-.1101354{col 88}{space 3} .1490192
+{txt}{space 33} {c |}
+{space 16}Race#c.timew1w3w4 {c |}
+{space 27}AfrAm  {c |}{col 35}{res}{space 2}  .002379{col 47}{space 2} .0092461{col 58}{space 1}    0.26{col 67}{space 3}0.797{col 75}{space 4}-.0157429{col 88}{space 3}  .020501
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 26}PovStat {c |}
+{space 27}Below  {c |}{col 35}{res}{space 2} .3273022{col 47}{space 2} .0683946{col 58}{space 1}    4.79{col 67}{space 3}0.000{col 75}{space 4} .1932513{col 88}{space 3} .4613531
+{txt}{space 33} {c |}
+{space 13}PovStat#c.timew1w3w4 {c |}
+{space 27}Below  {c |}{col 35}{res}{space 2}-.0019233{col 47}{space 2} .0093287{col 58}{space 1}   -0.21{col 67}{space 3}0.837{col 75}{space 4}-.0202072{col 88}{space 3} .0163606
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 22}invmillsCES {c |}{col 35}{res}{space 2} .0019601{col 47}{space 2} .0029686{col 58}{space 1}    0.66{col 67}{space 3}0.509{col 75}{space 4}-.0038582{col 88}{space 3} .0077785
+{txt}{space 33} {c |}
+{space 7}c.timew1w3w4#c.invmillsCES {c |}{col 35}{res}{space 2}-.0003658{col 47}{space 2} .0003847{col 58}{space 1}   -0.95{col 67}{space 3}0.342{col 75}{space 4}-.0011197{col 88}{space 3} .0003881
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 15}Lnw1HCyscenter2p15 {c |}{col 35}{res}{space 2} .0849202{col 47}{space 2} .1057593{col 58}{space 1}    0.80{col 67}{space 3}0.422{col 75}{space 4}-.1223642{col 88}{space 3} .2922046
+{txt}{space 33} {c |}
+c.timew1w3w4#c.Lnw1HCyscenter2p15 {c |}{col 35}{res}{space 2}-.0030147{col 47}{space 2} .0148488{col 58}{space 1}   -0.20{col 67}{space 3}0.839{col 75}{space 4}-.0321178{col 88}{space 3} .0260884
+{txt}{space 33} {c |}
+{space 28}_cons {c |}{col 35}{res}{space 2} .7754282{col 47}{space 2} .0611012{col 58}{space 1}   12.69{col 67}{space 3}0.000{col 75}{space 4}  .655672{col 88}{space 3} .8951844
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}HNDID{txt}: Unstructured{col 30}{c |}
+{space 14}sd(timew1w3w4) {c |}{res}{col 33} .0077989{col 44}        .{col 58}        .{col 70}        .
+{txt}{space 19}sd(_cons) {c |}{res}{col 33} .8307592{col 44}        .{col 58}        .{col 70}        .
+{txt}{space 6}corr(timew1w3w4,_cons) {c |}{res}{col 33}-.9999837{col 44}        .{col 58}        .{col 70}        .
+{txt}{hline 29}{c +}{hline 48}
+{col 17}sd(Residual){col 30}{c |}{res}{col 33} 1.002395{col 44}        .{col 58}        .{col 70}        .
+{txt}{hline 29}{c BT}{hline 48}
+{res}{txt}
+{com}. 
+. 
+. 
+. mi estimate: mixed CES_SC c.timew1w3w4##c.w1Agecent48 c.timew1w3w4##Sex c.timew1w3w4##Race  c.timew1w3w4##PovStat  c.timew1w3w4##c.invmillsCES ///
+> c.timew1w3w4##c.Lnw1HCyscenter2p15   ///
+> if sample4obs==1 || HNDID: timew1w3w4, cov(un)
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}= {res}     4,032
+
+{txt}Group variable: {res:HNDID}{col 49}Number of groups{col 67}= {res}     1,460
+{txt}{col 49}Obs per group:
+{col 49}              min{col 67}= {res}         1
+{txt}{col 49}              avg{col 67}= {res}       2.8
+{txt}{col 49}              max{col 67}= {res}         3
+{txt}{col 49}Average RVI{col 67}= {res}    0.0000
+{txt}{col 49}Largest FMI{col 67}= {res}    0.0000
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}{help mi_missingdf##|_new:DF}:     min{col 67}= {res}  2.05e+60
+{txt}{col 49}        avg{col 67}= {res}  1.44e+64
+{txt}{col 49}        max{col 67}= {res}         .
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}F({res}  13{txt},{res} 1.7e+63{txt}){col 67}= {res}     11.52
+{txt}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                           CES_SC{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}-.0967847{col 47}{space 2} .0278745{col 58}{space 1}   -3.47{col 67}{space 3}0.001{col 75}{space 4}-.1514178{col 88}{space 3}-.0421517
+{txt}{space 22}w1Agecent48 {c |}{col 35}{res}{space 2}-.0433735{col 47}{space 2} .0122799{col 58}{space 1}   -3.53{col 67}{space 3}0.000{col 75}{space 4}-.0674416{col 88}{space 3}-.0193053
+{txt}{space 33} {c |}
+{space 7}c.timew1w3w4#c.w1Agecent48 {c |}{col 35}{res}{space 2} .0008611{col 47}{space 2} .0016213{col 58}{space 1}    0.53{col 67}{space 3}0.595{col 75}{space 4}-.0023166{col 88}{space 3} .0040388
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 30}Sex {c |}
+{space 29}Men  {c |}{col 35}{res}{space 2} -.980727{col 47}{space 2} .2313214{col 58}{space 1}   -4.24{col 67}{space 3}0.000{col 75}{space 4}-1.434109{col 88}{space 3}-.5273454
+{txt}{space 33} {c |}
+{space 17}Sex#c.timew1w3w4 {c |}
+{space 29}Men  {c |}{col 35}{res}{space 2} .0308307{col 47}{space 2} .0302521{col 58}{space 1}    1.02{col 67}{space 3}0.308{col 75}{space 4}-.0284623{col 88}{space 3} .0901236
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 29}Race {c |}
+{space 27}AfrAm  {c |}{col 35}{res}{space 2}-.2587622{col 47}{space 2}  .222493{col 58}{space 1}   -1.16{col 67}{space 3}0.245{col 75}{space 4}-.6948404{col 88}{space 3}  .177316
+{txt}{space 33} {c |}
+{space 16}Race#c.timew1w3w4 {c |}
+{space 27}AfrAm  {c |}{col 35}{res}{space 2} .0086563{col 47}{space 2} .0294173{col 58}{space 1}    0.29{col 67}{space 3}0.769{col 75}{space 4}-.0490006{col 88}{space 3} .0663132
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 26}PovStat {c |}
+{space 27}Below  {c |}{col 35}{res}{space 2} 1.664367{col 47}{space 2} .2300383{col 58}{space 1}    7.24{col 67}{space 3}0.000{col 75}{space 4}   1.2135{col 88}{space 3} 2.115234
+{txt}{space 33} {c |}
+{space 13}PovStat#c.timew1w3w4 {c |}
+{space 27}Below  {c |}{col 35}{res}{space 2} -.020142{col 47}{space 2}  .029712{col 58}{space 1}   -0.68{col 67}{space 3}0.498{col 75}{space 4}-.0783765{col 88}{space 3} .0380926
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 22}invmillsCES {c |}{col 35}{res}{space 2}-.0046581{col 47}{space 2} .0099611{col 58}{space 1}   -0.47{col 67}{space 3}0.640{col 75}{space 4}-.0241815{col 88}{space 3} .0148652
+{txt}{space 33} {c |}
+{space 7}c.timew1w3w4#c.invmillsCES {c |}{col 35}{res}{space 2}-.0008693{col 47}{space 2} .0012222{col 58}{space 1}   -0.71{col 67}{space 3}0.477{col 75}{space 4}-.0032648{col 88}{space 3} .0015262
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 15}Lnw1HCyscenter2p15 {c |}{col 35}{res}{space 2} .7839055{col 47}{space 2} .3559179{col 58}{space 1}    2.20{col 67}{space 3}0.028{col 75}{space 4} .0863194{col 88}{space 3} 1.481492
+{txt}{space 33} {c |}
+c.timew1w3w4#c.Lnw1HCyscenter2p15 {c |}{col 35}{res}{space 2}-.0100676{col 47}{space 2} .0472649{col 58}{space 1}   -0.21{col 67}{space 3}0.831{col 75}{space 4}-.1027052{col 88}{space 3}   .08257
+{txt}{space 33} {c |}
+{space 28}_cons {c |}{col 35}{res}{space 2} 6.650406{col 47}{space 2} .2058385{col 58}{space 1}   32.31{col 67}{space 3}0.000{col 75}{space 4}  6.24697{col 88}{space 3} 7.053842
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}HNDID{txt}: Unstructured{col 30}{c |}
+{space 14}sd(timew1w3w4) {c |}{res}{col 33} .1380412{col 44} .0481993{col 58} .0696303{col 70} .2736652
+{txt}{space 19}sd(_cons) {c |}{res}{col 33} 3.080381{col 44} .1143991{col 58} 2.864129{col 70} 3.312961
+{txt}{space 6}corr(timew1w3w4,_cons) {c |}{res}{col 33} -.362436{col 44} .1066863{col 58}-.5514134{col 70}-.1380772
+{txt}{hline 29}{c +}{hline 48}
+{col 17}sd(Residual){col 30}{c |}{res}{col 33} 3.056226{col 44} .0574255{col 58} 2.945722{col 70} 3.170877
+{txt}{hline 29}{c BT}{hline 48}
+{res}{txt}
+{com}. 
+. 
+. 
+. mi estimate: mixed CES_WB c.timew1w3w4##c.w1Agecent48 c.timew1w3w4##Sex c.timew1w3w4##Race  c.timew1w3w4##PovStat  c.timew1w3w4##c.invmillsCES ///
+> c.timew1w3w4##c.Lnw1HCyscenter2p15   ///
+> if sample4obs==1 || HNDID: timew1w3w4, cov(un)
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}= {res}     4,032
+
+{txt}Group variable: {res:HNDID}{col 49}Number of groups{col 67}= {res}     1,460
+{txt}{col 49}Obs per group:
+{col 49}              min{col 67}= {res}         1
+{txt}{col 49}              avg{col 67}= {res}       2.8
+{txt}{col 49}              max{col 67}= {res}         3
+{txt}{col 49}Average RVI{col 67}= {res}    0.0000
+{txt}{col 49}Largest FMI{col 67}= {res}    0.0000
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}{help mi_missingdf##|_new:DF}:     min{col 67}= {res}  1.82e+60
+{txt}{col 49}        avg{col 67}= {res}  2.58e+64
+{txt}{col 49}        max{col 67}= {res}         .
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}F({res}  13{txt},{res} 3.1e+65{txt}){col 67}= {res}      9.72
+{txt}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                           CES_WB{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2} .0034932{col 47}{space 2} .0189551{col 58}{space 1}    0.18{col 67}{space 3}0.854{col 75}{space 4}-.0336581{col 88}{space 3} .0406446
+{txt}{space 22}w1Agecent48 {c |}{col 35}{res}{space 2} .0241204{col 47}{space 2} .0072325{col 58}{space 1}    3.34{col 67}{space 3}0.001{col 75}{space 4}  .009945{col 88}{space 3} .0382958
+{txt}{space 33} {c |}
+{space 7}c.timew1w3w4#c.w1Agecent48 {c |}{col 35}{res}{space 2}-.0021783{col 47}{space 2} .0011011{col 58}{space 1}   -1.98{col 67}{space 3}0.048{col 75}{space 4}-.0043364{col 88}{space 3}-.0000203
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 30}Sex {c |}
+{space 29}Men  {c |}{col 35}{res}{space 2} .3373746{col 47}{space 2}  .136234{col 58}{space 1}    2.48{col 67}{space 3}0.013{col 75}{space 4} .0703609{col 88}{space 3} .6043883
+{txt}{space 33} {c |}
+{space 17}Sex#c.timew1w3w4 {c |}
+{space 29}Men  {c |}{col 35}{res}{space 2} .0004537{col 47}{space 2} .0205327{col 58}{space 1}    0.02{col 67}{space 3}0.982{col 75}{space 4}-.0397897{col 88}{space 3}  .040697
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 29}Race {c |}
+{space 27}AfrAm  {c |}{col 35}{res}{space 2} .7556823{col 47}{space 2} .1310601{col 58}{space 1}    5.77{col 67}{space 3}0.000{col 75}{space 4} .4988093{col 88}{space 3} 1.012555
+{txt}{space 33} {c |}
+{space 16}Race#c.timew1w3w4 {c |}
+{space 27}AfrAm  {c |}{col 35}{res}{space 2}-.0791087{col 47}{space 2} .0199623{col 58}{space 1}   -3.96{col 67}{space 3}0.000{col 75}{space 4}-.1182341{col 88}{space 3}-.0399832
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 33} {c |}
+{space 26}PovStat {c |}
+{space 27}Below  {c |}{col 35}{res}{space 2}-.5387036{col 47}{space 2} .1356044{col 58}{space 1}   -3.97{col 67}{space 3}0.000{col 75}{space 4}-.8044833{col 88}{space 3}-.2729239
+{txt}{space 33} {c |}
+{space 13}PovStat#c.timew1w3w4 {c |}
+{space 27}Below  {c |}{col 35}{res}{space 2}-.0370323{col 47}{space 2} .0201446{col 58}{space 1}   -1.84{col 67}{space 3}0.066{col 75}{space 4}-.0765151{col 88}{space 3} .0024504
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 22}invmillsCES {c |}{col 35}{res}{space 2} -.006136{col 47}{space 2} .0058909{col 58}{space 1}   -1.04{col 67}{space 3}0.298{col 75}{space 4}-.0176821{col 88}{space 3}   .00541
+{txt}{space 33} {c |}
+{space 7}c.timew1w3w4#c.invmillsCES {c |}{col 35}{res}{space 2} .0014329{col 47}{space 2} .0008254{col 58}{space 1}    1.74{col 67}{space 3}0.083{col 75}{space 4}-.0001849{col 88}{space 3} .0030506
+{txt}{space 33} {c |}
+{space 23}timew1w3w4 {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 15}Lnw1HCyscenter2p15 {c |}{col 35}{res}{space 2} -.480821{col 47}{space 2} .2096822{col 58}{space 1}   -2.29{col 67}{space 3}0.022{col 75}{space 4}-.8917906{col 88}{space 3}-.0698513
+{txt}{space 33} {c |}
+c.timew1w3w4#c.Lnw1HCyscenter2p15 {c |}{col 35}{res}{space 2} .0358045{col 47}{space 2}  .032103{col 58}{space 1}    1.12{col 67}{space 3}0.265{col 75}{space 4}-.0271161{col 88}{space 3} .0987252
+{txt}{space 33} {c |}
+{space 28}_cons {c |}{col 35}{res}{space 2} 9.347317{col 47}{space 2} .1211245{col 58}{space 1}   77.17{col 67}{space 3}0.000{col 75}{space 4} 9.109917{col 88}{space 3} 9.584717
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}HNDID{txt}: Unstructured{col 30}{c |}
+{space 14}sd(timew1w3w4) {c |}{res}{col 33} .0748568{col 44} .0427384{col 58} .0244484{col 70} .2291989
+{txt}{space 19}sd(_cons) {c |}{res}{col 33} 1.534064{col 44} .0856033{col 58} 1.375134{col 70} 1.711362
+{txt}{space 6}corr(timew1w3w4,_cons) {c |}{res}{col 33} .7516859{col 44} .6968566{col 58}-.9739152{col 70}  .999469
+{txt}{hline 29}{c +}{hline 48}
+{col 17}sd(Residual){col 30}{c |}{res}{col 33} 2.085793{col 44} .0402329{col 58}  2.00841{col 70} 2.166158
+{txt}{hline 29}{c BT}{hline 48}
+{res}{txt}
+{com}. 
+. 
+. 
+. 
+. save "finaldata_imputed_FINAL.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+finaldata_imputed_FINAL.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. 
+. //MODEL 2: FULL MODEL///
+. 
+. mi estimate: mixed CES  c.timew1w3w4##c.w1Agecent48 c.timew1w3w4##Sex c.timew1w3w4##Race  c.timew1w3w4##PovStat  c.timew1w3w4##w1edubr c.timew1w3w4##c.invmillsCES ///
+> c.timew1w3w4##w1smoke  c.timew1w3w4##w1currdrugs c.timew1w3w4##c.w1hei2010_total_scorecent43 ///
+> c.timew1w3w4##c.w1BMIcent30 ///
+> c.timew1w3w4##c.Lnw1HCyscenter2p15   ///
+> if sample4obs==1 || HNDID: timew1w3w4, cov(un)
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}= {res}     4,015
+
+{txt}Group variable: {res:HNDID}{col 49}Number of groups{col 67}= {res}     1,460
+{txt}{col 49}Obs per group:
+{col 49}              min{col 67}= {res}         1
+{txt}{col 49}              avg{col 67}= {res}       2.8
+{txt}{col 49}              max{col 67}= {res}         3
+{txt}{col 49}Average RVI{col 67}= {res}    0.0756
+{txt}{col 49}Largest FMI{col 67}= {res}    0.3236
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}DF:     min{col 67}= {res}     46.01
+{txt}{col 49}        avg{col 67}= {res}245,201.36
+{txt}{col 49}        max{col 67}= {res}4182393.01
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}F({res}  25{txt},{res}13907.8{txt}){col 67}= {res}      9.04
+{txt}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 43}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                                       CES{col 44}{c |} Coefficient{col 56}  Std. err.{col 68}      t{col 76}   P>|t|{col 84}     [95% con{col 97}f. interval]
+{hline 43}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}-.2827255{col 56}{space 2} .1557027{col 67}{space 1}   -1.82{col 76}{space 3}0.069{col 84}{space 4}-.5879048{col 97}{space 3} .0224539
+{txt}{space 31}w1Agecent48 {c |}{col 44}{res}{space 2}-.0845175{col 56}{space 2}  .031047{col 67}{space 1}   -2.72{col 76}{space 3}0.006{col 84}{space 4}-.1453696{col 97}{space 3}-.0236655
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.w1Agecent48 {c |}{col 44}{res}{space 2} .0009604{col 56}{space 2} .0038027{col 67}{space 1}    0.25{col 76}{space 3}0.801{col 84}{space 4}-.0064928{col 97}{space 3} .0084137
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 39}Sex {c |}
+{space 38}Men  {c |}{col 44}{res}{space 2}-3.073358{col 56}{space 2} .5857136{col 67}{space 1}   -5.25{col 76}{space 3}0.000{col 84}{space 4}-4.221357{col 97}{space 3}-1.925359
+{txt}{space 42} {c |}
+{space 26}Sex#c.timew1w3w4 {c |}
+{space 38}Men  {c |}{col 44}{res}{space 2}  .094885{col 56}{space 2} .0708011{col 67}{space 1}    1.34{col 76}{space 3}0.180{col 84}{space 4}-.0438866{col 97}{space 3} .2336566
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 38}Race {c |}
+{space 36}AfrAm  {c |}{col 44}{res}{space 2}-1.687248{col 56}{space 2} .5567782{col 67}{space 1}   -3.03{col 76}{space 3}0.002{col 84}{space 4}-2.778546{col 97}{space 3} -.595949
+{txt}{space 42} {c |}
+{space 25}Race#c.timew1w3w4 {c |}
+{space 36}AfrAm  {c |}{col 44}{res}{space 2}  .080946{col 56}{space 2} .0683623{col 67}{space 1}    1.18{col 76}{space 3}0.236{col 84}{space 4} -.053043{col 97}{space 3} .2149351
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 35}PovStat {c |}
+{space 36}Below  {c |}{col 44}{res}{space 2} 2.938744{col 56}{space 2} .5950036{col 67}{space 1}    4.94{col 76}{space 3}0.000{col 84}{space 4} 1.772455{col 97}{space 3} 4.105032
+{txt}{space 42} {c |}
+{space 22}PovStat#c.timew1w3w4 {c |}
+{space 36}Below  {c |}{col 44}{res}{space 2} .0098867{col 56}{space 2} .0714155{col 67}{space 1}    0.14{col 76}{space 3}0.890{col 84}{space 4} -.130088{col 97}{space 3} .1498613
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 35}w1edubr {c |}
+{space 40}2  {c |}{col 44}{res}{space 2} -1.32315{col 56}{space 2} 1.169413{col 67}{space 1}   -1.13{col 76}{space 3}0.258{col 84}{space 4} -3.61635{col 97}{space 3} .9700491
+{txt}{space 40}3  {c |}{col 44}{res}{space 2}-3.562174{col 56}{space 2} 1.225955{col 67}{space 1}   -2.91{col 76}{space 3}0.004{col 84}{space 4}-5.966275{col 97}{space 3}-1.158073
+{txt}{space 42} {c |}
+{space 22}w1edubr#c.timew1w3w4 {c |}
+{space 40}2  {c |}{col 44}{res}{space 2}  .151943{col 56}{space 2} .1467893{col 67}{space 1}    1.04{col 76}{space 3}0.301{col 84}{space 4}-.1357664{col 97}{space 3} .4396524
+{txt}{space 40}3  {c |}{col 44}{res}{space 2} .0981033{col 56}{space 2} .1530388{col 67}{space 1}    0.64{col 76}{space 3}0.521{col 84}{space 4}-.2018479{col 97}{space 3} .3980544
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 31}invmillsCES {c |}{col 44}{res}{space 2}-.0057094{col 56}{space 2} .0245801{col 67}{space 1}   -0.23{col 76}{space 3}0.816{col 84}{space 4}-.0538854{col 97}{space 3} .0424667
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.invmillsCES {c |}{col 44}{res}{space 2}-.0015777{col 56}{space 2} .0027889{col 67}{space 1}   -0.57{col 76}{space 3}0.572{col 84}{space 4}-.0070439{col 97}{space 3} .0038885
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 33}1.w1smoke {c |}{col 44}{res}{space 2} 1.847789{col 56}{space 2} .6218243{col 67}{space 1}    2.97{col 76}{space 3}0.003{col 84}{space 4} .6245589{col 97}{space 3} 3.071018
+{txt}{space 42} {c |}
+{space 22}w1smoke#c.timew1w3w4 {c |}
+{space 40}1  {c |}{col 44}{res}{space 2}-.0356736{col 56}{space 2} .0793955{col 67}{space 1}   -0.45{col 76}{space 3}0.653{col 84}{space 4}-.1914473{col 97}{space 3} .1201002
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 29}1.w1currdrugs {c |}{col 44}{res}{space 2} 2.739879{col 56}{space 2}  .817818{col 67}{space 1}    3.35{col 76}{space 3}0.001{col 84}{space 4} 1.103478{col 97}{space 3} 4.376279
+{txt}{space 42} {c |}
+{space 18}w1currdrugs#c.timew1w3w4 {c |}
+{space 40}1  {c |}{col 44}{res}{space 2}-.1607044{col 56}{space 2} .1076179{col 67}{space 1}   -1.49{col 76}{space 3}0.142{col 84}{space 4}-.3767689{col 97}{space 3} .0553602
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 15}w1hei2010_total_scorecent43 {c |}{col 44}{res}{space 2}-.0573781{col 56}{space 2} .0263525{col 67}{space 1}   -2.18{col 76}{space 3}0.035{col 84}{space 4}-.1104227{col 97}{space 3}-.0043335
+{txt}{space 42} {c |}
+c.timew1w3w4#c.w1hei2010_total_scorecent43 {c |}{col 44}{res}{space 2}-.0006269{col 56}{space 2} .0032986{col 67}{space 1}   -0.19{col 76}{space 3}0.849{col 84}{space 4}-.0071165{col 97}{space 3} .0058627
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 31}w1BMIcent30 {c |}{col 44}{res}{space 2} .0643738{col 56}{space 2} .0384454{col 67}{space 1}    1.67{col 76}{space 3}0.094{col 84}{space 4}-.0109869{col 97}{space 3} .1397345
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.w1BMIcent30 {c |}{col 44}{res}{space 2}   .00153{col 56}{space 2} .0046856{col 67}{space 1}    0.33{col 76}{space 3}0.744{col 84}{space 4}-.0076538{col 97}{space 3} .0107137
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 24}Lnw1HCyscenter2p15 {c |}{col 44}{res}{space 2}   1.8245{col 56}{space 2} .8828377{col 67}{space 1}    2.07{col 76}{space 3}0.039{col 84}{space 4} .0941653{col 97}{space 3} 3.554834
+{txt}{space 42} {c |}
+{space 9}c.timew1w3w4#c.Lnw1HCyscenter2p15 {c |}{col 44}{res}{space 2}-.1142581{col 56}{space 2} .1089765{col 67}{space 1}   -1.05{col 76}{space 3}0.294{col 84}{space 4}-.3278517{col 97}{space 3} .0993354
+{txt}{space 42} {c |}
+{space 37}_cons {c |}{col 44}{res}{space 2} 16.35926{col 56}{space 2} 1.224232{col 67}{space 1}   13.36{col 76}{space 3}0.000{col 84}{space 4} 13.95918{col 97}{space 3} 18.75933
+{txt}{hline 43}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}HNDID{txt}: Unstructured{col 30}{c |}
+{space 14}sd(timew1w3w4) {c |}{res}{col 33}  .200424{col 44} .1811455{col 58} .0340893{col 70} 1.178368
+{txt}{space 19}sd(_cons) {c |}{res}{col 33} 7.923449{col 44} .2681257{col 58} 7.414978{col 70} 8.466787
+{txt}{space 6}corr(timew1w3w4,_cons) {c |}{res}{col 33}-.3149551{col 44} .1982731{col 58}-.6395765{col 70} .1049949
+{txt}{hline 29}{c +}{hline 48}
+{col 17}sd(Residual){col 30}{c |}{res}{col 33} 7.111812{col 44} .1375503{col 58} 6.847225{col 70} 7.386622
+{txt}{hline 29}{c BT}{hline 48}
+{res}{txt}
+{com}. 
+. 
+. mi estimate: mixed CES_DA c.timew1w3w4##c.w1Agecent48 c.timew1w3w4##Sex c.timew1w3w4##Race  c.timew1w3w4##PovStat  c.timew1w3w4##w1edubr c.timew1w3w4##c.invmillsCES ///
+> c.timew1w3w4##w1smoke  c.timew1w3w4##w1currdrugs c.timew1w3w4##c.w1hei2010_total_scorecent43 ///
+> c.timew1w3w4##c.w1BMIcent30 ///
+> c.timew1w3w4##c.Lnw1HCyscenter2p15   ///
+> if sample4obs==1 || HNDID: timew1w3w4, cov(un)
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}= {res}     4,032
+
+{txt}Group variable: {res:HNDID}{col 49}Number of groups{col 67}= {res}     1,460
+{txt}{col 49}Obs per group:
+{col 49}              min{col 67}= {res}         1
+{txt}{col 49}              avg{col 67}= {res}       2.8
+{txt}{col 49}              max{col 67}= {res}         3
+{txt}{col 49}Average RVI{col 67}= {res}         .
+{txt}{col 49}Largest FMI{col 67}= {res}         .
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}DF:     min{col 67}= {res}      0.00
+{txt}{col 49}        avg{col 67}= {res}         .
+{txt}{col 49}        max{col 67}= {res}         .
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}F({res}  25{txt},{res}17739.2{txt}){col 67}= {res}      8.31
+{txt}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 43}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                                    CES_DA{col 44}{c |} Coefficient{col 56}  Std. err.{col 68}      t{col 76}   P>|t|{col 84}     [95% con{col 97}f. interval]
+{hline 43}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}-.1437182{col 56}{space 2} .0678764{col 67}{space 1}   -2.12{col 76}{space 3}0.034{col 84}{space 4}-.2767555{col 97}{space 3} -.010681
+{txt}{space 31}w1Agecent48 {c |}{col 44}{res}{space 2}-.0236658{col 56}{space 2} .0136749{col 67}{space 1}   -1.73{col 76}{space 3}0.084{col 84}{space 4}-.0504685{col 97}{space 3} .0031369
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.w1Agecent48 {c |}{col 44}{res}{space 2}-.0017791{col 56}{space 2} .0016588{col 67}{space 1}   -1.07{col 76}{space 3}0.283{col 84}{space 4}-.0050303{col 97}{space 3}  .001472
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 39}Sex {c |}
+{space 38}Men  {c |}{col 44}{res}{space 2}-1.616902{col 56}{space 2} .2574808{col 67}{space 1}   -6.28{col 76}{space 3}0.000{col 84}{space 4}-2.121558{col 97}{space 3}-1.112246
+{txt}{space 42} {c |}
+{space 26}Sex#c.timew1w3w4 {c |}
+{space 38}Men  {c |}{col 44}{res}{space 2} .0709978{col 56}{space 2} .0308766{col 67}{space 1}    2.30{col 76}{space 3}0.021{col 84}{space 4}   .01048{col 97}{space 3} .1315155
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 38}Race {c |}
+{space 36}AfrAm  {c |}{col 44}{res}{space 2}-.6318437{col 56}{space 2} .2445289{col 67}{space 1}   -2.58{col 76}{space 3}0.010{col 84}{space 4}-1.111114{col 97}{space 3} -.152573
+{txt}{space 42} {c |}
+{space 25}Race#c.timew1w3w4 {c |}
+{space 36}AfrAm  {c |}{col 44}{res}{space 2} .0018754{col 56}{space 2} .0298523{col 67}{space 1}    0.06{col 76}{space 3}0.950{col 84}{space 4}-.0566343{col 97}{space 3} .0603851
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 35}PovStat {c |}
+{space 36}Below  {c |}{col 44}{res}{space 2} 1.219366{col 56}{space 2} .2618605{col 67}{space 1}    4.66{col 76}{space 3}0.000{col 84}{space 4} .7060944{col 97}{space 3} 1.732638
+{txt}{space 42} {c |}
+{space 22}PovStat#c.timew1w3w4 {c |}
+{space 36}Below  {c |}{col 44}{res}{space 2}-.0043865{col 56}{space 2} .0312053{col 67}{space 1}   -0.14{col 76}{space 3}0.888{col 84}{space 4}-.0655484{col 97}{space 3} .0567753
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 35}w1edubr {c |}
+{space 40}2  {c |}{col 44}{res}{space 2}-.3776565{col 56}{space 2} .5196668{col 67}{space 1}   -0.73{col 76}{space 3}0.468{col 84}{space 4}-1.397268{col 97}{space 3} .6419548
+{txt}{space 40}3  {c |}{col 44}{res}{space 2}-1.205837{col 56}{space 2}  .539379{col 67}{space 1}   -2.24{col 76}{space 3}0.025{col 84}{space 4}-2.263508{col 97}{space 3}-.1481662
+{txt}{space 42} {c |}
+{space 22}w1edubr#c.timew1w3w4 {c |}
+{space 40}2  {c |}{col 44}{res}{space 2} .0568517{col 56}{space 2} .0640929{col 67}{space 1}    0.89{col 76}{space 3}0.375{col 84}{space 4}-.0687734{col 97}{space 3} .1824768
+{txt}{space 40}3  {c |}{col 44}{res}{space 2} .0622613{col 56}{space 2} .0669227{col 67}{space 1}    0.93{col 76}{space 3}0.352{col 84}{space 4}-.0689068{col 97}{space 3} .1934295
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 31}invmillsCES {c |}{col 44}{res}{space 2}-.0095886{col 56}{space 2} .0108357{col 67}{space 1}   -0.88{col 76}{space 3}0.376{col 84}{space 4}-.0308262{col 97}{space 3}  .011649
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.invmillsCES {c |}{col 44}{res}{space 2} .0008048{col 56}{space 2} .0012239{col 67}{space 1}    0.66{col 76}{space 3}0.511{col 84}{space 4}-.0015941{col 97}{space 3} .0032037
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 33}1.w1smoke {c |}{col 44}{res}{space 2} .6574798{col 56}{space 2} .2676915{col 67}{space 1}    2.46{col 76}{space 3}0.014{col 84}{space 4} .1322378{col 97}{space 3} 1.182722
+{txt}{space 42} {c |}
+{space 22}w1smoke#c.timew1w3w4 {c |}
+{space 40}1  {c |}{col 44}{res}{space 2}-.0246834{col 56}{space 2} .0340352{col 67}{space 1}   -0.73{col 76}{space 3}0.468{col 84}{space 4}-.0913998{col 97}{space 3}  .042033
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 29}1.w1currdrugs {c |}{col 44}{res}{space 2} 1.179739{col 56}{space 2} .3414339{col 67}{space 1}    3.46{col 76}{space 3}0.001{col 84}{space 4} .5046281{col 97}{space 3}  1.85485
+{txt}{space 42} {c |}
+{space 18}w1currdrugs#c.timew1w3w4 {c |}
+{space 40}1  {c |}{col 44}{res}{space 2}-.0486654{col 56}{space 2} .0452371{col 67}{space 1}   -1.08{col 76}{space 3}0.285{col 84}{space 4}-.1386856{col 97}{space 3} .0413548
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 15}w1hei2010_total_scorecent43 {c |}{col 44}{res}{space 2}-.0168319{col 56}{space 2} .0126653{col 67}{space 1}   -1.33{col 76}{space 3}0.196{col 84}{space 4} -.042915{col 97}{space 3} .0092513
+{txt}{space 42} {c |}
+c.timew1w3w4#c.w1hei2010_total_scorecent43 {c |}{col 44}{res}{space 2}-.0001911{col 56}{space 2}  .001467{col 67}{space 1}   -0.13{col 76}{space 3}0.897{col 84}{space 4}-.0030854{col 97}{space 3} .0027033
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 31}w1BMIcent30 {c |}{col 44}{res}{space 2} .0248988{col 56}{space 2} .0168251{col 67}{space 1}    1.48{col 76}{space 3}0.139{col 84}{space 4}-.0080782{col 97}{space 3} .0578758
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.w1BMIcent30 {c |}{col 44}{res}{space 2} .0014124{col 56}{space 2} .0020504{col 67}{space 1}    0.69{col 76}{space 3}0.491{col 84}{space 4}-.0026064{col 97}{space 3} .0054312
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 24}Lnw1HCyscenter2p15 {c |}{col 44}{res}{space 2} .7726103{col 56}{space 2} .3887689{col 67}{space 1}    1.99{col 76}{space 3}0.047{col 84}{space 4} .0106356{col 97}{space 3} 1.534585
+{txt}{space 42} {c |}
+{space 9}c.timew1w3w4#c.Lnw1HCyscenter2p15 {c |}{col 44}{res}{space 2}-.0658686{col 56}{space 2} .0475184{col 67}{space 1}   -1.39{col 76}{space 3}0.166{col 84}{space 4} -.159003{col 97}{space 3} .0272658
+{txt}{space 42} {c |}
+{space 37}_cons {c |}{col 44}{res}{space 2} 5.247274{col 56}{space 2} .5392615{col 67}{space 1}    9.73{col 76}{space 3}0.000{col 84}{space 4} 4.190061{col 97}{space 3} 6.304487
+{txt}{hline 43}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}HNDID{txt}: Unstructured{col 30}{c |}
+{space 14}sd(timew1w3w4) {c |}{res}{col 33} .0561049{col 44}        .{col 58}        .{col 70}        .
+{txt}{space 19}sd(_cons) {c |}{res}{col 33} 3.474458{col 44}        .{col 58}        .{col 70}        .
+{txt}{space 6}corr(timew1w3w4,_cons) {c |}{res}{col 33}       -1{col 44}        .{col 58}        .{col 70}        .
+{txt}{hline 29}{c +}{hline 48}
+{col 17}sd(Residual){col 30}{c |}{res}{col 33} 3.163165{col 44}        .{col 58}        .{col 70}        .
+{txt}{hline 29}{c BT}{hline 48}
+{res}{txt}
+{com}. 
+. 
+. 
+. mi estimate: mixed CES_IP c.timew1w3w4##c.w1Agecent48 c.timew1w3w4##Sex c.timew1w3w4##Race  c.timew1w3w4##PovStat  c.timew1w3w4##w1edubr c.timew1w3w4##c.invmillsCES ///
+> c.timew1w3w4##w1smoke  c.timew1w3w4##w1currdrugs c.timew1w3w4##c.w1hei2010_total_scorecent43 ///
+> c.timew1w3w4##c.w1BMIcent30 ///
+> c.timew1w3w4##c.Lnw1HCyscenter2p15   ///
+> if sample4obs==1 || HNDID: timew1w3w4, cov(un)
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}= {res}     4,032
+
+{txt}Group variable: {res:HNDID}{col 49}Number of groups{col 67}= {res}     1,460
+{txt}{col 49}Obs per group:
+{col 49}              min{col 67}= {res}         1
+{txt}{col 49}              avg{col 67}= {res}       2.8
+{txt}{col 49}              max{col 67}= {res}         3
+{txt}{col 49}Average RVI{col 67}= {res}         .
+{txt}{col 49}Largest FMI{col 67}= {res}         .
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}DF:     min{col 67}= {res}      0.00
+{txt}{col 49}        avg{col 67}= {res}         .
+{txt}{col 49}        max{col 67}= {res}         .
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}F({res}  25{txt},{res}49386.0{txt}){col 67}= {res}      3.77
+{txt}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 43}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                                    CES_IP{col 44}{c |} Coefficient{col 56}  Std. err.{col 68}      t{col 76}   P>|t|{col 84}     [95% con{col 97}f. interval]
+{hline 43}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2} -.012552{col 56}{space 2} .0213401{col 67}{space 1}   -0.59{col 76}{space 3}0.556{col 84}{space 4}-.0543781{col 97}{space 3} .0292741
+{txt}{space 31}w1Agecent48 {c |}{col 44}{res}{space 2}-.0094125{col 56}{space 2} .0037091{col 67}{space 1}   -2.54{col 76}{space 3}0.011{col 84}{space 4}-.0166823{col 97}{space 3}-.0021427
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.w1Agecent48 {c |}{col 44}{res}{space 2}-.0001781{col 56}{space 2} .0005223{col 67}{space 1}   -0.34{col 76}{space 3}0.733{col 84}{space 4}-.0012019{col 97}{space 3} .0008457
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 39}Sex {c |}
+{space 38}Men  {c |}{col 44}{res}{space 2} .0633306{col 56}{space 2} .0699187{col 67}{space 1}    0.91{col 76}{space 3}0.365{col 84}{space 4}-.0737091{col 97}{space 3} .2003702
+{txt}{space 42} {c |}
+{space 26}Sex#c.timew1w3w4 {c |}
+{space 38}Men  {c |}{col 44}{res}{space 2} -.011469{col 56}{space 2} .0097098{col 67}{space 1}   -1.18{col 76}{space 3}0.238{col 84}{space 4}   -.0305{col 97}{space 3} .0075619
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 38}Race {c |}
+{space 36}AfrAm  {c |}{col 44}{res}{space 2} .0095768{col 56}{space 2} .0664137{col 67}{space 1}    0.14{col 76}{space 3}0.885{col 84}{space 4}-.1205928{col 97}{space 3} .1397465
+{txt}{space 42} {c |}
+{space 25}Race#c.timew1w3w4 {c |}
+{space 36}AfrAm  {c |}{col 44}{res}{space 2} .0021557{col 56}{space 2} .0093886{col 67}{space 1}    0.23{col 76}{space 3}0.818{col 84}{space 4}-.0162457{col 97}{space 3} .0205572
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 35}PovStat {c |}
+{space 36}Below  {c |}{col 44}{res}{space 2} .2496323{col 56}{space 2} .0708061{col 67}{space 1}    3.53{col 76}{space 3}0.000{col 84}{space 4} .1108539{col 97}{space 3} .3884107
+{txt}{space 42} {c |}
+{space 22}PovStat#c.timew1w3w4 {c |}
+{space 36}Below  {c |}{col 44}{res}{space 2}-.0001036{col 56}{space 2} .0098237{col 67}{space 1}   -0.01{col 76}{space 3}0.992{col 84}{space 4}-.0193579{col 97}{space 3} .0191508
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 35}w1edubr {c |}
+{space 40}2  {c |}{col 44}{res}{space 2}-.0601467{col 56}{space 2} .1393362{col 67}{space 1}   -0.43{col 76}{space 3}0.666{col 84}{space 4} -.333284{col 97}{space 3} .2129906
+{txt}{space 40}3  {c |}{col 44}{res}{space 2}-.2446484{col 56}{space 2} .1448433{col 67}{space 1}   -1.69{col 76}{space 3}0.091{col 84}{space 4} -.528538{col 97}{space 3} .0392411
+{txt}{space 42} {c |}
+{space 22}w1edubr#c.timew1w3w4 {c |}
+{space 40}2  {c |}{col 44}{res}{space 2}  .007425{col 56}{space 2} .0200972{col 67}{space 1}    0.37{col 76}{space 3}0.712{col 84}{space 4} -.031965{col 97}{space 3}  .046815
+{txt}{space 40}3  {c |}{col 44}{res}{space 2} .0079989{col 56}{space 2} .0211355{col 67}{space 1}    0.38{col 76}{space 3}0.705{col 84}{space 4}-.0334282{col 97}{space 3}  .049426
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 31}invmillsCES {c |}{col 44}{res}{space 2} .0021666{col 56}{space 2} .0029516{col 67}{space 1}    0.73{col 76}{space 3}0.463{col 84}{space 4}-.0036184{col 97}{space 3} .0079517
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.invmillsCES {c |}{col 44}{res}{space 2}-.0003493{col 56}{space 2} .0003855{col 67}{space 1}   -0.91{col 76}{space 3}0.365{col 84}{space 4}-.0011048{col 97}{space 3} .0004063
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 33}1.w1smoke {c |}{col 44}{res}{space 2} .0330983{col 56}{space 2} .0752761{col 67}{space 1}    0.44{col 76}{space 3}0.660{col 84}{space 4}-.1146933{col 97}{space 3} .1808899
+{txt}{space 42} {c |}
+{space 22}w1smoke#c.timew1w3w4 {c |}
+{space 40}1  {c |}{col 44}{res}{space 2} .0028663{col 56}{space 2} .0106279{col 67}{space 1}    0.27{col 76}{space 3}0.787{col 84}{space 4}-.0179644{col 97}{space 3}  .023697
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 29}1.w1currdrugs {c |}{col 44}{res}{space 2}  .219227{col 56}{space 2}  .098071{col 67}{space 1}    2.24{col 76}{space 3}0.028{col 84}{space 4} .0242706{col 97}{space 3} .4141834
+{txt}{space 42} {c |}
+{space 18}w1currdrugs#c.timew1w3w4 {c |}
+{space 40}1  {c |}{col 44}{res}{space 2}-.0198327{col 56}{space 2} .0132135{col 67}{space 1}   -1.50{col 76}{space 3}0.134{col 84}{space 4}-.0458108{col 97}{space 3} .0061455
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 15}w1hei2010_total_scorecent43 {c |}{col 44}{res}{space 2}-.0048135{col 56}{space 2} .0033272{col 67}{space 1}   -1.45{col 76}{space 3}0.154{col 84}{space 4}-.0114982{col 97}{space 3} .0018711
+{txt}{space 42} {c |}
+c.timew1w3w4#c.w1hei2010_total_scorecent43 {c |}{col 44}{res}{space 2} .0001422{col 56}{space 2} .0004731{col 67}{space 1}    0.30{col 76}{space 3}0.764{col 84}{space 4}-.0007954{col 97}{space 3} .0010798
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 31}w1BMIcent30 {c |}{col 44}{res}{space 2} .0041419{col 56}{space 2} .0046016{col 67}{space 1}    0.90{col 76}{space 3}0.368{col 84}{space 4} -.004878{col 97}{space 3} .0131618
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.w1BMIcent30 {c |}{col 44}{res}{space 2}-.0000144{col 56}{space 2} .0006439{col 67}{space 1}   -0.02{col 76}{space 3}0.982{col 84}{space 4}-.0012764{col 97}{space 3} .0012475
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 24}Lnw1HCyscenter2p15 {c |}{col 44}{res}{space 2}  .051465{col 56}{space 2}  .105447{col 67}{space 1}    0.49{col 76}{space 3}0.626{col 84}{space 4}-.1552074{col 97}{space 3} .2581374
+{txt}{space 42} {c |}
+{space 9}c.timew1w3w4#c.Lnw1HCyscenter2p15 {c |}{col 44}{res}{space 2}-.0019648{col 56}{space 2} .0149486{col 67}{space 1}   -0.13{col 76}{space 3}0.895{col 84}{space 4}-.0312635{col 97}{space 3}  .027334
+{txt}{space 42} {c |}
+{space 37}_cons {c |}{col 44}{res}{space 2} .8904744{col 56}{space 2}  .146568{col 67}{space 1}    6.08{col 76}{space 3}0.000{col 84}{space 4} .6031742{col 97}{space 3} 1.177775
+{txt}{hline 43}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}HNDID{txt}: Unstructured{col 30}{c |}
+{space 14}sd(timew1w3w4) {c |}{res}{col 33} .0072222{col 44}        .{col 58}        .{col 70}        .
+{txt}{space 19}sd(_cons) {c |}{res}{col 33} .8159053{col 44}        .{col 58}        .{col 70}        .
+{txt}{space 6}corr(timew1w3w4,_cons) {c |}{res}{col 33}-.9999962{col 44}        .{col 58}        .{col 70}        .
+{txt}{hline 29}{c +}{hline 48}
+{col 17}sd(Residual){col 30}{c |}{res}{col 33} 1.002002{col 44}        .{col 58}        .{col 70}        .
+{txt}{hline 29}{c BT}{hline 48}
+{res}{txt}
+{com}. 
+. 
+. 
+. mi estimate: mixed CES_SC c.timew1w3w4##c.w1Agecent48 c.timew1w3w4##Sex c.timew1w3w4##Race  c.timew1w3w4##PovStat  c.timew1w3w4##w1edubr c.timew1w3w4##c.invmillsCES ///
+> c.timew1w3w4##w1smoke  c.timew1w3w4##w1currdrugs c.timew1w3w4##c.w1hei2010_total_scorecent43 ///
+> c.timew1w3w4##c.w1BMIcent30 ///
+> c.timew1w3w4##c.Lnw1HCyscenter2p15   ///
+> if sample4obs==1 || HNDID: timew1w3w4, cov(un)
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}= {res}     4,032
+
+{txt}Group variable: {res:HNDID}{col 49}Number of groups{col 67}= {res}     1,460
+{txt}{col 49}Obs per group:
+{col 49}              min{col 67}= {res}         1
+{txt}{col 49}              avg{col 67}= {res}       2.8
+{txt}{col 49}              max{col 67}= {res}         3
+{txt}{col 49}Average RVI{col 67}= {res}    0.0581
+{txt}{col 49}Largest FMI{col 67}= {res}    0.3258
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}DF:     min{col 67}= {res}     45.43
+{txt}{col 49}        avg{col 67}= {res}291,868.09
+{txt}{col 49}        max{col 67}= {res}6777516.12
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}F({res}  25{txt},{res}22912.9{txt}){col 67}= {res}     11.10
+{txt}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 43}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                                    CES_SC{col 44}{c |} Coefficient{col 56}  Std. err.{col 68}      t{col 76}   P>|t|{col 84}     [95% con{col 97}f. interval]
+{hline 43}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}-.1327333{col 56}{space 2}   .06829{col 67}{space 1}   -1.94{col 76}{space 3}0.052{col 84}{space 4}-.2665884{col 97}{space 3} .0011219
+{txt}{space 31}w1Agecent48 {c |}{col 44}{res}{space 2}-.0315242{col 56}{space 2} .0122187{col 67}{space 1}   -2.58{col 76}{space 3}0.010{col 84}{space 4}-.0554726{col 97}{space 3}-.0075758
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.w1Agecent48 {c |}{col 44}{res}{space 2} .0009918{col 56}{space 2} .0016658{col 67}{space 1}    0.60{col 76}{space 3}0.552{col 84}{space 4}-.0022732{col 97}{space 3} .0042567
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 39}Sex {c |}
+{space 38}Men  {c |}{col 44}{res}{space 2}-1.130193{col 56}{space 2} .2304462{col 67}{space 1}   -4.90{col 76}{space 3}0.000{col 84}{space 4}-1.581865{col 97}{space 3}-.6785217
+{txt}{space 42} {c |}
+{space 26}Sex#c.timew1w3w4 {c |}
+{space 38}Men  {c |}{col 44}{res}{space 2} .0321405{col 56}{space 2} .0311057{col 67}{space 1}    1.03{col 76}{space 3}0.301{col 84}{space 4}-.0288281{col 97}{space 3} .0931092
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 38}Race {c |}
+{space 36}AfrAm  {c |}{col 44}{res}{space 2}-.3079793{col 56}{space 2} .2192801{col 67}{space 1}   -1.40{col 76}{space 3}0.160{col 84}{space 4}-.7377729{col 97}{space 3} .1218144
+{txt}{space 42} {c |}
+{space 25}Race#c.timew1w3w4 {c |}
+{space 36}AfrAm  {c |}{col 44}{res}{space 2} .0008094{col 56}{space 2} .0299915{col 67}{space 1}    0.03{col 76}{space 3}0.978{col 84}{space 4}-.0579737{col 97}{space 3} .0595924
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 35}PovStat {c |}
+{space 36}Below  {c |}{col 44}{res}{space 2} 1.119643{col 56}{space 2} .2343896{col 67}{space 1}    4.78{col 76}{space 3}0.000{col 84}{space 4} .6602158{col 97}{space 3}  1.57907
+{txt}{space 42} {c |}
+{space 22}PovStat#c.timew1w3w4 {c |}
+{space 36}Below  {c |}{col 44}{res}{space 2}-.0176876{col 56}{space 2} .0313735{col 67}{space 1}   -0.56{col 76}{space 3}0.573{col 84}{space 4}-.0791797{col 97}{space 3} .0438045
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 35}w1edubr {c |}
+{space 40}2  {c |}{col 44}{res}{space 2}-.4625775{col 56}{space 2} .4562565{col 67}{space 1}   -1.01{col 76}{space 3}0.311{col 84}{space 4}-1.356887{col 97}{space 3}  .431732
+{txt}{space 40}3  {c |}{col 44}{res}{space 2} -1.43505{col 56}{space 2}  .484718{col 67}{space 1}   -2.96{col 76}{space 3}0.003{col 84}{space 4}-2.385539{col 97}{space 3}-.4845619
+{txt}{space 42} {c |}
+{space 22}w1edubr#c.timew1w3w4 {c |}
+{space 40}2  {c |}{col 44}{res}{space 2} .0559804{col 56}{space 2} .0644897{col 67}{space 1}    0.87{col 76}{space 3}0.385{col 84}{space 4}-.0704304{col 97}{space 3} .1823913
+{txt}{space 40}3  {c |}{col 44}{res}{space 2} .0526029{col 56}{space 2} .0671094{col 67}{space 1}    0.78{col 76}{space 3}0.433{col 84}{space 4}-.0789311{col 97}{space 3}  .184137
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 31}invmillsCES {c |}{col 44}{res}{space 2}-.0043673{col 56}{space 2} .0097047{col 67}{space 1}   -0.45{col 76}{space 3}0.653{col 84}{space 4}-.0233882{col 97}{space 3} .0146536
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.invmillsCES {c |}{col 44}{res}{space 2}-.0007002{col 56}{space 2} .0012304{col 67}{space 1}   -0.57{col 76}{space 3}0.569{col 84}{space 4}-.0031116{col 97}{space 3} .0017113
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 33}1.w1smoke {c |}{col 44}{res}{space 2} .8919156{col 56}{space 2} .2558941{col 67}{space 1}    3.49{col 76}{space 3}0.001{col 84}{space 4}  .387126{col 97}{space 3} 1.396705
+{txt}{space 42} {c |}
+{space 22}w1smoke#c.timew1w3w4 {c |}
+{space 40}1  {c |}{col 44}{res}{space 2}-.0084059{col 56}{space 2}  .034811{col 67}{space 1}   -0.24{col 76}{space 3}0.809{col 84}{space 4}-.0767115{col 97}{space 3} .0598997
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 29}1.w1currdrugs {c |}{col 44}{res}{space 2} .8674141{col 56}{space 2} .3054243{col 67}{space 1}    2.84{col 76}{space 3}0.005{col 84}{space 4} .2653782{col 97}{space 3}  1.46945
+{txt}{space 42} {c |}
+{space 18}w1currdrugs#c.timew1w3w4 {c |}
+{space 40}1  {c |}{col 44}{res}{space 2}-.0260748{col 56}{space 2} .0476576{col 67}{space 1}   -0.55{col 76}{space 3}0.587{col 84}{space 4}-.1220369{col 97}{space 3} .0698873
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 15}w1hei2010_total_scorecent43 {c |}{col 44}{res}{space 2}-.0251077{col 56}{space 2} .0099922{col 67}{space 1}   -2.51{col 76}{space 3}0.013{col 84}{space 4}-.0448606{col 97}{space 3}-.0053548
+{txt}{space 42} {c |}
+c.timew1w3w4#c.w1hei2010_total_scorecent43 {c |}{col 44}{res}{space 2}-.0012165{col 56}{space 2} .0014433{col 67}{space 1}   -0.84{col 76}{space 3}0.400{col 84}{space 4}-.0040566{col 97}{space 3} .0016235
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 31}w1BMIcent30 {c |}{col 44}{res}{space 2}  .026129{col 56}{space 2} .0151764{col 67}{space 1}    1.72{col 76}{space 3}0.085{col 84}{space 4}-.0036201{col 97}{space 3} .0558781
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.w1BMIcent30 {c |}{col 44}{res}{space 2} .0004708{col 56}{space 2}  .002062{col 67}{space 1}    0.23{col 76}{space 3}0.819{col 84}{space 4}-.0035708{col 97}{space 3} .0045124
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 24}Lnw1HCyscenter2p15 {c |}{col 44}{res}{space 2} .5700105{col 56}{space 2} .3480783{col 67}{space 1}    1.64{col 76}{space 3}0.102{col 84}{space 4}-.1122152{col 97}{space 3} 1.252236
+{txt}{space 42} {c |}
+{space 9}c.timew1w3w4#c.Lnw1HCyscenter2p15 {c |}{col 44}{res}{space 2}-.0139981{col 56}{space 2} .0478669{col 67}{space 1}   -0.29{col 76}{space 3}0.770{col 84}{space 4}-.1078182{col 97}{space 3} .0798219
+{txt}{space 42} {c |}
+{space 37}_cons {c |}{col 44}{res}{space 2} 7.187618{col 56}{space 2} .4846387{col 67}{space 1}   14.83{col 76}{space 3}0.000{col 84}{space 4} 6.237473{col 97}{space 3} 8.137762
+{txt}{hline 43}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}HNDID{txt}: Unstructured{col 30}{c |}
+{space 14}sd(timew1w3w4) {c |}{res}{col 33} .1431536{col 44} .0470263{col 58} .0751906{col 70} .2725466
+{txt}{space 19}sd(_cons) {c |}{res}{col 33} 2.915617{col 44} .1155795{col 58} 2.697661{col 70} 3.151183
+{txt}{space 6}corr(timew1w3w4,_cons) {c |}{res}{col 33}-.4037751{col 44} .1030065{col 58}-.5845639{col 70}-.1847872
+{txt}{hline 29}{c +}{hline 48}
+{col 17}sd(Residual){col 30}{c |}{res}{col 33} 3.057172{col 44} .0577996{col 58}  2.94595{col 70} 3.172594
+{txt}{hline 29}{c BT}{hline 48}
+{res}{txt}
+{com}. 
+. 
+. 
+. mi estimate: mixed CES_WB c.timew1w3w4##c.w1Agecent48 c.timew1w3w4##Sex c.timew1w3w4##Race  c.timew1w3w4##PovStat  c.timew1w3w4##w1edubr c.timew1w3w4##c.invmillsCES ///
+> c.timew1w3w4##w1smoke  c.timew1w3w4##w1currdrugs c.timew1w3w4##c.w1hei2010_total_scorecent43 ///
+> c.timew1w3w4##c.w1BMIcent30 ///
+> c.timew1w3w4##c.Lnw1HCyscenter2p15   ///
+> if sample4obs==1 || HNDID: timew1w3w4, cov(un)
+{res}
+{txt}Multiple-imputation estimates{col 49}Imputations{col 67}= {res}         5
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}= {res}     4,032
+
+{txt}Group variable: {res:HNDID}{col 49}Number of groups{col 67}= {res}     1,460
+{txt}{col 49}Obs per group:
+{col 49}              min{col 67}= {res}         1
+{txt}{col 49}              avg{col 67}= {res}       2.8
+{txt}{col 49}              max{col 67}= {res}         3
+{txt}{col 49}Average RVI{col 67}= {res}    0.0716
+{txt}{col 49}Largest FMI{col 67}= {res}    0.2951
+{txt}DF adjustment:{ralign 15: {res:Large sample}}{col 49}DF:     min{col 67}= {res}     54.92
+{txt}{col 49}        avg{col 67}= {res}2349878.60
+{txt}{col 49}        max{col 67}= {res}  5.93e+07
+{txt}Model F test:{ralign 16: {res:Equal FMI}}{col 49}F({res}  25{txt},{res}15086.7{txt}){col 67}= {res}      7.19
+{txt}{col 49}Prob > F{col 67}= {res}    0.0000
+
+{txt}{hline 43}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                                    CES_WB{col 44}{c |} Coefficient{col 56}  Std. err.{col 68}      t{col 76}   P>|t|{col 84}     [95% con{col 97}f. interval]
+{hline 43}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}-.0127133{col 56}{space 2} .0462162{col 67}{space 1}   -0.28{col 76}{space 3}0.783{col 84}{space 4}-.1033009{col 97}{space 3} .0778744
+{txt}{space 31}w1Agecent48 {c |}{col 44}{res}{space 2} .0184681{col 56}{space 2} .0073143{col 67}{space 1}    2.52{col 76}{space 3}0.012{col 84}{space 4} .0041323{col 97}{space 3}  .032804
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.w1Agecent48 {c |}{col 44}{res}{space 2} -.001861{col 56}{space 2} .0011319{col 67}{space 1}   -1.64{col 76}{space 3}0.100{col 84}{space 4}-.0040795{col 97}{space 3} .0003576
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 39}Sex {c |}
+{space 38}Men  {c |}{col 44}{res}{space 2} .4106277{col 56}{space 2} .1378221{col 67}{space 1}    2.98{col 76}{space 3}0.003{col 84}{space 4} .1404989{col 97}{space 3} .6807565
+{txt}{space 42} {c |}
+{space 26}Sex#c.timew1w3w4 {c |}
+{space 38}Men  {c |}{col 44}{res}{space 2}-.0039004{col 56}{space 2} .0209254{col 67}{space 1}   -0.19{col 76}{space 3}0.852{col 84}{space 4}-.0449136{col 97}{space 3} .0371128
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 38}Race {c |}
+{space 36}AfrAm  {c |}{col 44}{res}{space 2} .7685579{col 56}{space 2} .1312078{col 67}{space 1}    5.86{col 76}{space 3}0.000{col 84}{space 4} .5113885{col 97}{space 3} 1.025727
+{txt}{space 42} {c |}
+{space 25}Race#c.timew1w3w4 {c |}
+{space 36}AfrAm  {c |}{col 44}{res}{space 2}-.0765441{col 56}{space 2} .0202218{col 67}{space 1}   -3.79{col 76}{space 3}0.000{col 84}{space 4}-.1161783{col 97}{space 3}-.0369099
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 35}PovStat {c |}
+{space 36}Below  {c |}{col 44}{res}{space 2}-.3315011{col 56}{space 2} .1401255{col 67}{space 1}   -2.37{col 76}{space 3}0.018{col 84}{space 4}-.6061531{col 97}{space 3}-.0568492
+{txt}{space 42} {c |}
+{space 22}PovStat#c.timew1w3w4 {c |}
+{space 36}Below  {c |}{col 44}{res}{space 2} -.031091{col 56}{space 2} .0211727{col 67}{space 1}   -1.47{col 76}{space 3}0.142{col 84}{space 4}-.0725895{col 97}{space 3} .0104074
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 42} {c |}
+{space 35}w1edubr {c |}
+{space 40}2  {c |}{col 44}{res}{space 2} .3154609{col 56}{space 2} .2738589{col 67}{space 1}    1.15{col 76}{space 3}0.249{col 84}{space 4}-.2213237{col 97}{space 3} .8522455
+{txt}{space 40}3  {c |}{col 44}{res}{space 2} .5703145{col 56}{space 2} .2873463{col 67}{space 1}    1.98{col 76}{space 3}0.047{col 84}{space 4} .0070927{col 97}{space 3} 1.133536
+{txt}{space 42} {c |}
+{space 22}w1edubr#c.timew1w3w4 {c |}
+{space 40}2  {c |}{col 44}{res}{space 2}  -.01992{col 56}{space 2} .0435149{col 67}{space 1}   -0.46{col 76}{space 3}0.647{col 84}{space 4}-.1052116{col 97}{space 3} .0653716
+{txt}{space 40}3  {c |}{col 44}{res}{space 2} .0392735{col 56}{space 2} .0454171{col 67}{space 1}    0.86{col 76}{space 3}0.387{col 84}{space 4}-.0497436{col 97}{space 3} .1282906
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 31}invmillsCES {c |}{col 44}{res}{space 2}-.0061678{col 56}{space 2}   .00583{col 67}{space 1}   -1.06{col 76}{space 3}0.290{col 84}{space 4}-.0175944{col 97}{space 3} .0052588
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.invmillsCES {c |}{col 44}{res}{space 2} .0013071{col 56}{space 2} .0008258{col 67}{space 1}    1.58{col 76}{space 3}0.113{col 84}{space 4}-.0003114{col 97}{space 3} .0029256
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 33}1.w1smoke {c |}{col 44}{res}{space 2}-.2819863{col 56}{space 2} .1516218{col 67}{space 1}   -1.86{col 76}{space 3}0.064{col 84}{space 4}-.5802617{col 97}{space 3} .0162891
+{txt}{space 42} {c |}
+{space 22}w1smoke#c.timew1w3w4 {c |}
+{space 40}1  {c |}{col 44}{res}{space 2}-.0026452{col 56}{space 2} .0247114{col 67}{space 1}   -0.11{col 76}{space 3}0.915{col 84}{space 4}-.0514258{col 97}{space 3} .0461355
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 29}1.w1currdrugs {c |}{col 44}{res}{space 2}-.4960944{col 56}{space 2} .2007818{col 67}{space 1}   -2.47{col 76}{space 3}0.017{col 84}{space 4}-.8984838{col 97}{space 3} -.093705
+{txt}{space 42} {c |}
+{space 18}w1currdrugs#c.timew1w3w4 {c |}
+{space 40}1  {c |}{col 44}{res}{space 2} .0570961{col 56}{space 2} .0305608{col 67}{space 1}    1.87{col 76}{space 3}0.065{col 84}{space 4}-.0037208{col 97}{space 3}  .117913
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 15}w1hei2010_total_scorecent43 {c |}{col 44}{res}{space 2} .0148227{col 56}{space 2} .0058621{col 67}{space 1}    2.53{col 76}{space 3}0.012{col 84}{space 4} .0033012{col 97}{space 3} .0263442
+{txt}{space 42} {c |}
+c.timew1w3w4#c.w1hei2010_total_scorecent43 {c |}{col 44}{res}{space 2}-.0007956{col 56}{space 2}  .001013{col 67}{space 1}   -0.79{col 76}{space 3}0.434{col 84}{space 4}-.0028016{col 97}{space 3} .0012105
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 31}w1BMIcent30 {c |}{col 44}{res}{space 2}-.0103712{col 56}{space 2} .0090608{col 67}{space 1}   -1.14{col 76}{space 3}0.252{col 84}{space 4}-.0281312{col 97}{space 3} .0073887
+{txt}{space 42} {c |}
+{space 16}c.timew1w3w4#c.w1BMIcent30 {c |}{col 44}{res}{space 2}  .000247{col 56}{space 2} .0013857{col 67}{space 1}    0.18{col 76}{space 3}0.859{col 84}{space 4} -.002469{col 97}{space 3}  .002963
+{txt}{space 42} {c |}
+{space 32}timew1w3w4 {c |}{col 44}{res}{space 2}        0{col 56}{txt}  (omitted)
+{space 24}Lnw1HCyscenter2p15 {c |}{col 44}{res}{space 2}-.3809215{col 56}{space 2} .2078903{col 67}{space 1}   -1.83{col 76}{space 3}0.067{col 84}{space 4} -.788379{col 97}{space 3}  .026536
+{txt}{space 42} {c |}
+{space 9}c.timew1w3w4#c.Lnw1HCyscenter2p15 {c |}{col 44}{res}{space 2} .0334305{col 56}{space 2}  .032365{col 67}{space 1}    1.03{col 76}{space 3}0.302{col 84}{space 4}-.0300053{col 97}{space 3} .0968663
+{txt}{space 42} {c |}
+{space 37}_cons {c |}{col 44}{res}{space 2} 9.057717{col 56}{space 2} .2875928{col 67}{space 1}   31.49{col 76}{space 3}0.000{col 84}{space 4} 8.494037{col 97}{space 3} 9.621396
+{txt}{hline 43}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}HNDID{txt}: Unstructured{col 30}{c |}
+{space 14}sd(timew1w3w4) {c |}{res}{col 33} .0713008{col 44} .0450257{col 58} .0206805{col 70} .2458262
+{txt}{space 19}sd(_cons) {c |}{res}{col 33} 1.481397{col 44} .0871435{col 58} 1.320077{col 70} 1.662431
+{txt}{space 6}corr(timew1w3w4,_cons) {c |}{res}{col 33} .7934057{col 44} .9758228{col 58}-.9994302{col 70} .9999924
+{txt}{hline 29}{c +}{hline 48}
+{col 17}sd(Residual){col 30}{c |}{res}{col 33} 2.085581{col 44} .0402883{col 58} 2.008092{col 70}  2.16606
+{txt}{hline 29}{c BT}{hline 48}
+{res}{txt}
+{com}. 
+. 
+. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}

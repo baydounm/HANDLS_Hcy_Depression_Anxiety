@@ -1,0 +1,247 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\HANDLS_PAPER64_HCYDEPANXIETY_LONG\OUTPUT\FIGURE1.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}21 Jun 2024, 09:15:22
+{txt}
+{com}. 
+. 
+. *************************MAIN ANALYSIS******************
+. 
+. ////////FIGURE 1: PARTICIPANT FLOWCHART, TEXT OF METHODS////
+> 
+. 
+. use finaldata_imputed_FINAL,clear
+{txt}
+{com}. 
+. 
+. su timew1w3w4 if HNDwave==3
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 2}timew1w3w4 {c |}{res}     14,808    4.659765    .9608437         .4        9.1
+{txt}
+{com}. 
+. 
+. **Initial sample: N=3,720**
+. 
+. mi estimate: mean w1Age if HNDwave==1
+{res}
+{txt}Multiple-imputation estimates{col 35}Imputations{col 51}= {res}         5
+{txt}Mean estimation{col 35}Number of obs{col 51}= {res}     3,720
+{txt}{col 35}Average RVI{col 51}= {res}    0.0000
+{txt}{col 35}Largest FMI{col 51}= {res}    0.0000
+{txt}{col 35}Complete DF{col 51}= {res}      3719
+{txt}DF adjustment:{ralign 15: {res:Small sample}}{col 35}DF:     min{col 51}= {res}  3,717.00
+{txt}{col 35}        avg{col 51}= {res}  3,717.00
+{txt}Within VCE type: {ralign 12:{res:Analytic}}{col 35}        max{col 51}= {res}  3,717.00
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |}       Mean{col 26}   Std. err.{col 38}     [95% con{col 51}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{space 7}w1Age {c |}{col 14}{res}{space 2} 48.26927{col 26}{space 2} .1534168{col 37}{space 5} 47.96848{col 51}{space 3} 48.57006
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}{txt}
+{com}. mi estimate: prop Sex if HNDwave==1
+{res}
+{txt}Multiple-imputation estimates{col 35}Imputations{col 51}= {res}         5
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}     3,720
+{txt}{col 35}Average RVI{col 51}= {res}    0.0000
+{txt}{col 35}Largest FMI{col 51}= {res}    0.0000
+{txt}{col 35}Complete DF{col 51}= {res}      3719
+{txt}DF adjustment:{ralign 15: {res:Small sample}}{col 35}DF:     min{col 51}= {res}  3,717.00
+{txt}{col 35}        avg{col 51}= {res}  3,717.00
+{txt}Within VCE type: {ralign 12:{res:Analytic}}{col 35}        max{col 51}= {res}  3,717.00
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |}{col 37}             N{col 51}ormal
+{col 14}{c |} Proportion{col 26}   Std. err.{col 38}     [95% con{col 51}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{space 9}Sex {c |}
+{space 6}Women  {c |}{col 14}{res}{space 2}  .547043{col 26}{space 2} .0081615{col 37}{space 5} .5310416{col 51}{space 3} .5630444
+{txt}{space 8}Men  {c |}{col 14}{res}{space 2}  .452957{col 26}{space 2} .0081615{col 37}{space 5} .4369556{col 51}{space 3} .4689584
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}{txt}
+{com}. mi estimate: prop Race if HNDwave==1
+{res}
+{txt}Multiple-imputation estimates{col 35}Imputations{col 51}= {res}         5
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}     3,720
+{txt}{col 35}Average RVI{col 51}= {res}    0.0000
+{txt}{col 35}Largest FMI{col 51}= {res}    0.0000
+{txt}{col 35}Complete DF{col 51}= {res}      3719
+{txt}DF adjustment:{ralign 15: {res:Small sample}}{col 35}DF:     min{col 51}= {res}  3,717.00
+{txt}{col 35}        avg{col 51}= {res}  3,717.00
+{txt}Within VCE type: {ralign 12:{res:Analytic}}{col 35}        max{col 51}= {res}  3,717.00
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |}{col 37}             N{col 51}ormal
+{col 14}{c |} Proportion{col 26}   Std. err.{col 38}     [95% con{col 51}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{space 8}Race {c |}
+{space 6}White  {c |}{col 14}{res}{space 2} .4091398{col 26}{space 2} .0080613{col 37}{space 5} .3933347{col 51}{space 3} .4249449
+{txt}{space 6}AfrAm  {c |}{col 14}{res}{space 2} .5908602{col 26}{space 2} .0080613{col 37}{space 5} .5750551{col 51}{space 3} .6066653
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}{txt}
+{com}. mi estimate: prop PovStat if HNDwave==1
+{res}
+{txt}Multiple-imputation estimates{col 35}Imputations{col 51}= {res}         5
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}     3,720
+{txt}{col 35}Average RVI{col 51}= {res}    0.0000
+{txt}{col 35}Largest FMI{col 51}= {res}    0.0000
+{txt}{col 35}Complete DF{col 51}= {res}      3719
+{txt}DF adjustment:{ralign 15: {res:Small sample}}{col 35}DF:     min{col 51}= {res}  3,717.00
+{txt}{col 35}        avg{col 51}= {res}  3,717.00
+{txt}Within VCE type: {ralign 12:{res:Analytic}}{col 35}        max{col 51}= {res}  3,717.00
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |}{col 37}             N{col 51}ormal
+{col 14}{c |} Proportion{col 26}   Std. err.{col 38}     [95% con{col 51}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{space 5}PovStat {c |}
+{space 6}Above  {c |}{col 14}{res}{space 2} .5873656{col 26}{space 2} .0080717{col 37}{space 5} .5715402{col 51}{space 3}  .603191
+{txt}{space 6}Below  {c |}{col 14}{res}{space 2} .4126344{col 26}{space 2} .0080717{col 37}{space 5}  .396809{col 51}{space 3} .4284598
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}{txt}
+{com}. 
+. save, replace
+{txt}{p 0 4 2}
+file {bf}
+finaldata_imputed_FINAL.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. tab sample1 if HNDwave==1 & _mi_m==0
+
+    {txt}sample1 {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}      3,720      100.00      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      3,720      100.00
+{txt}
+{com}. 
+. **Sample with complete HCys load data: N=2,321**
+. 
+. tab sample2 if HNDwave==1 & _mi_m==0
+
+    {txt}sample2 {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}      2,260       60.75       60.75
+{txt}          1 {c |}{res}      1,460       39.25      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      3,720      100.00
+{txt}
+{com}. 
+. **Samples with complete CED-D scores at waves 1, 3 or 4: N=3,028 participants, N=7,592 observations; Report maximum sample sizes for participants and observations in text ***
+. 
+. tab1 sample3part if HNDwave==1  & _mi_m==0
+
+{res}-> tabulation of sample3part if HNDwave==1  & _mi_m==0 
+
+{txt}sample3part {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        692       18.60       18.60
+{txt}          1 {c |}{res}      3,028       81.40      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      3,720      100.00
+{txt}
+{com}. tab1 sample3part if HNDwave==3  & _mi_m==0
+
+{res}-> tabulation of sample3part if HNDwave==3  & _mi_m==0 
+
+{txt}sample3part {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}         69        2.80        2.80
+{txt}          1 {c |}{res}      2,399       97.20      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      2,468      100.00
+{txt}
+{com}. tab1 sample3part if HNDwave==4  & _mi_m==0
+
+{res}-> tabulation of sample3part if HNDwave==4  & _mi_m==0 
+
+{txt}sample3part {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}          6        0.28        0.28
+{txt}          1 {c |}{res}      2,165       99.72      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      2,171      100.00
+{txt}
+{com}. 
+. 
+. tab1 sample3obs if HNDwave==1  & _mi_m==0 | HNDwave==3  & _mi_m==0 | HNDwave==4 & _mi_m==0
+
+{res}-> tabulation of sample3obs if HNDwave==1  & _mi_m==0 | HNDwave==3  & _mi_m==0 | HNDwave==4 & _mi_m==0 
+
+ {txt}sample3obs {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        767        9.18        9.18
+{txt}          1 {c |}{res}      7,592       90.82      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      8,359      100.00
+{txt}
+{com}. 
+. 
+. **Samples with complete CES-D scores at waves 1, 3 or 4 and complete Hcy exposures: N=1,460; N'=4,124;***
+. 
+. tab1 sample4part if HNDwave==1  & _mi_m==0
+
+{res}-> tabulation of sample4part if HNDwave==1  & _mi_m==0 
+
+{txt}sample4part {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}      2,260       60.75       60.75
+{txt}          1 {c |}{res}      1,460       39.25      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      3,720      100.00
+{txt}
+{com}. tab1 sample4part if HNDwave==3  & _mi_m==0
+
+{res}-> tabulation of sample4part if HNDwave==3  & _mi_m==0 
+
+{txt}sample4part {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}      1,040       42.14       42.14
+{txt}          1 {c |}{res}      1,428       57.86      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      2,468      100.00
+{txt}
+{com}. tab1 sample4part if HNDwave==4  & _mi_m==0
+
+{res}-> tabulation of sample4part if HNDwave==4  & _mi_m==0 
+
+{txt}sample4part {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        935       43.07       43.07
+{txt}          1 {c |}{res}      1,236       56.93      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      2,171      100.00
+{txt}
+{com}. 
+. 
+. tab1 sample4obs if HNDwave==1  & _mi_m==0 | HNDwave==3  & _mi_m==0 | HNDwave==4  & _mi_m==0
+
+{res}-> tabulation of sample4obs if HNDwave==1  & _mi_m==0 | HNDwave==3  & _mi_m==0 | HNDwave==4  & _mi_m==0 
+
+ {txt}sample4obs {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}      4,235       50.66       50.66
+{txt}          1 {c |}{res}      4,124       49.34      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      8,359      100.00
+{txt}
+{com}. 
+. save finaldata_imputed_FINAL,replace
+{txt}{p 0 4 2}
+file {bf}
+finaldata_imputed_FINAL.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. 
+. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}
